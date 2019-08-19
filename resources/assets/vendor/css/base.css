@@ -1,3 +1,25 @@
+/*custom*/
+@font-face {
+  font-family: 'IRS';
+  src: url("../fonts/IRS/IRANSansWeb.eot") format('eot'),
+  url("../fonts/IRS/IRANSansWeb.woff") format('woff'),
+  url("../fonts/IRS/IRANSansWeb.ttf") format('ttf'),
+  url("../fonts/IRS/IRANSansWeb.woff2") format('woff2');
+}
+.slider{
+  z-index: 996;
+  top: 7.3vw;
+  height: 50px;
+}
+.slider-item img{
+  width:100%;
+}
+.container{
+  max-width: 1800px;
+}
+
+
+
 /*
   Theme Name: Regna
   Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
@@ -7,10 +29,15 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+*{
+  font-family: 'IRS';
+}
 body {
+  direction: rtl;
   background: #fff;
   color: #666666;
-  font-family: "Open Sans", sans-serif;
+  
+  /*font-family: "Open Sans", sans-serif;*/
 }
 
 a {
@@ -29,7 +56,7 @@ p {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Poppins", sans-serif;
+ /* font-family: "Poppins", sans-serif;*/
   font-weight: 400;
   margin: 0 0 20px 0;
   padding: 0;
@@ -82,8 +109,11 @@ h1, h2, h3, h4, h5, h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  padding: 30px 0;
-  height: 92px;
+  display: block;
+  direction: left;
+  background-color: #fff;
+  padding: 1vw 0;
+  height: 7.3vw;
   position: fixed;
   left: 0;
   top: 0;
@@ -91,9 +121,30 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.5s;
   z-index: 997;
 }
-
+.navbar{
+  padding: 0.91vw 0;
+}
+.navbar-logo{
+ 
+  max-width: 200px;
+  float: right;
+}
 #header #logo {
-  float: left;
+ display: block;
+}
+
+#header .container{
+  margin: auto;
+  width: 100%;  
+}
+
+#logo-english-text{
+  color: #e8e8e8; 
+  font-size: 1vw;
+  text-align: center;
+}
+#logo img{
+  width: 11vw;
 }
 
 #header #logo h1 {
@@ -101,7 +152,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 6px 0;
   line-height: 1;
-  font-family: "Poppins", sans-serif;
+/*  font-family: "Poppins", sans-serif;*/
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
@@ -142,6 +193,7 @@ h1, h2, h3, h4, h5, h6 {
   background-size: cover;
   position: relative;
 }
+
 
 @media (min-width: 1024px) {
   #hero {
@@ -203,7 +255,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .btn-get-started {
-  font-family: "Poppins", sans-serif;
+  /*font-family: "Poppins", sans-serif;*/
   text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;
@@ -226,10 +278,17 @@ h1, h2, h3, h4, h5, h6 {
 # Navigation Menu
 --------------------------------------------------------------*/
 /* Nav Menu Essentials */
+/*custom*/
+.nav-menu, .nav-menu * {
+
+}
+
+
 .nav-menu, .nav-menu * {
   margin: 0;
   padding: 0;
   list-style: none;
+  
 }
 
 .nav-menu ul {
@@ -239,14 +298,17 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   z-index: 99;
 }
-
+.nav-menu li a{
+  color: #4c4c4d;
+}
 .nav-menu li {
   position: relative;
   white-space: nowrap;
+
 }
 
 .nav-menu > li {
-  float: left;
+  float: right;
 }
 
 .nav-menu li:hover > ul,
@@ -261,6 +323,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-menu ul li {
   min-width: 180px;
+  
 }
 
 /* Nav Menu Arrows */
@@ -272,7 +335,7 @@ h1, h2, h3, h4, h5, h6 {
   content: "\f107";
   position: absolute;
   right: 15px;
-  font-family: FontAwesome;
+  /*font-family: FontAwesome;*/
   font-style: normal;
   font-weight: normal;
 }
@@ -284,7 +347,9 @@ h1, h2, h3, h4, h5, h6 {
 /* Nav Meu Container */
 #nav-menu-container {
   float: right;
-  margin: 0;
+  margin: auto 6vw;
+  width: 100%;
+  
 }
 
 @media (max-width: 768px) {
@@ -295,22 +360,19 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Nav Meu Styling */
 .nav-menu a {
-  padding: 0 8px 10px 8px;
   text-decoration: none;
   display: inline-block;
-  color: #fff;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
+  font-size: 1vw;
   text-transform: uppercase;
-  font-size: 13px;
   outline: none;
 }
 
 .nav-menu > li {
-  margin-left: 10px;
+  margin: 1vw 0 1vw 2.5vw;
+  margin-right: 0; 
 }
 
-.nav-menu > li > a:before {
+/*.nav-menu > li > a:before {
   content: "";
   position: absolute;
   width: 100%;
@@ -324,12 +386,16 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-transition: all 0.3s ease-in-out 0s;
   transition: all 0.3s ease-in-out 0s;
 }
+*/
 
-.nav-menu a:hover:before, .nav-menu li:hover > a:before, .nav-menu .menu-active > a:before {
+.nav-menu a:hover:before, .nav-menu li:hover > a:before, .nav-menu .menu-active > a:before{
+  color: #444444;
+}
+/*.nav-menu a:hover:before, .nav-menu li:hover > a:before, .nav-menu .menu-active > a:before {
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
-}
+}*/
 
 .nav-menu ul {
   margin: 4px 0 0 0;
@@ -345,13 +411,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-menu ul li a {
-  padding: 10px;
+  padding: 1vw;
   color: #333;
   transition: 0.3s;
   display: block;
-  font-size: 13px;
+  font-size: 10vw;
   text-transform: none;
 }
+.nav-menu li a img{
+  width: 1.2vw;
+  margin-left: 0.5vw;
+}
+.nav-menu{
+  position: relative; 
+  width: 100%;
+}
+.nav-menu .left-content{
+  position: relative;
+  width: 1.5vw;
+  margin:1vw 0.5vw;
+  float: left;
+}
+.nav-menu .left-content img{
+  width: 100%
+}
+
 
 .nav-menu ul li a:hover {
   background: #2dc997;
@@ -589,7 +673,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #facts .counters p {
   padding: 0;
   margin: 0 0 20px 0;
-  font-family: "Poppins", sans-serif;
+  /*font-family: "Poppins", sans-serif;*/
   font-size: 14px;
 }
 
@@ -693,7 +777,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #call-to-action .cta-btn {
-  font-family: "Poppins", sans-serif;
+ /* font-family: "Poppins", sans-serif;*/
   text-transform: uppercase;
   font-weight: 500;
   font-size: 16px;

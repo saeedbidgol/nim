@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
 
 <head>
     <meta charset="utf-8">
@@ -15,19 +15,23 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
 </head>
 
-<body class="rtls skin-1 canvas-menu top-navigation" style="font-family: iranyekan;">
+<body class="rtls skin-1 canvas-menu top-navigation" style="font-family: iranyekan;" >
     <!-- Wrapper-->
     <div id="wrapper">
 
         <header id="header">
             <div class="container">
+                <div class="navbar-logo">
+                    <div id="logo" class="pull-left">
+                        <a href="#hero"><img src="uploads/logo.svg" alt="نیم رخ بافت" title="" /></img></a>
+                        <!-- Uncomment below if you prefer to use a text logo -->
+                        <!--<h1><a href="#hero">Regna</a></h1>-->
 
-                <div id="logo" class="pull-left">
-                    <a href="#hero"><img src="images/logo.png" alt="" title="" /></img></a>
-                    <!-- Uncomment below if you prefer to use a text logo -->
-                    <!--<h1><a href="#hero">Regna</a></h1>-->
+                    </div>
+                    <div id="logo-english-text">
+                        <span>NimrokhBaft Carpet</span>
+                    </div>
                 </div>
-
                 <!-- Top -->
                 @include('layouts.topnavbar')
 
