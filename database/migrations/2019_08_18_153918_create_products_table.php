@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration
             $table->float('height');
             $table->float('width');
             $table->integer('reed');
-            $table->json('colors');
-            $table->json('density');
+            $table->longtext('colors');
+            $table->longtext('density');
             $table->float('favorite');
             $table->string('file_url');
             $table->timestamps();
