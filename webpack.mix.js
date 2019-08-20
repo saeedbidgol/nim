@@ -13,7 +13,7 @@ const mix = require("laravel-mix");
 
 mix.js("resources/assets/js/app.js", "public/js")
     .sass("resources/sass/app.scss", "public/css")
-    .copy("resources/assets/vendor/font-awesome/fonts", "public/fonts")
+    .copy(["resources/assets/vendor/font-awesome/fonts", "resources/assets/vendor/fonts/IRS"], "public/fonts")
     .styles(
         [
             "resources/assets/vendor/bootstrap/css/bootstrap.css",

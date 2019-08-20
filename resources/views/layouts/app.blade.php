@@ -40,6 +40,7 @@
 
         @include('layouts.hero')
         <!-- Page wrapper -->
+        
         <div id="page-wrapper" class="gray-bg">
 
 
