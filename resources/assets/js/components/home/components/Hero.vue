@@ -1,14 +1,12 @@
 <template>
-<div style="height:100vh;">
-  <slider :autoplay="false">
-    <slider-item v-for="(slide,index) in slides" :key="index">
-      <img :src="slide.url" />
-      <button @click="window.open(slide.url,'_blank')"></button>
-    </slider-item>
-    <div slot="loading">custom loading ...</div>
-    
-  </slider>
-  <div id="shape"></div>
+  <div style="height:100vh;">
+    <slider :autoplay="false">
+      <slider-item v-for="(slide,index) in slides" :key="index">
+        <img :src="slide.url" />
+        <button @click="window.open(slide.url,'_blank')"></button>
+      </slider-item>
+    </slider>
+    <div id="shape"></div>
   </div>
 </template>
 

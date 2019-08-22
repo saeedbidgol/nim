@@ -13,6 +13,9 @@
   }
 }
 
+.k-rtl{
+  text-align: right;
+}
 
 .slider{
   border-radius: 0 0 800vw 800vw / 100%  ;

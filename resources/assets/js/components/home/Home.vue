@@ -1,9 +1,9 @@
 <template>
   <div id="main">
     <!--==========================
-      About Us Section
+      Favorites Section
     ============================-->
-    <about />
+    <Favorites />
 
     <!--==========================
       Facts Section
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import About from "./components/About";
+import Favorites from "./components/Favorites";
 import Facts from "./components/Facts";
 import Services from "./components/Services";
 import Action from "./components/Action";
@@ -50,7 +50,7 @@ import Portfolio from "./components/Portfolio";
 import Team from "./components/Team";
 import Contact from "./components/Contact";
 export default {
-  components: { About, Facts, Services, Action, Portfolio, Team, Contact },
+  components: { Favorites, Facts, Services, Action, Portfolio, Team, Contact },
   data() {
     return {};
   }
