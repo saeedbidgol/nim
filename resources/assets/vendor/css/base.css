@@ -16,15 +16,20 @@
 .k-rtl{
   text-align: right;
 }
-
+#slider-container{
+  height: 80vh !important;
+  z-index: 5 !important;
+  margin-top: 7.3vw;
+  position: relative;
+}
 .slider{
   border-radius: 0 0 800vw 800vw / 100%  ;
-  z-index: 996;
-  top: 7.3vw;
-  height: 80vh !important;
+  z-index: 3;
+  height: 100% !important;
 }
 .slider-item img{
   width:100%;
+  min-height: 100%
 }
 .container{
   max-width:100vw;
@@ -32,6 +37,31 @@
 
 .row{
   margin: 1px !important;
+}
+
+.favorites{
+  top: -10vh;
+  height: 80vh;
+  width: 100vw;
+  position: relative;
+  float: left;
+  background-color: #fff;
+  z-index: 5;
+  overflow-x:hidden !important;
+  overflow-y: hidden !important;
+}
+#first-background-svg{
+  width: 32vw;
+  position: absolute;
+  z-index: 999;
+  top: -22vh;
+  float: right;
+  left: -15vh;
+}
+.favorites .slider{
+  border-radius: 0;
+  top: 54px;
+
 }
 /*
   Theme Name: Regna
@@ -189,7 +219,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header.header-fixed {
-  background: rgb(228, 225, 225);
+  background: rgba(250, 250, 250, 0.9);
   padding: 0;
   height: 5.1vw;
   transition: all 0.5s;

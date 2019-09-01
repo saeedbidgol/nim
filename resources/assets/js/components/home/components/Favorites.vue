@@ -1,5 +1,6 @@
 <template>
   <div class="favorites">
+    <img id="first-background-svg" src="uploads/background-svg/1.svg" alt="نیمرخ">
     <h3 class="favorites-h3">محبوب ترین ها</h3>
     <slider :autoplay="false" width="80%" height="60vh !important" style="right:10%">
       <slider-item v-for="(slide,index) in slides" :key="index">
@@ -90,8 +91,8 @@ export default {
 </script>
 <style scoped>
 .favorites-h3 {
+  color: #3a5988;
   text-align: center;
-  margin-bottom: -75px;
 }
 .slider-items-img {
   height: 50vh;

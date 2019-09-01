@@ -1,5 +1,5 @@
 <template>
-  <div style="height:100vh;">
+  <div id="slider-container">
     <slider :autoplay="false">
       <slider-item v-for="(slide,index) in slides" :key="index">
         <img :src="slide.url" />
