@@ -17,7 +17,7 @@
   text-align: right;
 }
 #slider-container{
-  height: 80vh !important;
+  height: 37vw !important;
   z-index: 5 !important;
   margin-top: 7.3vw;
   position: relative;
@@ -40,28 +40,118 @@
 }
 
 .favorites{
-  top: -10vh;
-  height: 80vh;
+  top: -4vw;
+  height: 45vw;
   width: 100vw;
   position: relative;
   float: left;
-  background-color: #fff;
+  background-color: #f3f3f3;
   z-index: 5;
   overflow-x:hidden !important;
   overflow-y: hidden !important;
+  padding-top: 5vw !important;
 }
 #first-background-svg{
   width: 32vw;
   position: absolute;
-  z-index: 999;
-  top: -22vh;
+  z-index: 6;
+  top: -5vw;
   float: right;
-  left: -15vh;
+  left: -6vw;
 }
 .favorites .slider{
-  border-radius: 0;
-  top: 54px;
+  position: relative;
+  border-radius: 30px;
+  top: 2vw;
+  height: 29vw !important;
+  z-index: 7;
+  background-color: rgba(250, 250, 250, 0.8);
+  overflow: visible !important;
+}
+.favorites .slider-items{
+  height: 100% !important;
+  position: relative;
+  overflow: hidden;
+}
+.favorites-h3 p{
+  margin-bottom: 0.1vw !important;
+}
+.favorites-h3{
+  font-size: 2vw; 
+  margin: 0 0 0 0;
+}
+.favorites .slider-btn{
+  position: absolute !important;
+  background-color: #b1b1b1 !important;
+  top: 12vw !important;
+  border-radius: 50%;
+  height: 70px  !important;
+  width: 70px !important;
+  cursor: pointer !important;
+  z-index: 8;
+}
+.favorites .slider-icon{
+  margin-top: 8px ;
+}
 
+.favorites .slider-btn-left{
+  left: -35px !important;
+}
+.favorites .slider-btn-right{
+  right: -35px !important ;
+}
+
+.favorites .slider-icon-left{
+  left: -35px !important;
+}
+
+.favorites .padding-side{
+  height: 100% !important;
+  position: relative;
+  padding: 4% 5%;
+}
+.favorites .slider-item{
+  min-height: 100% !important;
+}
+.favorites .slider-items-img{
+  height: 100% !important;
+  width: 100% !important;
+}
+.favorites .col-lg-6 .slider-items-img{
+  border-radius: 35px 35px 35px 180px;
+}
+
+.favorites .col-lg-3{
+  height: 100% !important ;
+}
+#slide-title{
+  color: #0b1274;
+  font-size: 2vw;
+  margin-bottom: 10%; 
+} 
+.favorites .slider-details{
+  color: #797979 !important;
+  font-size: 1vw;
+  line-height: 190%;
+} 
+.favorites .btn-rounded{
+  background-color: #edc319 !important;
+  border-color: #edc319 !important;
+  float: right;
+  margin-top: unset !important ;
+  height: 160%;
+  width: 120%;
+  color: #0b1274 !important;
+}
+.favorites .btn-rounded:hover{
+  background-color: #edc219b6 !important;
+}
+#btn-more{
+  padding: 13px 0;  
+  position: absolute;
+  bottom: 0;
+  z-index: 10;
+  font-size: 150%; 
 }
 /*
   Theme Name: Regna
@@ -77,7 +167,7 @@
 }
 body {
   direction: rtl;
-  background: #fff;
+  background: #fafafa;
   color: #666666;
   
   /*font-family: "Open Sans", sans-serif;*/
@@ -321,9 +411,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 /* Nav Menu Essentials */
 /*custom*/
-.nav-menu, .nav-menu * {
 
-}
 
 
 .nav-menu, .nav-menu * {

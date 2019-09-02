@@ -1,48 +1,44 @@
 <template>
   <div class="favorites">
     <img id="first-background-svg" src="uploads/background-svg/1.svg" alt="نیمرخ">
-    <h3 class="favorites-h3">محبوب ترین ها</h3>
-    <slider :autoplay="false" width="80%" height="60vh !important" style="right:10%">
+    <h3 class="favorites-h3">
+      <p><img src="uploads/background-svg/title-1.svg" id="favorites-title-svg" ></p>
+      محبوب ترین ها</h3>
+    <slider :autoplay="false" width="80%" style="right:10%">
       <slider-item v-for="(slide,index) in slides" :key="index">
-        <div class="row paddign-side">
+        <div class="row padding-side">
           <div class="col-lg-3">
             <div class="row">
-              <div class="col-lg-12 k-rtl">{{slide.name}}</div>
+              <div class=" col-lg-12 k-rtl" id="slide-title">{{slide.name}}</div>
             </div>
             <div class="row k-rtl">
-              <div class="col-lg-6">کد</div>
-              <div class="col-lg-6">{{slide.code}}</div>
+              <div class="slider-details col-lg-12">کد: {{slide.code}}</div>
             </div>
             <div class="row k-rtl">
-              <div class="col-lg-6">شانه</div>
-              <div class="col-lg-6">{{slide.reed}}</div>
+              <div class="slider-details col-lg-12">شانه: {{slide.reed}}</div>
             </div>
             <div class="row k-rtl">
-              <div class="col-lg-6">تعداد رنگ</div>
-              <div class="col-lg-6">{{slide.coloring}}</div>
+              <div class="slider-details col-lg-12">تعداد رنگ: {{slide.coloring}}</div>
             </div>
             <div class="row k-rtl">
-              <div class="col-lg-6">تراکم</div>
-              <div class="col-lg-6">{{slide.density}}</div>
+              <div class="slider-details col-lg-12">تراکم: {{slide.density}}</div>
             </div>
             <div class="row k-rtl">
-              <div class="col-lg-6">رنگ</div>
-              <div class="col-lg-6">{{slide.color}}</div>
+              <div class="slider-details col-lg-12">رنگ: {{slide.color}}</div>
             </div>
             <div class="row k-rtl">
-              <div class="col-lg-6">ابعاد</div>
-              <div class="col-lg-6">{{slide.deminsion}}</div>
+              <div class="slider-details col-lg-12">ابعاد: {{slide.deminsion}}</div>
             </div>
-            <div class="row k-rtl">
+            <div id="btn-more" class="row k-rtl">
               <div class="col-lg-12">
                 <button class="btn btn-info btn-rounded">مشاهده بیشتر</button>
               </div>
             </div>
           </div>
-          <div class="col-lg-3">
+          <div class="col-lg-3 ">
             <img class="slider-items-img" :src="slide.url1" />
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-6 ">
             <img class="slider-items-img" :src="slide.url2" />
           </div>
         </div>
@@ -96,9 +92,6 @@ export default {
 }
 .slider-items-img {
   height: 50vh;
-}
-.paddign-side {
-  padding: 20px;
 }
 .btn-rounded {
   border-radius: 50px;
