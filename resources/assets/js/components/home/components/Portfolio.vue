@@ -1,12 +1,10 @@
 <template>
   <div id="portfolio">
-    <div class="container wow fadeInUp">
+    <div class="wow fadeInUp">
       <div class="section-header">
-        <h3 class="section-title">Portfolio</h3>
-        <p
-          class="section-description"
-        >Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+        <h3 class="section-title">دسته‌بندی محصولات</h3>
       </div>
+      <!--
       <div class="row">
         <div class="col-lg-12">
           <ul id="portfolio-flters">
@@ -21,88 +19,104 @@
           </ul>
         </div>
       </div>
-
+-->
+    <div class="portfolio-container">
       <div class="row" id="portfolio-wrapper">
-        <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-          <a href>
-            <img src="images/portfolio/app1.jpg" alt />
-            <div class="details">
-              <h4>App 1</h4>
-              <span>Alored dono par</span>
-            </div>
-          </a>
+        
+      <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+        <div class="item-container">
+            <a href>
+              <img src="images/portfolio/app1.jpg" alt />
+              <div class="details">
+                <h4>App 1</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="item-container">
+            <a href>
+              <img src="images/portfolio/web2.jpg" alt />
+              <div class="details">
+                <h4>Web 2</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="item-container">
+            <a href>
+              <img src="images/portfolio/app3.jpg" alt />
+              <div class="details">
+                <h4>App 3</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
         </div>
 
-        <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-          <a href>
-            <img src="images/portfolio/web2.jpg" alt />
-            <div class="details">
-              <h4>Web 2</h4>
-              <span>Alored dono par</span>
-            </div>
-          </a>
+        <div class="col-lg-6 col-md-6 portfolio-item filter-card">
+          <div class="item-container">
+            <a href>
+              <img src="images/portfolio/card1.jpg" alt />
+              <div class="details">
+                <h4>Card 1</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
         </div>
 
-        <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-          <a href>
-            <img src="images/portfolio/app3.jpg" alt />
-            <div class="details">
-              <h4>App 3</h4>
-              <span>Alored dono par</span>
-            </div>
-          </a>
+        <div class="col-lg-6 col-md-6 portfolio-item filter-card">
+          <div class="item-container">
+            <a href>
+              <img src="images/portfolio/card2.jpg" alt />
+              <div class="details">
+                <h4>Card 2</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
         </div>
 
-        <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-          <a href>
-            <img src="images/portfolio/card1.jpg" alt />
-            <div class="details">
-              <h4>Card 1</h4>
-              <span>Alored dono par</span>
-            </div>
-          </a>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="item-container">
+            <a href>
+              <img src="images/portfolio/web3.jpg" alt />
+              <div class="details">
+                <h4>Web 3</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
         </div>
 
-        <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-          <a href>
-            <img src="images/portfolio/card2.jpg" alt />
-            <div class="details">
-              <h4>Card 2</h4>
-              <span>Alored dono par</span>
-            </div>
-          </a>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <div class="item-container">
+            <a href>
+              <img src="images/portfolio/card3.jpg" alt />
+              <div class="details">
+                <h4>Card 3</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
         </div>
 
-        <div class="col-lg-3 col-md-6 portfolio-item filter-web">
-          <a href>
-            <img src="images/portfolio/web3.jpg" alt />
-            <div class="details">
-              <h4>Web 3</h4>
-              <span>Alored dono par</span>
-            </div>
-          </a>
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="item-container">
+            <a href>
+              <img src="images/portfolio/app2.jpg" alt />
+              <div class="details">
+                <h4>App 2</h4>
+                <span>Alored dono par</span>
+              </div>
+            </a>
+          </div>
         </div>
-
-        <div class="col-lg-3 col-md-6 portfolio-item filter-card">
-          <a href>
-            <img src="images/portfolio/card3.jpg" alt />
-            <div class="details">
-              <h4>Card 3</h4>
-              <span>Alored dono par</span>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-lg-3 col-md-6 portfolio-item filter-app">
-          <a href>
-            <img src="images/portfolio/app2.jpg" alt />
-            <div class="details">
-              <h4>App 2</h4>
-              <span>Alored dono par</span>
-            </div>
-          </a>
-        </div>
-
+        <!--
         <div class="col-lg-3 col-md-6 portfolio-item filter-logo">
           <a href>
             <img src="images/portfolio/logo1.jpg" alt />
@@ -141,6 +155,8 @@
               <span>Alored dono par</span>
             </div>
           </a>
+        </div>
+        -->
         </div>
       </div>
     </div>
