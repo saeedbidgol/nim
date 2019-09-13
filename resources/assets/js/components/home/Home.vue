@@ -32,9 +32,9 @@
     
 
     <!--==========================
-      Team Section
+      News Section
     ============================-->
-    <team />
+    <news />
 
     <!--==========================
       Contact Section
@@ -53,10 +53,10 @@ import Services from "./components/Services";
 import Action from "./components/Action";
 import Catalogue from "./components/Catalogue";
 import Portfolio from "./components/Portfolio";
-import Team from "./components/Team";
+import News from "./components/News";
 import Contact from "./components/Contact";
 export default {
-  components: { Favorites, Facts, Services, Action, Portfolio, Team, Contact, Catalogue },
+  components: { Favorites, Facts, Services, Action, Portfolio, News, Contact, Catalogue },
   data() {
     return {};
   }
