@@ -1,5 +1,5 @@
 <template>
-  <div id="call-to-action">
+  <div id="catalogue">
     <div class="container wow fadeIn">
       <div class="row">
         <div class="col-lg-9 text-center text-lg-left">

@@ -51,11 +51,12 @@ import Favorites from "./components/Favorites";
 import Facts from "./components/Facts";
 import Services from "./components/Services";
 import Action from "./components/Action";
+import Catalogue from "./components/Catalogue";
 import Portfolio from "./components/Portfolio";
 import Team from "./components/Team";
 import Contact from "./components/Contact";
 export default {
-  components: { Favorites, Facts, Services, Action, Portfolio, Team, Contact },
+  components: { Favorites, Facts, Services, Action, Portfolio, Team, Contact, Catalogue },
   data() {
     return {};
   }
