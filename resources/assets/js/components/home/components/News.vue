@@ -50,7 +50,7 @@ export default {
   computed: {
     groupedSlides() {
       const collection = collect(this.slides);
-      if (window.innerWidth > 425) return collection.chunk(3).all();
+      if (window.innerWidth > 768) return collection.chunk(3).all();
       return collection.chunk(1).all();
     }
   }
