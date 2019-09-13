@@ -19,9 +19,9 @@
     
 
     <!--==========================
-      Services Section
+      catalogue Section
     ============================-->
-    <services />
+    <catalogue />
 
     <!--==========================
      Action Section
