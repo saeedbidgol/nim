@@ -1,13 +1,13 @@
 <template>
-  <div class="news-slider">
-    <slider :autoplay="false" width="80%" style="right:10%">
+  <div class="news-slider wow fadeInUp">
+    <slider :autoplay="false" >
       <slider-item v-for="(slide,index) in slides" :key="index">
         <div class="row padding-side">
           <div class="col-lg-4 col-xs-12" v-for="(item,index1) in slides" :key="index1">
-            <div class="col-lg-4">
+            <div class="item-img">
             <img :src="item.file_url" alt="news" />
           </div>
-          <div class="col-lg-8">
+          <div class="item-text">
             <h3>{{item.title}}</h3>
             <p>{{item.body}}</p>
           </div>
