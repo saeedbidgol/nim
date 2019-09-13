@@ -24,7 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "collect.js": "^4.16.4",
+        "collect.js": "^4.16.6",
         "vue-easy-slider": "^5.2.10",
         "vue-router": "^3.1.1"
     }
