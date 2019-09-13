@@ -183,7 +183,7 @@
   top: -4vw !important;
   display: block;
   position: relative;
-  padding: 0 !important;
+  padding: 0 0 5vw 0 !important;
   overflow: hidden !important;
 }
 #portfolio .portfolio-item{
@@ -205,6 +205,78 @@
   color: #3a5988;
   font-size: 2vw !important; 
   margin: 0 0 0 0;
+}
+#catalogue{
+  top: -4.1vw !important;
+  position: relative;
+  background-color: #fff;
+  height: 12vw;
+  overflow: hidden;
+}
+#right-lable{
+  position: absolute;
+  background-color: #edc319;
+  height: 100%;
+  width: 20%;
+  float: right;
+  border-radius: 30% 0 0 30% / 50% 0 0 50%;
+}
+#right-lable img{
+  width: 35%;
+  position: relative;
+  left: 20%;
+  top: 20%;
+}
+#left-lable{
+  position: absolute;
+  background-color: #1d375d;
+  left: 0;
+  height: 100%;
+  width: 75%;
+  float: left;
+  border-radius: 0% 9% 9% 0% / 0% 50% 50% 0%;
+}
+#left-lable img{
+  width: 50%;
+  top: -13vw;
+  left: 17vw;
+  position: relative;
+  transform: rotate(30deg);
+}
+#catalogue .container{
+  padding-right: 25%;
+  height: 100%;
+}
+#btn-catalogue-download{
+  width: 11vw;
+  height: 3vw;
+  background-color: #edc319;
+  color: #1d375d;
+  position: relative;
+  float: right;
+  font-size: 1.3vw !important;
+  border-radius: 8% 5% 5% 25% / 35% 25% 25% 81%;
+  margin: 21% 0;
+  padding: 0.6vw 1vw 0 0px;
+  text-align: right;
+  transition: 0.5s;
+}
+#btn-catalogue-download:hover{
+  background-color: #ffd634;
+  border-radius: 25% 5% 5% 8% / 81% 25% 25% 35%;
+}
+#catalogue .cta-title{
+  text-align: right;
+  padding: 3vw 4vw 0 0;
+  margin-bottom: 9px;
+  color: #edc319
+}
+#catalogue .cta-text{
+  text-align: right;
+  color: #ffffff;
+  text-shadow: 0 0 4px #000000;
+  padding: 0 3vw 0 0;
+  font-size: 1vw;
 }
 /*
   Theme Name: Regna
