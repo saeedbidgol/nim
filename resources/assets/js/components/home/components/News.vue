@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div class="news-slider wow fadeInUp">
     <slider :autoplay="false" >
       <slider-item v-for="(slide,index) in slides" :key="index">
@@ -12,20 +11,6 @@
             <h3>{{item.title}}</h3>
             <p>{{item.body}}</p>
           </div>
-=======
-  <div class="news-slider">
-    <slider :autoplay="false" width="80%" style="right:10%">
-      <slider-item v-for="(slide,index) in groupedSlides" :key="index">
-        <div class="row padding-side">
-          <div class="col-lg-4 col-xs-12" v-for="(item,index1) in slide.items" :key="index1">
-            <div class="col-lg-4">
-              <img :src="item.file_url" alt="news" />
-            </div>
-            <div class="col-lg-8">
-              <h3>{{item.title}}</h3>
-              <p>{{item.body}}</p>
-            </div>
->>>>>>> a2e7c913c78578b3359b0fd46d76118ff7d7dba9
           </div>
         </div>
       </slider-item>
