@@ -278,6 +278,10 @@
   padding: 0 3vw 0 0;
   font-size: 1vw;
 }
+.news-slider{
+  height: 15vw;
+  width: 100%; 
+}
 /*
   Theme Name: Regna
   Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
