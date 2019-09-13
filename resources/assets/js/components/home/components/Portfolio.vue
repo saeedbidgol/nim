@@ -1,5 +1,7 @@
 <template>
   <div id="portfolio">
+    <img src="uploads/background-svg/2.svg" alt="بوته" id="second-background-svg">
+    <img src="uploads/background-svg/3.svg" alt="بوته" id="third-background-svg">
     <div class="wow fadeInUp">
       <div class="section-header">
         <h3 class="section-title">دسته‌بندی محصولات</h3>

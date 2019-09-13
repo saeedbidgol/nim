@@ -40,14 +40,15 @@
 }
 
 .favorites{
+  position: relative;
+  display: block;
   top: -4vw;
   height: 45vw;
-  width: 100vw;
+  width: 100%;
   position: relative;
-  float: left;
   background-color: #f3f3f3;
   z-index: 5;
-  overflow-x:hidden !important;
+  overflow-x: hidden !important;
   overflow-y: hidden !important;
   padding-top: 5vw !important;
 }
@@ -58,6 +59,22 @@
   top: -5vw;
   float: right;
   left: -6vw;
+}
+#second-background-svg{
+  width: 32vw;
+  position: absolute;
+  z-index: 4;
+  top: -5vw;
+  float: left;
+  right: -8vw;
+}
+#third-background-svg{
+  width: 32vw;
+  position: absolute;
+  z-index: 6;
+  top: 17vw;
+  float: right;
+  left: -9vw;
 }
 .favorites .slider{
   position: relative;
@@ -118,7 +135,7 @@
   width: 100% !important;
 }
 .favorites .col-lg-6 .slider-items-img{
-  border-radius: 35px 35px 35px 180px;
+  border-radius: 1.5vw 1.5vw 1.5vw 10vw;
 }
 
 .favorites .col-lg-3{
@@ -154,25 +171,35 @@
   font-size: 150%; 
 }
 .portfolio-container{
+  z-index: 7;
   width: 76%;
   left: 12%; 
   right:12%;
   position: relative;
   margin-top: 0.1vw !important
 }
+#portfolio{
+  background-color: #fff !important;
+  top: -4vw !important;
+  display: block;
+  position: relative;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
 #portfolio .portfolio-item{
   height: 15vw !important;
 }
 #portfolio .portfolio-item .item-container{
-  border-radius: 15px;
+  border-radius: 1vw;
   overflow: hidden !important;
   padding: 0 !important;
   height: 100%;
   position: relative;
 }
 #portfolio .section-header{
-  margin-bottom: 1vw !important;
-  padding-bottom: 1vw !important;
+  margin: 2vw 0 1vw !important;
+  
+  padding: 2vw 0 1vw !important;
 }
 #portfolio .section-title{
   color: #3a5988;
