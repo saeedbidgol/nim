@@ -282,6 +282,16 @@
   height: 15vw;
   width: 100%; 
 }
+.news-slider .item-img{
+  float: right;
+  width: 25%;
+  height:  100%;
+}
+.news-slider .item-text{
+  float: left;
+  width: 75%;
+  height: 100%;
+}
 /*
   Theme Name: Regna
   Theme URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
