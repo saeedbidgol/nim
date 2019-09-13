@@ -1,115 +1,67 @@
 <template>
-  <div id="team">
-    <div class="container wow fadeInUp">
-      <div class="section-header">
-        <h3 class="section-title">Team</h3>
-        <p
-          class="section-description"
-        >Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
-      </div>
-      <div class="row">
-        <div class="col-lg-3 col-md-6">
-          <div class="member">
-            <div class="pic">
-              <img src="images/team-1.jpg" alt />
-            </div>
-            <h4>Walter White</h4>
-            <span>Chief Executive Officer</span>
-            <div class="social">
-              <a href>
-                <i class="fa fa-twitter"></i>
-              </a>
-              <a href>
-                <i class="fa fa-facebook"></i>
-              </a>
-              <a href>
-                <i class="fa fa-google-plus"></i>
-              </a>
-              <a href>
-                <i class="fa fa-linkedin"></i>
-              </a>
-            </div>
-          </div>
+  <slider :autoplay="false" width="80%" style="right:10%">
+    <slider-item v-for="(slide,index) in slides" :key="index">
+      <div class="row padding-side">
+        <div class="col-lg-4 col-xs-12" v-for="(item,index1) in slides" :key="index1">
+          <div class="col-lg-4">
+          <img :src="item.file_url" alt="news" />
         </div>
-
-        <div class="col-lg-3 col-md-6">
-          <div class="member">
-            <div class="pic">
-              <img src="images/team-2.jpg" alt />
-            </div>
-            <h4>Sarah Jhinson</h4>
-            <span>Product Manager</span>
-            <div class="social">
-              <a href>
-                <i class="fa fa-twitter"></i>
-              </a>
-              <a href>
-                <i class="fa fa-facebook"></i>
-              </a>
-              <a href>
-                <i class="fa fa-google-plus"></i>
-              </a>
-              <a href>
-                <i class="fa fa-linkedin"></i>
-              </a>
-            </div>
-          </div>
+        <div class="col-lg-8">
+          <h3>{{item.title}}</h3>
+          <p>{{item.body}}</p>
         </div>
-
-        <div class="col-lg-3 col-md-6">
-          <div class="member">
-            <div class="pic">
-              <img src="images/team-3.jpg" alt />
-            </div>
-            <h4>William Anderson</h4>
-            <span>CTO</span>
-            <div class="social">
-              <a href>
-                <i class="fa fa-twitter"></i>
-              </a>
-              <a href>
-                <i class="fa fa-facebook"></i>
-              </a>
-              <a href>
-                <i class="fa fa-google-plus"></i>
-              </a>
-              <a href>
-                <i class="fa fa-linkedin"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6">
-          <div class="member">
-            <div class="pic">
-              <img src="images/team-4.jpg" alt />
-            </div>
-            <h4>Amanda Jepson</h4>
-            <span>Accountant</span>
-            <div class="social">
-              <a href>
-                <i class="fa fa-twitter"></i>
-              </a>
-              <a href>
-                <i class="fa fa-facebook"></i>
-              </a>
-              <a href>
-                <i class="fa fa-google-plus"></i>
-              </a>
-              <a href>
-                <i class="fa fa-linkedin"></i>
-              </a>
-            </div>
-          </div>
         </div>
       </div>
-    </div>
-  </div>
+    </slider-item>
+  </slider>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      slides: [
+        {
+          title: "اسلاید اول",
+          body:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur explicabo corrupti eveniet blanditiis error officia itaque quis fuga dolore? Iste aliquid voluptatibus facere quod, provident id sunt omnis iure commodi!",
+          file_url:
+            "https://images.unsplash.com/photo-1527694224012-be005121c774?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+        },
+        {
+          title: "اسلاید دوم",
+          body:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur explicabo corrupti eveniet blanditiis error officia itaque quis fuga dolore? Iste aliquid voluptatibus facere quod, provident id sunt omnis iure commodi!",
+          file_url:
+            "https://images.unsplash.com/photo-1477140307757-d0ca95b31787?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+        },
+        {
+          title: "اسلاید سوم",
+          body:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur explicabo corrupti eveniet blanditiis error officia itaque quis fuga dolore? Iste aliquid voluptatibus facere quod, provident id sunt omnis iure commodi!",
+          file_url:
+            "https://images.unsplash.com/photo-1477140307757-d0ca95b31787?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+        }
+      ]
+    };
+  },
+  computed: {
+    groupedSlides() {
+      let editedSlides = [];
+      let slideItems = [];
+      this.slides.forEach(item=>{
+        if (window.innerWidth > 425) {
+        let i = 0;
+        
+      } else {
+
+      }
+      })
+      
+      return editedSlides;
+    }
+  }
+};
 </script>
 
 <style>
