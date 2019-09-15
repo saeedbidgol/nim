@@ -23,7 +23,7 @@
      Action Section
     ============================-->
 
-    <action />
+    <about />
 
     <!--==========================
       Contact Section
@@ -39,13 +39,13 @@
 import Favorites from "./components/Favorites";
 import Facts from "./components/Facts";
 import Services from "./components/Services";
-import Action from "./components/Action";
+import About from "./components/About";
 import Catalogue from "./components/Catalogue";
 import Portfolio from "./components/Portfolio";
 import News from "./components/News";
 import Contact from "./components/Contact";
 export default {
-  components: { Favorites, Facts, Services, Action, Portfolio, News, Contact, Catalogue },
+  components: { Favorites, Facts, Services, About, Portfolio, News, Contact, Catalogue },
   data() {
     return {};
   }

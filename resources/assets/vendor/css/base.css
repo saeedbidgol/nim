@@ -187,6 +187,7 @@
   overflow: hidden !important;
 }
 #portfolio .portfolio-item{
+  min-height: 20vh;
   height: 15vw !important;
 }
 #portfolio .portfolio-item .item-container{
@@ -207,6 +208,7 @@
   margin: 0 0 0 0;
 }
 #catalogue{
+  
   top: -4.1vw !important;
   position: relative;
   background-color: #fff;
@@ -279,18 +281,107 @@
   font-size: 1vw;
 }
 .news-slider{
+  position: relative;
   height: 15vw;
   width: 100%; 
 }
+.news-slider .padding-side{
+  height: 100% !important;
+}
+.news-slider .padding-side div{
+  height: 100% ;
+}
 .news-slider .item-img{
+  box-sizing: unset;
+  position: relative;
   float: right;
   width: 25%;
-  height:  100%;
+  overflow: hidden;
+  }
+.news-slider .item-img .img-container{
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  height: unset !important;
+  overflow: hidden;
+  border-radius: 40% 40% 70% 40% / 40% 40% 70% 40%;
 }
+.news-slider .img-container img{
+  height: 100%;
+  position:  absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; 
+  right: 0;
+}
+
 .news-slider .item-text{
+  padding: 0 1vw;
+  text-align: justify !important;
+  position: relative;
   float: left;
   width: 75%;
+  height: 80% !important;
+  overflow: auto;
+}
+.news-slider .item-text h3{
+  font-size: 1.5rem;
+  text-align: right !important;
+  color: #0b1274;
+}
+.news-slider .item-text::-webkit-scrollbar{
+  display: none;
+}
+.item-text p{
+  color: #b6b6b6;
+  font-size: 1rem;
+  margin: 0 !important;
+  height: 50px !important;
+}
+#about-us{
+  color: white;
+  text-align: right;
+  background: linear-gradient(rgba(63, 111, 214, 0.5), rgba(63, 111, 214, 0.5)), url(/images/call-to-action-bg.jpg) fixed center center; 
+  background-size: cover;
+  padding: 2% 0;
+  height: 30vw;
+  overflow: auto;
+}
+#about-us::-webkit-scrollbar{
+  display: none;
+}
+#about-us h3{
+  color: #fff200 !important;
+  font-size: 1.5rem;
+}
+#about-us p{
+  text-align: justify;
+  font-size: 1rem;
+}
+#about-us .img-container{
+  margin: auto;
+  position: relative;
+  width: 85%;
+  padding-bottom: 67%;
+  height: unset !important;
+  overflow: hidden;
+  border-radius: 30% 30% 60% 30% / 30% 30% 60% 30%;
+}
+#about-us .img-container img{
   height: 100%;
+  position:  absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; 
+  right: 0;
+}
+
+#map{
+  background: #f7f7f7;
+}
+#map #google-map {
+  height: 300px;
+  margin-bottom: 20px;
 }
 /*
   Theme Name: Regna
