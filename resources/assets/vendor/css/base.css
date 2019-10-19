@@ -43,7 +43,7 @@
   position: relative;
   display: block;
   top: -4vw;
-  height: 45vw;
+  min-height: 45vw;
   width: 100%;
   position: relative;
   background-color: #f3f3f3;
@@ -476,7 +476,7 @@ h1, h2, h3, h4, h5, h6 {
   direction: left;
   background-color: #fff;
   padding: 1vw 0;
-  height: 7.3vw;
+  height: 100px;
   position: fixed;
   left: 0;
   top: 0;
@@ -1410,10 +1410,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #343b40;
-  padding: 30px 0;
-  color: #fff;
-  font-size: 14px;
+  bottom: 0;
+    background: #343b40;
+    padding: 30px 0;
+    color: #fff;
+    font-size: 14px;
+    
+    width: 100%;
 }
 
 #footer .copyright {
@@ -1425,4 +1428,273 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: center;
   font-size: 13px;
   color: #ccc;
+}
+
+/****** GALLERY *******/
+.spacer{
+  height: 100px; 
+  position: relative;
+  width: 100%;
+}
+.spacer::after{
+  z-index: 1;
+  top: 100px;
+  content: "";
+  width: 100%;
+  height: 10px;
+  background-color: #0b1274;
+  float: left;
+  position: absolute;
+  right: 0;
+}
+.gallery-container{
+  padding: 80px 0 0 0;
+  height: 100%;
+  min-height: 500px;
+  position: relative;
+  width: 1214px;
+  margin: 0 auto;
+  display: block;
+}
+
+#gallery .content{
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  left:0; 
+  height: 100%;
+ ;
+}
+#gallery .content .row{
+  height: 365px;
+  margin-bottom: 20px !important;
+}
+#gallery .content .col-lg-3{
+  height: 100%;
+}
+
+#gallery .content .product{
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border: 1px solid #e7e7e7;
+  border-radius: 5px;
+  padding: 7px;
+  transition: 0.3s;
+}
+#gallery .content .product img{
+  height: 73%;
+  background-color: #858585;
+  width: 100%;
+}
+#gallery .content .product .text{
+  padding: 2px;
+  height: 27%;
+  width: 100%;
+}
+#gallery .content .product .product-name{
+  font-size: 19px;
+  text-align: right;
+  color: #1c259e;
+  margin-bottom: 4px;
+}
+#gallery .content .product p{
+  margin-bottom: 1px;
+}
+#gallery .content .product .details1,
+#gallery .content .product .details2{
+  text-align: right; 
+  font-size: 14.5px;
+}
+#gallery .content .product .price{
+  text-align: right;
+  margin-top: 1px;
+  font-size: 18px;
+  color: #4cad56;
+}
+#gallery .content .product:hover{
+  border-color: #dbb8ba;
+}
+#gallery .content .product:hover .more{
+  visibility: visible;
+  opacity: 1;
+}
+#gallery .content .product .more{
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  height: 20px;
+  width: 36%;
+  bottom: 8px;
+  left: 3px;
+  background-color: #f40801;
+  font-size: 12px;
+  text-align: center;
+  padding: 1px;
+  color: #ffd3cb;
+  border-radius: 0 7px 7px;
+  transition: 0.3s ease-out;
+}
+#gallery .right-side-bar{
+  padding: 20px 0;
+  border: 1px solid #eaeaea;
+  border-radius: 15px;
+  float: right; 
+  width: 100%;
+  height: 100%;
+  position: relative;
+  right: 0;
+  display: inline-block;
+  background-color: #fff;
+}
+#gallery .right-side-bar .filter{
+  position: absolute;
+  color: #666666;
+  font-size: 13px;
+  top: -30px;
+  right: 25px;
+}
+#gallery .right-side-bar .search{
+  margin: 10px 0 20px !important; 
+}
+#gallery .right-side-bar .search-text{
+  float: right;
+  width: 70%;
+  height: 40px;
+  border: 1px solid #eaeaea;
+  border-radius: 0 30px 30px 0;
+  padding: 0 17px 0 7px;
+  text-align: right;
+}
+#gallery .right-side-bar .search-text:focus{
+  outline: none;
+}
+#gallery .right-side-bar .search-text::placeholder{
+  color: #dbdbdb;
+  font-size: 13px;
+}
+
+#gallery .right-side-bar .search-btn{
+  border: 1px solid #162456;
+  border-radius: 30px 0 0 30px;
+  padding: 7px;
+  text-align: center;
+  left: 12px;
+  position: absolute;
+  width: 28%;
+  color: #d3bb61;
+  height: 40px;
+  background-color: #052a6a;
+  display: inline-block;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#gallery .right-side-bar .search-btn:hover{
+  background-color: #083583;
+}
+#gallery .right-side-bar .grouping{
+  padding: 20px 0 0;
+  position: relative;
+  text-align: right;
+  width: 100%;
+  overflow: hidden;
+  transition: 0.5s;
+  max-height: 100%;
+}
+#gallery .right-side-bar .grouping .collapse-btn{
+  transition: 0.3s;
+  position: absolute;
+  background-image: url("/uploads/svg/down-arrow.svg");
+  width: 20px;
+  height: 20px;
+  left: 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center; 
+  top: 0;
+  cursor: pointer;
+}
+#gallery .right-side-bar .grouping::before{
+  content: "";
+  background-color:#e1e1e1;
+  height: 2px;
+  width: 90%;
+  position: absolute;
+  top: 10px;
+}
+#gallery .right-side-bar .grouping .header-text{
+  padding: 0 10px 0 0;  
+  font-size: small;
+  color: #565a5d;
+}
+#gallery .right-side-bar .grouping .group-list{
+  font-size: small;
+  padding: 0 10px 0 0;
+  list-style: none;
+  color: #b0b0b0;
+  max-height: 100%;
+  transition: 0.5s;
+}
+#gallery .right-side-bar .grouping .group-list .active{
+  color: #565a5d;
+}
+#gallery .right-side-bar .grouping .group-list li{
+  cursor: pointer;
+  transition: 0.3s;
+}
+#gallery .right-side-bar .grouping .group-list li:hover{
+  color: #72787c;
+}
+
+#gallery .right-side-bar .collapse .collapse-btn{
+  transform: rotate(90deg);
+}
+
+.collapse{
+  display: block;
+} 
+.collapse .grouping,
+.collapse .grouping .group-list{
+  max-height: 0 !important;
+}
+
+#gallery .right-side-bar .color-list{
+  list-style: none;
+  padding: 0 !important;
+}
+#gallery .right-side-bar .color-list li{
+  position: relative;
+  width: 100%;
+  height: 38px;
+  padding: 2px !important;
+}
+#gallery .right-side-bar .color-list li span{
+  border: 1px solid #dad5d7;
+  position: absolute;
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#gallery .right-side-bar .color-list li span:hover{
+  border-color: #b9b6b7;
+}
+#color1{background-color: #0e2851;}
+#color2{background-color: #e06633;}
+#color3{background-color: #c4b560;}
+#color4{background-color: #654023;}
+#color5{background-color: #fcfcfc;}
+#color6{background-color: #090e2d;}
+#color7{background-color: #9d0b15;}
+#color8{background-color: #4a9425;}
+#color9{background-color: #ffd032;}
+#color10{background-color: #fe87db;}
+#color11{background-color: #b8b9b3;}
+#color12{background-color: #16a0d8;}
+
+#gallery .col-lg-3,
+#gallery .col-lg-9{
+  padding: 0 7px;
+
 }

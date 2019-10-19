@@ -12,3 +12,5 @@
 */
 
 Route::get('/', "HomeController@index");
+Route::get('/gallery', "HomeController@gallery");
+Route::get('/{any}', 'HomeController@spa')->where('any', '.*');

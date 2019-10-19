@@ -7,15 +7,15 @@
     <slider :autoplay="false" width="80%" style="right:10%">
       <slider-item v-for="(slide,index) in slides" :key="index">
         <div class="row padding-side">
-          <div class="col-lg-3">
+          <div class="col-lg-3 col-sm-8">
             <div class="row">
               <div class=" col-lg-12 k-rtl" id="slide-title">{{slide.name}}</div>
             </div>
             <div class="row k-rtl">
-              <div class="slider-details col-lg-12">کد: {{slide.code}}</div>
+              <div class="slider-details col-lg-12 col-sm-6">کد: {{slide.code}}</div>
             </div>
             <div class="row k-rtl">
-              <div class="slider-details col-lg-12">شانه: {{slide.reed}}</div>
+              <div class="slider-details col-lg-12 col-sm-6">شانه: {{slide.reed}}</div>
             </div>
             <div class="row k-rtl">
               <div class="slider-details col-lg-12">تعداد رنگ: {{slide.coloring}}</div>
@@ -35,10 +35,10 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 ">
+          <div class="col-lg-3 col-sm-4">
             <img class="slider-items-img" :src="slide.url1" />
           </div>
-          <div class="col-lg-6 ">
+          <div class="col-lg-6 d-sm-none d-lg-block">
             <img class="slider-items-img" :src="slide.url2" />
           </div>
         </div>

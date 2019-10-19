@@ -51,6 +51,7 @@
             </div>
 
             <!-- Footer -->
+            <div style="width: 100%; position: relative;"></div>
             @include('layouts.footer')
 
         </div>

@@ -10,4 +10,12 @@ class HomeController extends Controller
     {
         return view("home.index");
     }
+    public function gallery()
+    {
+        return view("home.gallery");
+    }
+    public function spa()
+    {
+        return view("layouts.app");
+    }
 }
