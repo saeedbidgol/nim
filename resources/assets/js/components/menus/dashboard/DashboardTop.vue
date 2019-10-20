@@ -10,7 +10,7 @@
                 <i class="fa fa-bars"></i>
               </a>
               <a class="logo-box" href="/">
-                <span>امداد آپادانا</span>
+                <span>نیم رخ بافت</span>
               </a>
             </div>
             <button
@@ -35,17 +35,7 @@
               </li>
             </ul>
             <ul class="nav navbar-right navbar-nav">
-              <li v-can:add="'requests'">
-                <button
-                  data-toggle="modal"
-                  data-target="#send-request-modal"
-                  class="btn btn-success btn-rounded"
-                  @click="getGroupWorks"
-                >ثبت درخواست تعمیرات</button>
-              </li>
-
               <li
-                v-can:view="'requests_alert'"
                 :class="{'dropdown':true, 'margin-sides':true, 'has-notification':hasNotification}"
               >
                 <a
@@ -116,92 +106,7 @@
         <!-- /.container-fluid -->
       </nav>
     </div>
-    <modal id="send-request-modal" title="ارسال درخواست" :isLoading="isLoading">
-      <div slot="body">
-        <v-validate-observer tag="form" ref="request" v-slot="{ invalid }">
-          <div class="form-group row">
-            <div class="col-12">
-              <label for="file" class="col-form-label">تصویر:</label>
-              <div class="custom-file">
-                <input
-                  id="file"
-                  type="file"
-                  accept="image/*"
-                  class="custom-file-input"
-                  name="file"
-                  @change="setRequestFile"
-                />
-                <label
-                  class="custom-file-label"
-                  for="inputGroupFile01"
-                  data-browse="بارگذاری"
-                >انتخاب تصویر</label>
-              </div>
-              <span style="font-size:smaller;color:green">{{fileData?fileData:''}}</span>
-            </div>
-          </div>
-          <div class="row form-group">
-            <div class="col-6">
-              <label class="col-form-label">گروه:</label>
-              <v-select
-                dir="rtl"
-                label="name"
-                :options="groups"
-                @input="getSubGroups"
-                v-model="request.group_id"
-                :reduce="group => group.id"
-              >
-                <div slot="no-options">موردی‌یافت‌نشد!</div>
-              </v-select>
-            </div>
-            <div class="col-6">
-              <label class="col-form-label">زیرگروه:</label>
-              <v-select
-                dir="rtl"
-                label="name"
-                :reduce="subGroup => subGroup.id"
-                :options="subGroups"
-                v-model="request.sub_group_id"
-              >
-                <div slot="no-options">موردی‌یافت‌نشد!</div>
-              </v-select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <div class="col-12">
-              <label for="address" class="col-form-label">آدرس:</label>
-              <div class="form-check" v-if="$user.address">
-                <input class="form-check-input" type="checkbox" id="gridCheck1" checked />
-                <label class="form-check-label dis-in" for="gridCheck1">{{$user.address}}</label>
-              </div>
-              <input class="form-control" name="address" id="address" v-model="request.address" />
-            </div>
-          </div>
-          <div class="form-group row">
-            <div class="col-lg-12">
-              <label for="description" class="col-form-label">توضیحات:</label>
-              <v-validate rules="required" name="description" v-slot="{ errors,classes }">
-                <textarea
-                  :class="{'form-control':true,'is-invalid':classes.invalid}"
-                  name="description"
-                  id="description"
-                  cols="30"
-                  rows="5"
-                  v-model="request.description"
-                ></textarea>
-                <span class="invalid-feedback">{{ errors[0] }}</span>
-              </v-validate>
-            </div>
-          </div>
-        </v-validate-observer>
-      </div>
-      <div slot="footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">لغو</button>
-        <button type="button" class="btn btn-primary" @click="sendRequest">ارسال</button>
-      </div>
-    </modal>
-
-    <modal id="change-password-modal" title="تغییر رمز عبور" :isLoading="isLoading">
+    <!-- <modal id="change-password-modal" title="تغییر رمز عبور" :isLoading="isLoading">
       <div slot="body">
         <v-validate-observer tag="form" ref="changePassword" v-slot="{ invalid }">
           <div class="form-group row">
@@ -255,7 +160,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">لغو</button>
         <button type="button" class="btn btn-primary" @click="changePassword">ارسال</button>
       </div>
-    </modal>
+    </modal> -->
   </div>
 </template>
 
@@ -283,27 +188,6 @@ export default {
     hasNotification() {
       return this.requestCreated.length > 0;
     }
-  },
-  mounted() {
-    this.getRequests();
-  },
-  created() {
-    // window.Echo.private("requests").listen("RequestCreated", ({ request }) =>
-    //   this.createRequest(request)
-    // );
-
-    // window.Echo.private(`requests-refered.${this.$user.id}`).listen("RequestRefered", ({ request }) =>
-    //   this.createRequest(request)
-    // );
-    var that = this;
-    setInterval(() => {
-      that.$persistClient('get','requests').then(res=>{
-        if(res.data.length > that.requestCreated.length){
-          that.requestCreated = res.data;
-          that.playNotification();
-        }
-      })
-    }, 60000);
   },
   methods: {
     getSubGroups(group) {

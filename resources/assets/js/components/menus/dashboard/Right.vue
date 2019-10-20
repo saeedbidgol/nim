@@ -6,106 +6,106 @@
   <div class="page-sidebar">
     <a class="logo-box bgc85" href="/">
       <div class="logo-content">
-        <span>امداد آپادانا</span>
+        <span>نیم رخ بافت</span>
       </div>
     </a>
     <div class="page-sidebar-menu">
       <ul class="accordion-menu">
-        <li v-can:view="'dashboard'">
+        <li>
           <router-link to="/dashboard">
             <i class="menu-icon fas fa-home"></i>
             <span>داشبورد</span>
           </router-link>
         </li>
-        <li v-can:view="'requests'">
+        <li>
           <router-link to="/repair-requests">
             <i class="menu-icon fas fa-tasks"></i>
             <span>مشاهده درخواست ها</span>
           </router-link>
         </li>
-        <li v-can:view="'profile'">
+        <li>
           <router-link to="/users/profile">
             <i class="menu-icon fas fa-user-edit"></i>
             <span>ویرایش پروفایل</span>
           </router-link>
         </li>
-        <li v-can:view="'site_features'">
+        <li>
           <a href="javascript:void(0);">
             <i class="menu-icon fas fa-cogs"></i>
             <span>تنظیمات صفحه اصلی</span>
             <i class="accordion-icon fa fa-angle-left"></i>
           </a>
           <ul>
-            <li v-can:view="'sliders'">
+            <li>
               <router-link to="/slides">
                 <span>اسلایدر</span>
               </router-link>
             </li>
-            <li v-can:view="'about_management'">
+            <li>
               <router-link to="/about-management">
                 <span>درباره مدیریت</span>
               </router-link>
             </li>
-            <li v-can:view="'portfolio'">
+            <li>
               <router-link to="/portfolio">
                 <span>نمونه کارها</span>
               </router-link>
             </li>
-            <li v-can:view="'contact_us'">
+            <li>
               <router-link to="/contact-us">
                 <span>اطلاعات تماس با ما</span>
               </router-link>
             </li>
           </ul>
         </li>
-        <li v-can:view="'service_men'">
+        <li>
           <a href="javascript:void(0);">
             <i class="menu-icon fas fa-tools"></i>
             <span>تعمیرکاران</span>
             <i class="accordion-icon fa fa-angle-left"></i>
           </a>
           <ul>
-            <li v-can:view="'service_man_management'">
+            <li>
               <router-link to="service-men/management">مدیریت تعمیرکاران</router-link>
             </li>
-            <li v-can:view="'service_man_list'">
+            <li>
               <a href="#">مشاهده لیست تعمیرکاران</a>
             </li>
-            <li v-can:view="'service_man_report'">
+            <li>
               <a href="#">گزارش کارکرد تعمیرکاران</a>
             </li>
           </ul>
         </li>
-        <li v-can:view="'users'">
+        <li>
           <a href="javascript:void(0);">
             <i class="menu-icon fas fa-user-cog"></i>
             <span>مدیریت کاربران</span>
             <i class="accordion-icon fa fa-angle-left"></i>
           </a>
           <ul>
-            <li v-can:view="'roles'">
+            <li>
               <router-link to="/roles">
                 <span>مدیریت نقش</span>
               </router-link>
             </li>
-            <li v-can:view="'users'">
+            <li>
               <a href="#">مدیریت کاربر</a>
             </li>
           </ul>
         </li>
-        <li v-can:view="'group_work'">
+        <li>
           <a href="javascript:void(0);">
             <i class="fas fa-users-cog"></i>
             <span>مدیریت گروه های کاری</span>
             <i class="accordion-icon fa fa-angle-left"></i>
           </a>
           <ul>
-            <li v-can:view="'group_work'">
+            <li>
               <router-link to="/group-work">
                 <span>مدیریت گروه</span>
               </router-link>
             </li>
-            <li v-can:view="'sub_group_work'">
+            <li>
               <router-link to="/sub-group-work">
                 <span>مدیریت زیرگروه</span>
               </router-link>
