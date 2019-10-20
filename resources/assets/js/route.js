@@ -1,6 +1,10 @@
 import VueRouter from 'vue-router';
 
-import Top from "./components/menus/Top.vue"
+import Top from "./components/menus/Top.vue";
+import DashboardTop from "./components/menus/dashboard/DashboardTop.vue";
+import Left from "./components/menus/dashboard/Left.vue";
+import Right from "./components/menus/dashboard/Right.vue";
+import Dashboard from "./components/Dashboard/Dashboard.vue";
 import Home from "./components/home/Home.vue"
 import Gallery from "./components/home/components/Gallery.vue"
 import Product from "./components/home/components/Product.vue"
@@ -27,6 +31,15 @@ const routes =[
         components: {
             main: Product,
             top: Top,
+        },
+    },
+    {
+        path: '/dashboard',
+        components: {
+            main: Dashboard,
+            top: DashboardTop,
+            left: Left,
+            right: Right
         },
     },
 ]

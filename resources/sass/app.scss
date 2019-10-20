@@ -1,7 +1,28 @@
-// Fonts
-//@import url('https://fonts.googleapis.com/css?family=Nunito');
+﻿// // Fonts
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-//@import 'variables';
+@import 'variables';
 
 // Bootstrap
+//@import '~bootstrap-v4-rtl/scss/bootstrap-rtl';
+
+@import "fonts";
+
+@import "custom";
+
+//Font Awsome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+//Admin scss
+@import 'styles.scss';
+
+//Spinners
+@import 'spinners';
+
+
+//izitoast
+@import "~izitoast/dist/css/iziToast.min.css";

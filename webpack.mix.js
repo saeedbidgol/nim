@@ -24,6 +24,18 @@ mix.js("resources/assets/js/app.js", "public/js")
         ],
         "public/css/vendor.css",
         "./"
+    )
+    .styles(
+        [
+            "resources/assets/admin_vendor/css/layers.css",
+            "resources/assets/admin_vendor/css/styles.css",
+            "resources/assets/admin_vendor/css/navigation.css",
+            "resources/assets/admin_vendor/css/settings.css",
+            "resources/assets/admin_vendor/css/search.css",
+            "resources/assets/admin_vendor/css/bootstrap.min.css",
+        ],
+        "public/css/admin.css",
+        "./"
     );
 mix.scripts(
     [
@@ -40,7 +52,11 @@ mix.scripts(
     ],
     "public/js/base.js",
     "./"
-);
+).scripts([
+    "resources/assets/admin_vendor/admin/js/main.js",
+    "resources/assets/admin_vendor/admin/js/jquery.slimscroll.js",
+    "resources/assets/admin_vendor/admin/js/jquery.uniform.standalone.js"
+],"public/js/admin.js","./");
 
 if (mix.inProduction()) {
     mix.version();
