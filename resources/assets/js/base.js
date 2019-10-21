@@ -5,10 +5,10 @@ jQuery(document).ready(function ($) {
   $(window).scroll(function () {
     if ($(this).scrollTop() > 200) {
       $('.back-to-top').fadeIn('slow'); 
-      $('#header').addClass('header-fixed'); 
+      //$('#header').addClass('header-fixed'); 
     } else {
       $('.back-to-top').fadeOut('slow');
-      $('#header').removeClass('header-fixed');
+      //$('#header').removeClass('header-fixed');
     }
   });
   $('.back-to-top').click(function () {

@@ -18,12 +18,11 @@
 <body class="rtls skin-1 canvas-menu top-navigation" style="font-family: iranyekan;" >
     <!-- Wrapper-->
     <div id="wrapper">
-
         <header id="header">
-            <div class="container">
+            <div id="header-container">
                 <div class="navbar-logo">
-                    <div id="logo" class="pull-left">
-                        <a href="#hero"><img src="uploads/logo.svg" alt="نیم رخ بافت" title="" /></img></a>
+                    <div id="header-navbar-logo">
+                        <a href="#hero"><img src="uploads/logo.svg" alt="نیم رخ بافت" title="" /></a>
                         <!-- Uncomment below if you prefer to use a text logo -->
                         <!--<h1><a href="#hero">Regna</a></h1>-->
 
