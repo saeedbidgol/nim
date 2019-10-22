@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Infrustructure\BaseModel;
 
-class Catalogue extends Model
+class Catalogue extends BaseModel
 {
     //
 }

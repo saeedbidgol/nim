@@ -12,6 +12,7 @@ import Hero from "./components/home/components/Hero.vue"
 import ProductionGallery from "./components/Dashboard/ProductionGallery.vue"
 import Slides from "./components/site_features/Slides.vue"
 import AboutUs from "./components/site_features/AboutUs.vue"
+import Catalogue from "./components/site_features/Catalogue.vue"
 
 const routes =[
     {
@@ -66,7 +67,16 @@ const routes =[
     {
         path: '/dashboard/about-us',
         components: {
-            main: AboutUS,
+            main: AboutUs,
+            top: DashboardTop,
+            left: Left,
+            right: Right
+        },
+    },
+    {
+        path: '/dashboard/catalogues',
+        components: {
+            main: Catalogue,
             top: DashboardTop,
             left: Left,
             right: Right

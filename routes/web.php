@@ -28,6 +28,13 @@ Route::group(['prefix' => 'site-features'], function () {
         Route::post('', 'SiteFeaturesController@addSlide');
         Route::post('{slide}/update', 'SiteFeaturesController@updateSlide');
     });
+
+    Route::group(['prefix' => 'catalogues'], function () {
+        Route::get('', 'SiteFeaturesController@getCatalogues');
+        Route::delete('{catalogue}', 'SiteFeaturesController@deleteCatalogue');
+        Route::post('', 'SiteFeaturesController@addCatalogue');
+        Route::post('{catalogue}/update', 'SiteFeaturesController@updateCatalogue');
+    });
 });
 
 
