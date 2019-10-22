@@ -17,14 +17,15 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('code');
             $table->string('name');
-            $table->float('height');
-            $table->float('width');
+            $table->string('back_color');
+            $table->longtext('dimensions');
             $table->integer('reed');
-            $table->longtext('colors');
             $table->longtext('density');
             $table->float('favorite');
-            $table->string('file_url');
+            $table->string('pic_url');
+            $table->string('decor_url');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -14,7 +14,7 @@
           </router-link>
         </li>
         <li>
-          <router-link to="/dashboard">
+          <router-link to="/dashboard/gallery">
             <i class="menu-icon fas fa-home"></i>
             <span>گالری محصولات</span>
           </router-link>

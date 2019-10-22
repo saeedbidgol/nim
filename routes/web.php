@@ -13,6 +13,12 @@
 Auth::routes();
 Route::get('/', "HomeController@index");
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'products'], function () {
+    Route::get('', 'ProductController@getProducts');
+});
+
+
 Route::get('/dashboard', 'HomeController@dashboard');
 Route::get('/dashboard/{any}', 'HomeController@dashboard');
 Route::get('/{any}', 'HomeController@spa')->where('any', '.*');
