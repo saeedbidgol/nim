@@ -34,7 +34,14 @@ localize({
       new_password:'رمزعبور جدید',
       confirm_password:'تکرار رمزعبور',
       expert:'کارشناس',
-      about:'درباره ما'
+      about:'درباره ما',
+      code:'کد طرح',
+      reed:'شانه',
+      density:'تراکم',
+      back_color:'رنگ زمینه',
+      color_count:'تعداد رنگ',
+      dimension:'ابعاد',
+      about:'درباره طرح'
     }
   }
 });

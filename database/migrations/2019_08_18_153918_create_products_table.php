@@ -20,10 +20,12 @@ class CreateProductsTable extends Migration
             $table->string('back_color');
             $table->longtext('dimensions');
             $table->integer('reed');
+            $table->integer('color_count');
             $table->longtext('density');
-            $table->float('favorite');
-            $table->string('pic_url');
-            $table->string('decor_url');
+            $table->longtext('about')->nullable();
+            $table->float('favorite')->nullable();
+            $table->string('pic_url')->nullable();
+            $table->string('decor_url')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
