@@ -16,8 +16,9 @@ class CreateSlidesTable extends Migration
         Schema::create('slides', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('file_url');
-            $table->string('link');
+            $table->string('link')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
