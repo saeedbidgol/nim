@@ -97,11 +97,11 @@ class SiteFeaturesController extends Controller
 
     public function getAboutUs()
     {
-        return SiteFeature::find(1)->about_us;
+        return Optional(SiteFeature::find(1))->about_us;
     }
 
     public function updateAboutUs()
     {
-        SiteFeature::update(['about_us' => $this->request->about]);
+        SiteFeature::where('id',1)->update(['about_us' => $this->request->about]);
     }
 }

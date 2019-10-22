@@ -21,6 +21,7 @@ class CreateSiteFeaturesTable extends Migration
             $table->string('twitter')->nullable();
             $table->string('linkedin')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

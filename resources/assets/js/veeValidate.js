@@ -33,7 +33,8 @@ localize({
       current_password:'رمزعبور فعلی',
       new_password:'رمزعبور جدید',
       confirm_password:'تکرار رمزعبور',
-      expert:'کارشناس'
+      expert:'کارشناس',
+      about:'درباره ما'
     }
   }
 });
