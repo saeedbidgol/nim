@@ -4,7 +4,7 @@ namespace App;
 
 use App\Infrustructure\BaseModel;
 
-class Slide extends BaseModel
+class SiteFeature extends BaseModel
 {
     //
 }

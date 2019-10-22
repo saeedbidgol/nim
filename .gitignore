@@ -2,9 +2,11 @@
 /node_modules_bak
 /public/fonts
 /public/css/app.css
+/public/css/admin.css
 /public/css/vendor.css
 /public/js/app.js
 /public/js/base.js
+/public/js/admin.js
 /public/*.json
 /storage/*.key
 /storage/app

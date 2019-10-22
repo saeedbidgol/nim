@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h3 class="breadcrumb-header">درباره مدیریت</h3>
+      <h3 class="breadcrumb-header">درباره ما</h3>
     </div>
     <loading :is-loading="isLoading">
       <v-validate-observer tag="form" ref="addSlide" v-slot="{ invalid,passes }">
@@ -43,13 +43,13 @@ export default {
   methods: {
     save() {
       this.isLoading = true;
-      this.$persistClient("patch", "/site-features/about-management", {
+      this.$persistClient("patch", "/site-features/about-us", {
         about: this.about
       }).finally(() => (this.isLoading = false));
     },
     getAbout() {
       this.isLoading = true;
-      this.$persistClient("get", "site-features/about-management")
+      this.$persistClient("get", "site-features/about-us")
         .then(res => {
           this.about = res.data;
         })

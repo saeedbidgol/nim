@@ -11,6 +11,7 @@ import Product from "./components/home/components/Product.vue"
 import Hero from "./components/home/components/Hero.vue"
 import ProductionGallery from "./components/Dashboard/ProductionGallery.vue"
 import Slides from "./components/site_features/Slides.vue"
+import AboutUs from "./components/site_features/AboutUs.vue"
 
 const routes =[
     {
@@ -57,6 +58,15 @@ const routes =[
         path: '/dashboard/slides',
         components: {
             main: Slides,
+            top: DashboardTop,
+            left: Left,
+            right: Right
+        },
+    },
+    {
+        path: '/dashboard/about-us',
+        components: {
+            main: AboutUS,
             top: DashboardTop,
             left: Left,
             right: Right
