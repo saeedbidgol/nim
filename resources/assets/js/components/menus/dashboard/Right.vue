@@ -15,44 +15,32 @@
         </li>
         <li>
           <router-link to="/dashboard/gallery">
-            <i class="menu-icon fas fa-home"></i>
+            <i class="menu-icon fas fa-image"></i>
             <span>گالری محصولات</span>
           </router-link>
         </li>
         <li>
           <router-link to="/repair-requests">
-            <i class="menu-icon fas fa-tasks"></i>
+            <i class="menu-icon fas fa-images"></i>
             <span>اسلایدر</span>
           </router-link>
         </li>
         <li>
           <router-link to="/users/profile">
-            <i class="menu-icon fas fa-user-edit"></i>
+            <i class="menu-icon fab fa-readme"></i>
             <span>درباره ما</span>
           </router-link>
         </li>
         <li>
           <router-link to="/users/profile">
-            <i class="menu-icon fas fa-user-edit"></i>
+            <i class="menu-icon fas fa-book-open"></i>
             <span>کاتالوگ</span>
           </router-link>
         </li>
         <li>
           <router-link to="/users/profile">
-            <i class="menu-icon fas fa-user-edit"></i>
-            <span>صندوق پیام</span>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/users/profile">
-            <i class="menu-icon fas fa-user-edit"></i>
+            <i class="menu-icon fas fa-code-branch"></i>
             <span>شبکه های اجتماعی</span>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/users/profile">
-            <i class="menu-icon fas fa-user-edit"></i>
-            <span>شماره های ثبت شده</span>
           </router-link>
         </li>
       </ul>

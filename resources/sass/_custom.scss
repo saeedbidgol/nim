@@ -1,12 +1,10 @@
 ﻿@charset "utf-8";
 /*
 @media screen and (max-width: 768px) {
-    #hero h2 {
-        font-size: 20px !important;
-    }
-    #hero h3{
-        font-size: 17px !important;
-    }
+    
+    .navbar-header{
+    display: none !important;
+  }
   }
 @media screen and (max-width: 1024px) {
     .nav-menu li a{
@@ -195,6 +193,11 @@
     background-image: linear-gradient(to left, rgba(52, 59, 64), rgba(0, 195, 255, 0.103));
 }
 */
+@media screen and (max-width: 1024px) {
+    .navbar-header{
+    display: none !important;
+  }
+}
 header{
     z-index: 9 !important;
 }
