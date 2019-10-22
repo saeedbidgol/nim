@@ -10,6 +10,7 @@ import Gallery from "./components/home/components/Gallery.vue"
 import Product from "./components/home/components/Product.vue"
 import Hero from "./components/home/components/Hero.vue"
 import ProductionGallery from "./components/Dashboard/ProductionGallery.vue"
+import Slides from "./components/site_features/Slides.vue"
 
 const routes =[
     {
@@ -47,6 +48,15 @@ const routes =[
         path: '/dashboard/gallery',
         components: {
             main: ProductionGallery,
+            top: DashboardTop,
+            left: Left,
+            right: Right
+        },
+    },
+    {
+        path: '/dashboard/slides',
+        components: {
+            main: Slides,
             top: DashboardTop,
             left: Left,
             right: Right
