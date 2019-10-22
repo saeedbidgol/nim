@@ -18,6 +18,11 @@ Route::group(['prefix' => 'products'], function () {
     Route::get('', 'ProductController@getProducts');
 });
 
+Route::group(['prefix' => 'site-features'], function () {
+    Route::get('about-us', 'SiteFeaturesController@getAboutUs');
+    Route::patch('about-us', 'SiteFeaturesController@updateAboutUs');
+});
+
 
 Route::get('/dashboard', 'HomeController@dashboard');
 Route::get('/dashboard/{any}', 'HomeController@dashboard');

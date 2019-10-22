@@ -11,8 +11,6 @@ import persianJs from "persianjs/persian"
 import "./veeValidate"
 import VueIziToast from "vue-izitoast";
 import {can} from './directives';
-import "@progress/kendo-theme-default/dist/all.css";
-//import '@progress/kendo-theme-bootstrap/dist/all.css';
 import "@progress/kendo-ui/js/kendo.grid.js";
 import { Grid, GridInstaller } from "@progress/kendo-grid-vue-wrapper";
 import { DataSourceInstaller } from "@progress/kendo-datasource-vue-wrapper";
