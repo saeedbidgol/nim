@@ -35,6 +35,11 @@ Route::group(['prefix' => 'site-features'], function () {
         Route::post('', 'SiteFeaturesController@addCatalogue');
         Route::post('{catalogue}/update', 'SiteFeaturesController@updateCatalogue');
     });
+
+    Route::group(['prefix' => 'contact-us'], function () {
+        Route::get('', 'SiteFeaturesController@getContactUs');
+        Route::patch('', 'SiteFeaturesController@updateContactUs');
+    });
 });
 
 

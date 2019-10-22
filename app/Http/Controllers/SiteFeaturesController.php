@@ -16,6 +16,17 @@ class SiteFeaturesController extends Controller
         $this->request = $request;
     }
 
+    public function updateContactUs()
+    {
+        return SiteFeatures::where('id', 1)->update($this->request->all());
+    }
+
+    //GET site-features/contact-us From ContactUs.vue
+    public function getContactUs()
+    {
+        return SiteFeatures::first();
+    }
+
     //POST site-features/slides From Slides.vue
     public function addCatalogue()
     {

@@ -1,27 +1,15 @@
 <template>
   <div>
     <div class="page-title">
-      <h3 class="breadcrumb-header">اطلاعات تماس با ما</h3>
+      <h3 class="breadcrumb-header">شبکه‌های اجتماعی</h3>
     </div>
     <loading :is-loading="isLoading">
       <v-validate-observer tag="form" ref="addSlide" v-slot="{ invalid,passes }">
         <div class="form-group row">
           <div class="col-4">
-            <label for="phone" class="control-label">تلفن:</label>
-            <v-validate rules="required" name="phone">
-              <input type="text" class="form-control" v-model.trim="info.phone" />
-            </v-validate>
-          </div>
-          <div class="col-4">
-            <label for="mobile" class="control-label">موبایل:</label>
-            <v-validate rules="required" name="mobile">
-              <input type="text" class="form-control" v-model.trim="info.mobile" />
-            </v-validate>
-          </div>
-          <div class="col-4">
-            <label for="email" class="control-label">ایمیل:</label>
+            <label for="email" class="control-label">اینستاگرام:</label>
             <v-validate rules="email" name="email">
-              <input type="email" class="form-control" v-model.trim="info.email" />
+              <input type="email" class="form-control" v-model.trim="info.instagram" />
             </v-validate>
           </div>
         </div>
@@ -30,7 +18,7 @@
             <label for="telegram" class="control-label">تلگرام:</label>
             <input
               type="text"
-              placeholder="https://t.me/Sharafi1993"
+              placeholder="https://t.me"
               class="form-control"
               v-model.trim="info.telegram"
             />
@@ -39,7 +27,7 @@
             <label for="twitter" class="control-label">توییتر:</label>
             <input
               type="text"
-              placeholder="https://twitter.com/asharafi1993"
+              placeholder="https://twitter.com"
               class="form-control"
               v-model.trim="info.twitter"
             />
@@ -48,16 +36,10 @@
             <label for="linkdin" class="control-label">لینکدین:</label>
             <input
               type="text"
-              placeholder="https://www.linkedin.com/in/ali-sharafi-40389778/"
+              placeholder="https://www.linkedin.com/in"
               class="form-control"
               v-model.trim="info.linkdin"
             />
-          </div>
-        </div>
-        <div class="row form-group">
-          <div class="col-12">
-            <label for="address" class="control-label">آدرس:</label>
-            <input type="text" class="form-control" v-model.trim="info.address" />
           </div>
         </div>
         <div class="row form-group">
@@ -96,10 +78,7 @@ export default {
         .then(res => {
           let data = res.data;
           this.info = {
-            phone: data.phone,
-            mobile: data.mobile,
-            email: data.email,
-            address: data.address,
+            instagram: data.instagram,
             telegram: data.telegram,
             twitter: data.twitter,
             linkdin: data.linkdin
@@ -110,13 +89,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-::-webkit-input-placeholder {
-  text-align: right;
-}
-/* mozilla solution */
-input:-moz-placeholder {
-  text-align: right;
-}
-</style>
