@@ -4,7 +4,7 @@
     <div class="page-title">
       <h3 class="breadcrumb-header">اسلایدر</h3>
     </div>
-        <div class="row">
+        <div class="row form-group">
           <div class="col-6">
             <label for="file" class="col-form-label">تصویر:</label>
             <div class="custom-file">
@@ -22,7 +22,7 @@
             <span style="font-size:smaller;color:green">{{fileData | getFileName}}</span>
           </div>
         </div>
-        <div class="row">
+        <div class="row form-group">
           <div class="col-3 pull-left">
             <button type="button" class="btn btn-primary" @click="addSlide">ثبت</button>
           </div>
@@ -77,7 +77,7 @@ export default {
         this.$izitoast("error", "تصویر الزامی است!");
         return;
       }
-      this.addIsLoading = true;
+      this.isLoading = true;
       let formData = new FormData();
       for (var key in this.slide) {
         if (this.slide[key] != null) formData.append(key, this.slide[key]);
@@ -89,10 +89,10 @@ export default {
           this.slide = {};
           this.fileData = ""
         })
-        .finally(() => (this.addIsLoading = false));
+        .finally(() => (this.isLoading = false));
     },
     showSlide(slide) {
-      window.open(`uploads/${slide.file_url}`, "_blank");
+      window.open(`/uploads/${slide.file_url}`, "_blank");
     },
     deleteSlide(slide) {
       this.$alert("question").then(result => {
@@ -132,5 +132,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.table thead th {
+    text-align: right;
+}
 </style>
