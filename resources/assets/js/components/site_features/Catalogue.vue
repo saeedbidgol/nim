@@ -36,7 +36,13 @@
         </div>
         <div class="row">
           <div class="col-3 pull-left">
-            <button type="button" class="btn btn-primary" @click="passes(addSlide)">ثبت</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              @click="passes(updateSlide)"
+              v-if="slide.id"
+            >ثبت</button>
+            <button type="button" class="btn btn-primary" @click="passes(addSlide)" v-else>ثبت</button>
           </div>
         </div>
       </v-validate-observer>
@@ -69,47 +75,6 @@
         </table>
       </div>
     </loading>
-    <modal id="edit-modal" title="ویرایش" :isLoading="isLoading">
-      <div slot="body">
-        <v-validate-observer tag="form" ref="editSlide" v-slot="{ invalid }">
-          <div class="row">
-            <div class="col-12 form-group">
-              <label for="title" class="control-label">عنوان اصلی:</label>
-              <v-validate rules="required" name="title" v-slot="{ errors,classes }">
-                <input
-                  type="text"
-                  :class="{'form-control':true,'is-invalid':classes.invalid}"
-                  v-model.trim="editForm.name"
-                />
-                <span class="invalid-feedback">{{ errors[0] }}</span>
-              </v-validate>
-            </div>
-          </div>
-          <div class="row form-group">
-            <div class="col-12">
-              <label for="file" class="col-form-label">تصویر:</label>
-              <div class="custom-file">
-                <input
-                  id="file"
-                  type="file"
-                  accept="image/*"
-                  class="custom-file-input"
-                  name="file"
-                  autocomplete="file"
-                  @change="setFileOnUpdate"
-                />
-                <label class="custom-file-label" data-browse="بارگذاری">انتخاب تصویر</label>
-              </div>
-              <span style="font-size:smaller;color:green">{{fileData | getFileName}}</span>
-            </div>
-          </div>
-        </v-validate-observer>
-      </div>
-      <div slot="footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">لغو</button>
-        <button type="button" class="btn btn-primary" @click="updateSlide">ذخیره</button>
-      </div>
-    </modal>
   </div>
 </template>
 
@@ -118,11 +83,9 @@ export default {
   data() {
     return {
       slide: {},
-      editForm: {},
       slides: [],
       fileData: "",
-      isLoading: false,
-      addIsLoading: false
+      isLoading: false
     };
   },
   filters: {
@@ -144,7 +107,7 @@ export default {
         this.$izitoast("error", "تصویر الزامی است!");
         return;
       }
-      this.addIsLoading = true;
+      this.isLoading = true;
       let formData = new FormData();
       for (var key in this.slide) {
         if (this.slide[key] != null) formData.append(key, this.slide[key]);
@@ -157,10 +120,10 @@ export default {
           this.fileData = "";
           this.$refs.addSlide.reset();
         })
-        .finally(() => (this.addIsLoading = false));
+        .finally(() => (this.isLoading = false));
     },
     showSlide(slide) {
-      window.open(`uploads/${slide.file_url}`, "_blank");
+      window.open(`/uploads/${slide.file_url}`, "_blank");
     },
     deleteSlide(slide) {
       this.$alert("question").then(result => {
@@ -176,29 +139,27 @@ export default {
       });
     },
     updateSlide() {
-      this.$refs.editSlide.validate().then(result => {
-        if (result) {
-          this.isLoading = true;
-          let slideID = this.editForm.id;
-          Vue.delete(this.editForm, "id");
-          let formData = new FormData();
-          for (var key in this.editForm) {
-            if (this.editForm[key] != null)
-              formData.append(key, this.editForm[key]);
-          }
-          this.$persistClient(
-            "post",
-            `/site-features/catalogues/${slideID}/update`,
-            formData
-          )
-            .then(() => {
-              this.$alert("success");
-              $("#edit-modal").modal("hide");
-              this.getSlides();
-            })
-            .finally(() => (this.isLoading = false));
-        }
-      });
+      this.isLoading = true;
+      let slideID = this.slide.id;
+      Vue.delete(this.slide, "id");
+      let formData = new FormData();
+      for (var key in this.slide) {
+        if (this.slide[key] != null) formData.append(key, this.slide[key]);
+      }
+      this.$persistClient(
+        "post",
+        `/site-features/catalogues/${slideID}/update`,
+        formData
+      )
+        .then(() => {
+          this.$alert("success");
+          $("#edit-modal").modal("hide");
+          this.slide = {};
+          this.fileData = ""
+          this.$refs.addSlide.reset();
+          this.getSlides();
+        })
+        .finally(() => (this.isLoading = false));
     },
     setFile(e) {
       let files = event.target.files;
@@ -210,18 +171,8 @@ export default {
       }
       this.slide.file = files[0];
     },
-    setFileOnUpdate(e) {
-      let files = event.target.files;
-      this.fileData = files[0].name;
-      if (files[0].size && files[0].size / (2048 * 2048) > 1) {
-        this.$alert("error", "خطا", "سایز فایل نباید از 3 مگابایت بیشتر باشد");
-        $("#" + event.target.id).val("");
-        return;
-      }
-      this.editForm.file = files[0];
-    },
     editSlide(slide) {
-      this.editForm = {
+      this.slide = {
         id: slide.id,
         name: slide.name
       };
@@ -238,6 +189,8 @@ export default {
   }
 };
 </script>
-
-<style>
+<style scoped>
+.table thead th {
+  text-align: right;
+}
 </style>
