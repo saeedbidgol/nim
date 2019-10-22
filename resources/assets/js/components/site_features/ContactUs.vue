@@ -4,50 +4,46 @@
       <h3 class="breadcrumb-header">شبکه‌های اجتماعی</h3>
     </div>
     <loading :is-loading="isLoading">
-      <v-validate-observer tag="form" ref="addSlide" v-slot="{ invalid,passes }">
-        <div class="form-group row">
-          <div class="col-4">
-            <label for="email" class="control-label">اینستاگرام:</label>
-            <v-validate rules="email" name="email">
-              <input type="email" class="form-control" v-model.trim="info.instagram" />
-            </v-validate>
-          </div>
+      <div class="form-group row">
+        <div class="col-4">
+          <label for="email" class="control-label">اینستاگرام:</label>
+          <input type="email" class="form-control" v-model.trim="info.instagram" />
         </div>
-        <div class="row form-group">
-          <div class="col-4">
-            <label for="telegram" class="control-label">تلگرام:</label>
-            <input
-              type="text"
-              placeholder="https://t.me"
-              class="form-control"
-              v-model.trim="info.telegram"
-            />
-          </div>
-          <div class="col-4">
-            <label for="twitter" class="control-label">توییتر:</label>
-            <input
-              type="text"
-              placeholder="https://twitter.com"
-              class="form-control"
-              v-model.trim="info.twitter"
-            />
-          </div>
-          <div class="col-4">
-            <label for="linkdin" class="control-label">لینکدین:</label>
-            <input
-              type="text"
-              placeholder="https://www.linkedin.com/in"
-              class="form-control"
-              v-model.trim="info.linkdin"
-            />
-          </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-4">
+          <label for="telegram" class="control-label">تلگرام:</label>
+          <input
+            type="text"
+            placeholder="https://t.me"
+            class="form-control"
+            v-model.trim="info.telegram"
+          />
         </div>
-        <div class="row form-group">
-          <div class="col-3">
-            <button type="button" class="btn btn-primary" @click="passes(save)">ثبت</button>
-          </div>
+        <div class="col-4">
+          <label for="twitter" class="control-label">توییتر:</label>
+          <input
+            type="text"
+            placeholder="https://twitter.com"
+            class="form-control"
+            v-model.trim="info.twitter"
+          />
         </div>
-      </v-validate-observer>
+        <div class="col-4">
+          <label for="linkdin" class="control-label">لینکدین:</label>
+          <input
+            type="text"
+            placeholder="https://www.linkedin.com/in"
+            class="form-control"
+            v-model.trim="info.linkdin"
+          />
+        </div>
+      </div>
+      <div class="row form-group">
+        <div class="col-3">
+          <button type="button" class="btn btn-primary" @click="save">ثبت</button>
+        </div>
+      </div>
     </loading>
   </div>
 </template>

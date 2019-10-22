@@ -18,13 +18,13 @@ class SiteFeaturesController extends Controller
 
     public function updateContactUs()
     {
-        return SiteFeatures::where('id', 1)->update($this->request->all());
+        return SiteFeature::where('id', 1)->update($this->request->all());
     }
 
     //GET site-features/contact-us From ContactUs.vue
     public function getContactUs()
     {
-        return SiteFeatures::first();
+        return SiteFeature::first();
     }
 
     //POST site-features/slides From Slides.vue
