@@ -19,7 +19,7 @@
 #slider-container{
   height: 37vw !important;
   z-index: 5 !important;
-  margin-top: 7.3vw;
+ 
   position: relative;
 }
 .slider{
@@ -397,8 +397,10 @@
 }
 body {
   direction: rtl;
-  background: #fafafa;
-  color: #666666;
+  background: #fafafa !important;
+  color: #666666 !important;
+  height: unset !important;
+  min-height: 100%;
   
   /*font-family: "Open Sans", sans-serif;*/
 }
@@ -467,31 +469,78 @@ h1, h2, h3, h4, h5, h6 {
   background: #2dc997;
   color: #fff;
 }
-
+html{
+  background-color: #fff;
+}
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
 #header {
+  width: 100%;
   display: block;
   direction: left;
   background-color: #fff;
   padding: 1vw 0;
   height: 100px;
-  position: fixed;
-  left: 0;
+  position: relative;
   top: 0;
+  left: 0;
   right: 0;
   transition: all 0.5s;
   z-index: 997;
 }
+@media screen and (max-width:1300px){
+  .nav-menu a {
+    font-size: 13px !important;
+  }
+  #logo-english-text{
+    font-size: 13px !important;
+  }
+  #header-navbar-logo{
+    width: 120px !important;
+  }
+  #nav-menu-container{
+    margin: auto 14px auto 0 !important;
+  }
+  #header{
+    height: 75px;
+    
+  }
+  
+}
+
+@media screen and (max-width:900px){
+  .nav-menu a {
+    font-size: 10px !important;
+  }
+  #logo-english-text{
+    font-size: 12px !important;
+  }
+  #header-navbar-logo{
+    width: 110px !important;
+  }
+  #nav-menu-container{
+    margin: auto 22px auto 0 !important;
+  }
+  #header{
+    height: 70px;
+  }
+  
+}
+#header-container{
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  display: block;
+}
 .navbar{
-  padding: 0.91vw 0;
+  padding: 0;
 }
 .navbar-logo{
-  margin-right: 100px;
+
   float: right;
 }
-#header #logo {
+#header #header-navbar-logo {
  display: block;
 }
 
@@ -502,14 +551,26 @@ h1, h2, h3, h4, h5, h6 {
 
 #logo-english-text{
   color: #e8e8e8; 
-  font-size: 1vw;
+  font-size: 18px;
   text-align: center;
 }
-#logo img{
-  width: 11vw;
-}
+#header-navbar-logo img{
+  width: 150px;
 
-#header #logo h1 {
+}
+#header-navbar-logo{
+  position: relative;
+    float: right;
+    /* width: 46px; */
+    /* height: 70px; */
+    background-image: url(/images/logo/logo.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right top;
+    /* right: 28px; */
+    display: none;
+}
+#header #header-navbar-logo h1 {
   font-size: 36px;
   margin: 0;
   padding: 6px 0;
@@ -520,20 +581,20 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
-#header #logo h1 a, #header #logo h1 a:hover {
+#header #header-navbar-logo h1 a, #header #header-navbar-logo h1 a:hover {
   color: #fff;
 }
 
-#header #logo img {
+#header #header-navbar-logo img {
   padding: 0;
   margin: 0;
 }
 
 @media (max-width: 768px) {
-  #header #logo h1 {
+  #header #header-navbar-logo h1 {
     font-size: 26px;
   }
-  #header #logo img {
+  #header #header-navbar-logo img {
     max-height: 40px;
   }
 }
@@ -707,7 +768,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Nav Meu Container */
 #nav-menu-container {
   float: right;
-  margin: auto 6vw auto 1vw;
+  margin: auto 50px auto 0;
   width: 100%;
   
 }
@@ -722,7 +783,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-menu a {
   text-decoration: none;
   display: inline-block;
-  font-size: 1.1vw;
+  font-size: 15px;
   text-transform: uppercase;
   outline: none;
 }
@@ -1411,12 +1472,22 @@ body.mobile-nav-active #mobile-nav-toggle {
 --------------------------------------------------------------*/
 #footer {
   bottom: 0;
-    background: #343b40;
+    background-color: #0a2a54;
     padding: 30px 0;
     color: #fff;
     font-size: 14px;
     
     width: 100%;
+    height: 400px;
+}
+#footer .container {
+  color: #0a2a54;
+  height: 275px;
+  position: relative;
+  width: 1214px;
+  margin: 0 auto;
+  display: block;
+  background-color: #f7f7f7;
 }
 
 #footer .copyright {
@@ -1429,16 +1500,79 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 13px;
   color: #ccc;
 }
+#footer .header{
+  color: #ccb86c;
+    font-size: 20px;
+    text-align: right;
+    padding: 13px 0;
+}
+#footer ul{
+  list-style: none;
+  text-align: right;
+  padding: 0 18px;
+  line-height: 30px;
+}
+#footer li{
+  margin-bottom:10px;
+}
+#address{
+  padding: 0 33px;
+    font-size: 16px;
+    text-align: right;
+}
+#contact-sell{
+  padding: 9px 0;
+  position: relative;
+  background-color: #eeeeee;
+  text-align: center;
+  width: 80%;
+  height: 75px;
+  border-radius: 10px;
+  margin: 27px auto;
+}
+#contact-sell p{
+  margin: 0 !important;
+}
+#footer-instagram-logo{
+  width: 50px;
+  background-image: url("/uploads/svg/instagram.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 50px;
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+}
+#footer-telegram-logo{
 
+  bottom: 75px;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 0;
+  background-image: url("/uploads/svg/telegram.svg");
+}
+#footer a{
+  color: #052355;
+  display: block;
+  transition: 0.3s;
+}
+#footer a:hover{
+  color: #073c96;
+}
+#footer .social-link{
+  text-align: right;
+  margin: 35px 0;
+}
 /****** GALLERY *******/
 .spacer{
-  height: 100px; 
+ 
   position: relative;
   width: 100%;
 }
 .spacer::after{
   z-index: 1;
-  top: 100px;
+
   content: "";
   width: 100%;
   height: 10px;
@@ -1842,3 +1976,6 @@ body.mobile-nav-active #mobile-nav-toggle {
   right: 0;
   font-size: 20px;
 }
+
+
+
