@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('code');
             $table->string('name');
             $table->string('back_color');
-            $table->longtext('dimensions');
+            $table->longtext('dimension');
             $table->integer('reed');
             $table->integer('color_count');
             $table->longtext('density');

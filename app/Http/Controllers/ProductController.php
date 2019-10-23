@@ -14,21 +14,46 @@ class ProductController extends Controller
         $this->request = $request;
     }
 
+    public function deleteProduct(Product $product)
+    {
+        $product->colors()->delete();
+        $product->delete();
+    }
+
+    public function updateProduct()
+    {
+        $productID = $this->request->id;
+        $data = $this->request->except(['decor', 'pic', 'file']);
+        unset($data['id']);
+        Product::where('id', $productID)->update($data);
+        $product = Product::find($productID);
+
+        $this->uploadProductFiles($product);
+    }
+
     public function addProduct()
     {
-        $picFile = "";
-        $decorFile = "";
+        if ($this->request->has('id'))
+            return $this->updateProduct();
 
         $product = Product::create([
             'name' => $this->request->name,
             'code' => $this->request->code,
             'back_color' => $this->request->back_color,
-            'dimensions' => $this->request->dimension,
+            'dimension' => $this->request->dimension,
             'reed' => $this->request->reed,
             'color_count' => $this->request->color_count,
             'density' => $this->request->density,
             'about' => $this->request->about ?? null
         ]);
+
+        $this->uploadProductFiles($product);
+    }
+
+    public function uploadProductFiles($product)
+    {
+        $picFile = "";
+        $decorFile = "";
 
         if ($this->request->hasFile('decor')) {
             $file = $this->request->file('decor');

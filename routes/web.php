@@ -17,6 +17,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'products'], function () {
     Route::get('', 'ProductController@getProducts');
     Route::post('', 'ProductController@addProduct');
+    Route::delete('{product}', 'ProductController@deleteProduct');
 });
 
 Route::group(['prefix' => 'site-features'], function () {

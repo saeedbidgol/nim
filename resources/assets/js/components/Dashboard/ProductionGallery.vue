@@ -179,6 +179,7 @@
               <th>تعداد رنگ</th>
               <th>رنگبندی</th>
               <th>نمای دکوراسیون</th>
+              <th>عملیات</th>
             </tr>
           </thead>
           <tbody>
@@ -206,6 +207,10 @@
               <td>
                 <img v-if="product.decor_url" :src="'/uploads/'+product.decor_url" />
                 <span v-else>ندارد</span>
+              </td>
+              <td>
+                <button type="button" class="btn btn-info" @click="editProduct(product)">ویرایش</button>
+                <button type="button" class="btn btn-danger" @click="deleteProduct(product)">حذف</button>
               </td>
             </tr>
           </tbody>
@@ -266,6 +271,48 @@ export default {
     this.getProducts();
   },
   methods: {
+    deleteProduct(product) {
+      this.$alert("question").then(result => {
+        if (result.value) {
+          this.isLoading = true;
+          this.$persistClient("delete", `/products/${product.id}`)
+            .then(() => {
+              this.$alert("success");
+              this.getProducts();
+            })
+            .finally(() => {
+              this.isLoading = false;
+            });
+        }
+      });
+    },
+    editProduct(product) {
+      this.product = {
+        id: product.id,
+        name: product.name,
+        code: product.code,
+        reed: product.reed,
+        density: product.density,
+        back_color: product.back_color,
+        color_count: product.color_count,
+        dimension: product.dimension
+      };
+      this.decor = product.decor_url;
+      this.pic = product.pic_url;
+      this.$refs.myVueDropzone.removeAllFiles(true);
+      if (product.colors) {
+        product.colors.forEach(element => {
+          let file = {
+            size: 123,
+            name: this.getFileName(element.file_url),
+            type: "image/png"
+          };
+          let url = `/uploads/${element.file_url}`;
+          this.$refs.myVueDropzone.manuallyAddFile(file, url);
+        });
+      }
+      this.fileAdded = false;
+    },
     getFileName(value) {
       let regexValue = value.match(/[\w-]+.(jpg|png|jpeg)/gm);
       return regexValue ? this.excpert(regexValue[0]) : "";
@@ -316,6 +363,8 @@ export default {
             this.$refs.production.reset();
             this.decor = "";
             this.pic = "";
+            this.getProducts();
+            this.$refs.myVueDropzone.removeAllFiles(true);
           })
           .finally(() => {
             this.isLoading = false;
@@ -324,10 +373,7 @@ export default {
     },
     getProducts() {
       this.isLoading = true;
-      this.$persistClient(
-        "get",
-        `/products?page=${this.products.current_page}`
-      )
+      this.$persistClient("get", `/products?page=${this.products.current_page}`)
         .then(res => {
           this.products = res.data;
         })
