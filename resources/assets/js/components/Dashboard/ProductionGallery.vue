@@ -165,38 +165,52 @@
       </v-validate-observer>
     </loading>
     <loading :is-loading="isLoading">
-      <div class="k-rtl">
-        <kendo-datasource
-          ref="datasource"
-          :transport-read="readData"
-          :batch="true"
-          :page-size="10"
-          :schema-total="'total'"
-          :schema-data="'data'"
-          :server-paging="true"
-          :server-sorting="true"
-          :server-filtering="true"
-        ></kendo-datasource>
-        <kendo-grid
-          id="grid"
-          ref="grid"
-          :data-source-ref="'datasource'"
-          @databinding="onDataBinding"
-          :resizable="true"
-          :pageable="grid.pageable"
-          :page="page"
-          :height="400"
-        >
-          <kendo-grid-column :title="'ردیف'" :template="getTemplate" :width="60"></kendo-grid-column>
-          <kendo-grid-column field="code" title="کد طرح"></kendo-grid-column>
-          <kendo-grid-column :template="picTemplate" title="تصویر طرح" field="file_url"></kendo-grid-column>
-          <kendo-grid-column field="name" title="نام طرح"></kendo-grid-column>
-          <kendo-grid-column field="back_color" title="رنگ زمینه"></kendo-grid-column>
-          <kendo-grid-column field="dimensions" title="ابعاد"></kendo-grid-column>
-          <kendo-grid-column field="density" title="تراکم"></kendo-grid-column>
-          <kendo-grid-column field="colors" title="تعداد رنگ"></kendo-grid-column>
-          <kendo-grid-column field="colors" title="نمای دکوراسیون"></kendo-grid-column>
-        </kendo-grid>
+      <div class="table-responsive">
+        <table class="display table field" style="width: 100%;">
+          <thead>
+            <tr>
+              <th>ردیف</th>
+              <th>کد طرح</th>
+              <th>تصویر طرح</th>
+              <th>نام طرح</th>
+              <th>رنگ زمینه</th>
+              <th>ابعاد</th>
+              <th>تراکم</th>
+              <th>تعداد رنگ</th>
+              <th>رنگبندی</th>
+              <th>نمای دکوراسیون</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(product,index) in products.data" :key="product.id">
+              <td>{{index+1}}</td>
+              <td>{{product.code}}</td>
+              <td>
+                <img v-if="product.pic_url" :src="'/uploads/'+product.pic_url" />
+                <span v-else>ندارد</span>
+              </td>
+              <td>{{product.name}}</td>
+              <td>{{product.back_color}}</td>
+              <td>{{product.dimension}}</td>
+              <td>{{product.density}}</td>
+              <td>{{product.color_count}}</td>
+              <td>
+                <img
+                  v-if="product.colors"
+                  v-for="color in product.colors"
+                  :key="color.id"
+                  :src="'/uploads/'+color.file_url"
+                />
+                <span v-else>ندارد</span>
+              </td>
+              <td>
+                <img v-if="product.decor_url" :src="'/uploads/'+product.decor_url" />
+                <span v-else>ندارد</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <pagination :pagination="products" @paginate="getProducts()" :offset="10"></pagination>
       </div>
     </loading>
   </div>
@@ -205,9 +219,11 @@
 <script>
 import vue2Dropzone from "vue2-dropzone";
 import "vue2-dropzone/dist/vue2Dropzone.min.css";
+import pagination from "../module/Pagination";
 export default {
   components: {
-    vueDropzone: vue2Dropzone
+    vueDropzone: vue2Dropzone,
+    pagination
   },
   data() {
     return {
@@ -237,14 +253,17 @@ export default {
         dictMaxFilesExceeded: "شما نمیتواند بیش از 4 فایل آپلود کنید!"
       },
       product: {},
-      gpage: 1,
-      record: 0,
-      picTemplate: `
-      <div class='col-md-12'>
-      <img style="border-radius: 50%;" width='50' height='50' src="/uploads/#:file_url#">
-      </div
-      `
+      products: {
+        total: 0,
+        per_page: 2,
+        from: 1,
+        to: 0,
+        current_page: 1
+      }
     };
+  },
+  mounted() {
+    this.getProducts();
   },
   methods: {
     getFileName(value) {
@@ -303,29 +322,32 @@ export default {
           });
       }
     },
-    readData(e) {
+    getProducts() {
       this.isLoading = true;
-      let url = "/products?";
-      url += `page=${e.data.page}&pageSize=${e.data.pageSize}`;
-      this.$persistClient("get", url)
+      this.$persistClient(
+        "get",
+        `/products?page=${this.products.current_page}`
+      )
         .then(res => {
-          e.success(res.data);
+          this.products = res.data;
         })
         .finally(() => (this.isLoading = false));
-    },
-    onDataBinding: function(ev) {
-      this.record = (this.gpage - 1) * this.$refs.datasource.pageSize;
-    },
-    page: function(e) {
-      this.gpage = e.page;
-    },
-    getTemplate: function() {
-      return ++this.record;
     }
   }
 };
 </script>
+<style scoped>
+.table thead th {
+  text-align: right;
+}
+</style>
 <style>
+.field img {
+  position: absolute;
+  display: block;
+  width: 32px;
+  height: 32px;
+}
 #dropzone .dz-preview.dz-file-preview {
   width: 90px;
   height: 20px;

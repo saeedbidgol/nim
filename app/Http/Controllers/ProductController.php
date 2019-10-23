@@ -57,7 +57,6 @@ class ProductController extends Controller
     //GET /products From ProductionGallery.vue
     public function getProducts()
     {
-        $pageSize = $this->request->pageSize;
-        return Product::paginate($pageSize);
+        return Product::with('colors')->paginate(10);
     }
 }
