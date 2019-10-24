@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::group(['prefix' => 'catalogues'], function () {
             Route::get('', 'SiteFeaturesController@getCatalogues');
+            Route::get('last', 'SiteFeaturesController@getLastCatalogue');
             Route::delete('{catalogue}', 'SiteFeaturesController@deleteCatalogue');
             Route::post('', 'SiteFeaturesController@addCatalogue');
             Route::post('{catalogue}/update', 'SiteFeaturesController@updateCatalogue');

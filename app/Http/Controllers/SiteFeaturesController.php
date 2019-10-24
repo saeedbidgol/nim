@@ -21,6 +21,11 @@ class SiteFeaturesController extends Controller
         return SiteFeature::where('id', 1)->update($this->request->all());
     }
 
+    public function getLastCatalogue()
+    {
+        return Catalogue::latest('created_at')->first();
+    }
+
     //GET site-features/contact-us From ContactUs.vue
     public function getContactUs()
     {
@@ -102,6 +107,6 @@ class SiteFeaturesController extends Controller
 
     public function updateAboutUs()
     {
-        SiteFeature::where('id',1)->update(['about_us' => $this->request->about]);
+        SiteFeature::where('id', 1)->update(['about_us' => $this->request->about]);
     }
 }
