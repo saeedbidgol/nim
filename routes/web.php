@@ -33,6 +33,13 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('{slide}/update', 'SiteFeaturesController@updateSlide');
         });
 
+        Route::group(['prefix' => 'news'], function () {
+            Route::get('', 'SiteFeaturesController@getNews');
+            Route::post('', 'SiteFeaturesController@addNews');
+            Route::post('{news}/update', 'SiteFeaturesController@updateNews');
+            Route::delete('{news}', 'SiteFeaturesController@deleteNews');
+        });
+
         Route::group(['prefix' => 'catalogues'], function () {
             Route::get('', 'SiteFeaturesController@getCatalogues');
             Route::get('last', 'SiteFeaturesController@getLastCatalogue');

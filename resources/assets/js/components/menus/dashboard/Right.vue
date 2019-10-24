@@ -32,6 +32,12 @@
           </router-link>
         </li>
         <li>
+          <router-link to="/dashboard/news">
+            <i class="fas fa-rss"></i>
+            <span>اخبار</span>
+          </router-link>
+        </li>
+        <li>
           <router-link to="/dashboard/catalogues">
             <i class="menu-icon fas fa-book-open"></i>
             <span>کاتالوگ</span>

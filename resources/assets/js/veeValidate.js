@@ -41,7 +41,8 @@ localize({
       back_color:'رنگ زمینه',
       color_count:'تعداد رنگ',
       dimension:'ابعاد',
-      about:'درباره طرح'
+      about:'درباره طرح',
+      body:'متن اصلی'
     }
   }
 });

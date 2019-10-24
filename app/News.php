@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Infrustructure\BaseModel;
 
-class News extends Model
+class News extends BaseModel
 {
     //
 }

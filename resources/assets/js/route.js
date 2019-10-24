@@ -13,14 +13,15 @@ import Slides from "./components/site_features/Slides.vue"
 import AboutUs from "./components/site_features/AboutUs.vue"
 import Catalogue from "./components/site_features/Catalogue.vue"
 import ContactUs from "./components/site_features/ContactUs.vue"
+import News from "./components/site_features/News.vue"
 
-const routes =[
+const routes = [
     {
         path: '/',
         components: {
             main: Home,
             top: Top,
-            hero:Hero
+            hero: Hero
         },
     },
     {
@@ -85,9 +86,17 @@ const routes =[
             right: Right
         },
     },
+    {
+        path: '/dashboard/news',
+        components: {
+            main: News,
+            top: DashboardTop,
+            right: Right
+        },
+    },
 ]
 
 export default new VueRouter({
-    mode:'history',
+    mode: 'history',
     routes
 })

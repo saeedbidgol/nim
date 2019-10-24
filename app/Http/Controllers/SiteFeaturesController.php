@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Catalogue;
+use App\News;
 use App\SiteFeature;
 use App\Slide;
 use Illuminate\Http\Request;
@@ -14,6 +15,42 @@ class SiteFeaturesController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
+    }
+
+    public function updateNews(News $news)
+    {
+        $news->update(['title' => $this->request->title, 'body' => $this->request->body]);
+        if ($this->request->hasFile('file')) {
+            $file = $this->request->file('file');
+            $fileStored = $file->store("news", 'uploads');
+            $news->update(['file_url' => $fileStored]);
+        }
+    }
+
+    public function addNews()
+    {
+        $this->validate($this->request, [
+            'file' => ['required', 'mimes:jpeg,jpg,bmp,png']
+        ]);
+
+        $slide = News::create(['title' => $this->request->title, 'body' => $this->request->body]);
+        if ($this->request->hasFile('file')) {
+            $file = $this->request->file('file');
+            $fileStored = $file->store("news", 'uploads');
+            $slide->update(['file_url' => $fileStored]);
+        }
+    }
+
+    //DELETE site-features/slides/{slide} From slides.vue
+    public function deleteNews($news)
+    {
+        News::where('id', $news)->delete();
+    }
+
+    //GET site-features/slides From Slides.vue
+    public function getNews()
+    {
+        return News::all();
     }
 
     public function updateContactUs()
