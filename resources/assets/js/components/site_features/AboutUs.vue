@@ -45,11 +45,14 @@ export default {
       this.isLoading = true;
       this.$persistClient("patch", "/site-features/about-us", {
         about: this.about
-      }).finally(() => (this.isLoading = false));
+      }).then(()=>{
+        this.$alert('success');
+      })
+      .finally(() => (this.isLoading = false));
     },
     getAbout() {
       this.isLoading = true;
-      this.$persistClient("get", "site-features/about-us")
+      this.$persistClient("get", "/site-features/about-us")
         .then(res => {
           this.about = res.data;
         })

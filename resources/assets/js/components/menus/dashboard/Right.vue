@@ -20,25 +20,25 @@
           </router-link>
         </li>
         <li>
-          <router-link to="/repair-requests">
+          <router-link to="/dashboard/slides">
             <i class="menu-icon fas fa-images"></i>
             <span>اسلایدر</span>
           </router-link>
         </li>
         <li>
-          <router-link to="/users/profile">
+          <router-link to="/dashboard/about-us">
             <i class="menu-icon fab fa-readme"></i>
             <span>درباره ما</span>
           </router-link>
         </li>
         <li>
-          <router-link to="/users/profile">
+          <router-link to="/dashboard/catalogues">
             <i class="menu-icon fas fa-book-open"></i>
             <span>کاتالوگ</span>
           </router-link>
         </li>
         <li>
-          <router-link to="/users/profile">
+          <router-link to="/dashboard/contact-us">
             <i class="menu-icon fas fa-code-branch"></i>
             <span>شبکه های اجتماعی</span>
           </router-link>

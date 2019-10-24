@@ -2,9 +2,10 @@
 
 namespace App;
 
+use App\Infrustructure\BaseModel;
 use Illuminate\Database\Eloquent\Model;
 
-class Color extends Model
+class Color extends BaseModel
 {
     //
 }

@@ -16,8 +16,9 @@ class CreateCataloguesTable extends Migration
         Schema::create('catalogues', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('file_url');
+            $table->string('file_url')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
