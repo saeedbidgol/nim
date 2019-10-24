@@ -80,7 +80,7 @@
   position: relative;
   border-radius: 30px;
   top: 2vw;
-  height: 29vw !important;
+  height: 390px !important;
   z-index: 7;
   background-color: rgba(250, 250, 250, 0.8);
   overflow: visible !important;
@@ -100,7 +100,7 @@
 .favorites .slider-btn{
   position: absolute !important;
   background-color: #b1b1b1 !important;
-  top: 12vw !important;
+  top: 165px !important;
   border-radius: 50%;
   height: 70px  !important;
   width: 70px !important;
@@ -871,7 +871,7 @@ html{
 /* Mobile Nav Toggle */
 #mobile-nav-toggle {
   position: fixed;
-  right: 0;
+  left: 22px;
   top: 0;
   z-index: 999;
   margin: 20px 20px 0 0;
@@ -883,11 +883,21 @@ html{
   outline: none;
   cursor: pointer;
 }
-
-#mobile-nav-toggle i {
+#mobile-nav-toggle .fa-bars{
+  color: #0b1274;
+}
+#mobile-nav-toggle  .fa-times{
   color: #fff;
 }
-
+@media screen and (max-width:768px){
+  .nav-menu a {
+    font-size: 18px !important;
+  }
+  .nav-menu a img{
+    width: 24px !important;
+    margin-left: 8px !important;
+  }
+}
 @media (max-width: 768px) {
   #mobile-nav-toggle {
     display: inline;

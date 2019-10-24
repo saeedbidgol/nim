@@ -35,22 +35,6 @@
               </li>
             </ul>
             <ul class="nav navbar-right navbar-nav">
-              <li
-                :class="{'dropdown':true, 'margin-sides':true, 'has-notification':hasNotification}"
-              >
-                <a
-                  href="javascript:void(0)"
-                  class="dropdown-toggle"
-                  data-toggle="dropdown"
-                  role="button"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <div
-                    class="notification-count"
-                  >{{requestCreated.length>0 ? requestCreated.length:""}}</div>
-                  <i class="fa fa-bell ringing"></i>
-                </a>
                 <ul class="dropdown-menu dropdown-lg dropdown-content">
                   <li class="slimscroll dropdown-notifications hover">
                     <ul class="list-unstyled dropdown-oc">
