@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('portfolio', 'ProductController@getPortfolio');
         Route::get('favorites', 'ProductController@getFavorites');
         Route::post('', 'ProductController@addProduct');
+        Route::patch('{product}/favorite', 'ProductController@addFavorite');
         Route::delete('{product}/colors/{color}', 'ProductController@deleteColorOfProduct');
         Route::delete('{product}', 'ProductController@deleteProduct');
     });

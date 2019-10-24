@@ -216,7 +216,7 @@
             </tr>
           </tbody>
         </table>
-        <pagination :pagination="products" @paginate="getProducts()" :offset="10"></pagination>
+        <pagination :pagination="products" @paginate="getProducts()" :offset="16"></pagination>
       </div>
     </loading>
   </div>

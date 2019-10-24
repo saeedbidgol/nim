@@ -14,6 +14,12 @@ class ProductController extends Controller
         $this->request = $request;
     }
 
+    public function addFavorite(Product $product)
+    {
+        $product->favorite ++;
+        $product->save();
+    }
+
     public function getFavorites()
     {
         return Product::orderByDesc('favorite')->take(10)->get();
@@ -97,6 +103,6 @@ class ProductController extends Controller
     //GET /products From ProductionGallery.vue
     public function getProducts()
     {
-        return Product::with('colors')->paginate(10);
+        return Product::with('colors')->paginate(16);
     }
 }
