@@ -16,13 +16,8 @@ class CreateSiteFeaturesTable extends Migration
         Schema::create('site_features', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->longText('about_us');
-            $table->string('instagram')->nullable();
-            $table->string('telegram')->nullable();
-            $table->string('twitter')->nullable();
-            $table->string('linkedin')->nullable();
             $table->timestamps();
-            $table->softDeletes();
-        });
+        }); 
     }
 
     /**
