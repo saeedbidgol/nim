@@ -14,6 +14,11 @@ class ProductController extends Controller
         $this->request = $request;
     }
 
+    public function getPortfolio()
+    {
+        return Product::take(8)->get();
+    }
+
     public function deleteColorOfProduct(Product $product, $color)
     {
         $product->colors()->where('id', $color)->delete();
