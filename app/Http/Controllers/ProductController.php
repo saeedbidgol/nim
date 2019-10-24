@@ -14,6 +14,11 @@ class ProductController extends Controller
         $this->request = $request;
     }
 
+    public function getFavorites()
+    {
+        return Product::orderByDesc('favorite')->take(10)->get();
+    }
+
     public function getPortfolio()
     {
         return Product::take(8)->get();

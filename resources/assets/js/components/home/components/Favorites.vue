@@ -1,33 +1,35 @@
 <template>
   <div class="favorites">
-    <img id="first-background-svg" src="uploads/background-svg/1.svg" alt="نیمرخ">
+    <img id="first-background-svg" src="uploads/background-svg/1.svg" alt="نیمرخ" />
     <h3 class="favorites-h3">
-      <p><img src="uploads/background-svg/title-1.svg" id="favorites-title-svg" ></p>
-      محبوب ترین ها</h3>
+      <p>
+        <img src="uploads/background-svg/title-1.svg" id="favorites-title-svg" />
+      </p>محبوب ترین ها
+    </h3>
     <slider :autoplay="false" width="80%" style="right:10%">
-      <slider-item v-for="(slide,index) in slides" :key="index">
+      <slider-item v-for="(favorite,index) in favorites" :key="index">
         <div class="row padding-side">
           <div class="col-lg-3 col-sm-8">
             <div class="row">
-              <div class=" col-lg-12 k-rtl" id="slide-title">{{slide.name}}</div>
+              <div class="col-lg-12 k-rtl" id="slide-title">{{favorite.name}}</div>
             </div>
             <div class="row k-rtl">
-              <div class="slider-details col-lg-12 col-sm-6">کد: {{slide.code}}</div>
+              <div class="slider-details col-lg-12 col-sm-6">کد: {{favorite.code}}</div>
             </div>
             <div class="row k-rtl">
-              <div class="slider-details col-lg-12 col-sm-6">شانه: {{slide.reed}}</div>
+              <div class="slider-details col-lg-12 col-sm-6">شانه: {{favorite.reed}}</div>
             </div>
             <div class="row k-rtl">
-              <div class="slider-details col-lg-12">تعداد رنگ: {{slide.coloring}}</div>
+              <div class="slider-details col-lg-12">تعداد رنگ: {{favorite.color_count}}</div>
             </div>
             <div class="row k-rtl">
-              <div class="slider-details col-lg-12">تراکم: {{slide.density}}</div>
+              <div class="slider-details col-lg-12">تراکم: {{favorite.density}}</div>
             </div>
             <div class="row k-rtl">
-              <div class="slider-details col-lg-12">رنگ: {{slide.color}}</div>
+              <div class="slider-details col-lg-12">رنگ: {{favorite.back_color}}</div>
             </div>
             <div class="row k-rtl">
-              <div class="slider-details col-lg-12">ابعاد: {{slide.deminsion}}</div>
+              <div class="slider-details col-lg-12">ابعاد: {{favorite.dimension}}</div>
             </div>
             <div id="btn-more" class="row k-rtl">
               <div class="col-lg-12">
@@ -36,10 +38,10 @@
             </div>
           </div>
           <div class="col-lg-3 col-sm-4">
-            <img class="slider-items-img" :src="slide.url1" />
+            <img class="slider-items-img" :src="`/uploads/${favorite.pic_url}`" />
           </div>
           <div class="col-lg-6 d-sm-none d-lg-block">
-            <img class="slider-items-img" :src="slide.url2" />
+            <img class="slider-items-img" :src="`/uploads/${favorite.decor_url}`" />
           </div>
         </div>
       </slider-item>
@@ -51,37 +53,18 @@
 export default {
   data() {
     return {
-      slides: [
-        {
-          name: "اسلاید اول",
-          code: "302",
-          reed: "1200",
-          coloring: "5",
-          density: "755",
-          color: "زرد",
-          deminsion: "3*3,5*5,2*4",
-          link: "www.google.com",
-          url1:
-            "https://images.unsplash.com/photo-1527694224012-be005121c774?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-          url2:
-            "https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=1600&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
-        },
-        {
-          name: "اسلاید دوم",
-          code: "302",
-          reed: "1200",
-          coloring: "5",
-          density: "755",
-          color: "زرد",
-          deminsion: "3*3,5*5,2*4",
-          link: "www.yahoo.com",
-          url1:
-            "https://images.unsplash.com/photo-1477140307757-d0ca95b31787?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-          url2:
-            "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=1600&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
-        }
-      ]
+      favorites: []
     };
+  },
+  mounted() {
+    this.getFavorites();
+  },
+  methods: {
+    getFavorites() {
+      this.$persistClient("get", "/products/favorites").then(
+        res => (this.favorites = res.data)
+      );
+    }
   }
 };
 </script>
@@ -99,7 +82,7 @@ export default {
   font-size: smaller;
   margin-top: 10vh;
 }
-.favorites{
+.favorites {
   padding: 40px 0;
 }
 </style>
