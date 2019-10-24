@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->integer('color_count');
             $table->longtext('density');
             $table->longtext('about')->nullable();
-            $table->float('favorite')->nullable();
+            $table->integer('favorite')->default(0);
             $table->string('pic_url')->nullable();
             $table->string('decor_url')->nullable();
             $table->timestamps();
