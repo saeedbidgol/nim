@@ -18,6 +18,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'products'], function () {
         Route::get('', 'ProductController@getProducts');
         Route::post('', 'ProductController@addProduct');
+        Route::delete('{product}/colors/{color}', 'ProductController@deleteColorOfProduct');
         Route::delete('{product}', 'ProductController@deleteProduct');
     });
 

@@ -153,6 +153,7 @@
               @vdropzone-success-multiple="uploadSuccess"
               @vdropzone-error="uploadError"
               @vdropzone-file-added="fileAdded = true"
+              @vdropzone-removed-file="removedFile"
               :duplicateCheck="true"
             ></vue-dropzone>
           </div>
@@ -271,6 +272,16 @@ export default {
     this.getProducts();
   },
   methods: {
+    removedFile(file) {
+      if (!this.product.id) return;
+      this.isLoading = true;
+      this.$persistClient(
+        "delete",
+        `/products/${file.product_id}/colors/${file.color_id}`
+      )
+        .then(() => this.$alert("success"))
+        .finally(() => (this.isLoading = false));
+    },
     deleteProduct(product) {
       this.$alert("question").then(result => {
         if (result.value) {
@@ -303,8 +314,10 @@ export default {
       if (product.colors) {
         product.colors.forEach(element => {
           let file = {
-            size: 123,
+            color_id: element.id,
             name: this.getFileName(element.file_url),
+            product_id: product.id,
+            size: 123,
             type: "image/png"
           };
           let url = `/uploads/${element.file_url}`;
@@ -340,6 +353,7 @@ export default {
       this.$refs.myVueDropzone.removeAllFiles(true);
       this.$alert("success");
       this.isLoading = false;
+      this.getProducts();
     },
     onAddProduct(file, xhr, formData) {
       for (var key in this.product) {
