@@ -32,6 +32,13 @@ Route::group(['prefix' => 'site-features'], function () {
 Route::get('/gallery', 'HomeController@spa');
 
 Route::group(['middleware' => 'auth'], function () {
+
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('', 'UserController@getUsers');
+        Route::post('', 'UserController@addUser');
+        Route::patch('{user}', 'UserController@updateUser');
+        Route::delete('{user}', 'UserController@deleteUser');
+    });
     Route::group(['prefix' => 'products'], function () {
         Route::post('', 'ProductController@addProduct');
         Route::delete('{product}/colors/{color}', 'ProductController@deleteColorOfProduct');

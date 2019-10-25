@@ -14,6 +14,7 @@ import AboutUs from "./components/site_features/AboutUs.vue"
 import Catalogue from "./components/site_features/Catalogue.vue"
 import ContactUs from "./components/site_features/ContactUs.vue"
 import News from "./components/site_features/News.vue"
+import Users from "./components/Dashboard/Users.vue"
 
 const routes = [
     {
@@ -91,6 +92,14 @@ const routes = [
         path: '/dashboard/news',
         components: {
             main: News,
+            top: DashboardTop,
+            right: Right
+        },
+    },
+    {
+        path: '/dashboard/users',
+        components: {
+            main: Users,
             top: DashboardTop,
             right: Right
         },
