@@ -164,7 +164,21 @@
               v-model="price"
             />
           </div>
-          <div class="col-9">
+          <div class="col-3">
+            <label for="file" class="col-form-label">جنس نخ تار:</label>
+            <input type="text" class="form-control" name="wrap" v-model="product.wrap" />
+          </div>
+          <div class="col-3">
+            <label for="file" class="col-form-label">جنس نخ پود:</label>
+            <input type="text" class="form-control" name="weft" v-model="product.weft" />
+          </div>
+          <div class="col-3">
+            <label for="file" class="col-form-label">جنس نخ خواب:</label>
+            <input type="text" class="form-control" name="weft" v-model="product.pile" />
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-12">
             <label for="name" class="control-label">درباره طرح:</label>
             <textarea
               class="form-control"
@@ -347,7 +361,10 @@ export default {
         density: product.density,
         back_color: product.back_color,
         color_count: product.color_count,
-        dimension: product.dimension
+        dimension: product.dimension,
+        weft: product.weft ? product.weft : "",
+        wrap: product.wrap ? product.wrap : "",
+        pile: product.pile ? product.pile : ""
       };
       this.decor = product.decor_url;
       this.pic = product.pic_url;

@@ -77,7 +77,10 @@ class ProductController extends Controller
             'color_count' => $this->request->color_count,
             'density' => $this->request->density,
             'about' => $this->request->about ?? null,
-            'price' => $this->request->price ?? null
+            'price' => $this->request->price ?? null,
+            'wrap' => $this->request->wrap ?? null,
+            'weft' => $this->request->weft ?? null,
+            'pile' => $this->request->pile ?? null,
         ]);
         if ($this->request->has('colors')) {
             $colors = explode(',', $this->request->colors);
@@ -119,6 +122,11 @@ class ProductController extends Controller
 
             $product->colors()->createMany($filesStored);
         }
+    }
+
+    public function getProduct($product)
+    {
+        return Product::with('colors')->where('id', $product)->get();
     }
 
     //GET /products From ProductionGallery.vue
