@@ -1710,10 +1710,37 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 #gallery .right-side-bar .filter,
 #product .right-side-bar .filter{
+  background-color: #eaeaea;
+  position: relative;
+  color: #666666;
+  font-size: 13px;
+  float: right;
+  text-align: right;
+  width: auto;
+  border-radius: 4px;
+  padding: 1px 6px 1px 14px;
+  margin: 0 3px;
+}
+#gallery .right-side-bar .filter .close-btn,
+#product .right-side-bar .filter .close-btn{
+  position: absolute;
+  background-image: url("/uploads/svg/delete.svg");
+  width: 7px;
+  height: 7px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 6px;
+  left: 3px;
+  cursor: pointer;
+}
+#gallery .right-side-bar .filter-container,
+#product .right-side-bar .filter-container{
+  width: 100%;
   position: absolute;
   color: #666666;
   font-size: 13px;
   top: -30px;
+  height: 35px;
 }
 #gallery .right-side-bar .search,
 #product .right-side-bar .search{

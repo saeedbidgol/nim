@@ -6,7 +6,11 @@
         <div class="row">
           <div class="col-lg-3">
             <div class="right-side-bar">
-              <p class="filter">فرش ماشینی ۱۰۰۰ شانه</p>
+              <div class="row">
+                <div class="filter-container">
+                  <div class="col-lg-5 filter" v-for="filter in filters">{{getFilterName(filter)}} <span class="close-btn"></span> </div>
+                </div>
+              </div>
               <div class="row search">
                 <div class="col-12">
                   <form action>

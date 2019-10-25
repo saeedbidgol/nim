@@ -7,7 +7,9 @@
           <div class="col-lg-3">
             <div class="right-side-bar">
               <div class="row">
-                <div class="col-lg-5 filter" v-for="filter in filters">{{getFilterName(filter)}}</div>
+                <div class="filter-container">
+                  <div class="col-lg-5 filter" v-for="filter in filters">{{getFilterName(filter)}} <span class="close-btn"></span> </div>
+                </div>
               </div>
               <div class="row search">
                 <div class="col-12">
