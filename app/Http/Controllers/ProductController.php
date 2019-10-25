@@ -44,10 +44,21 @@ class ProductController extends Controller
     public function updateProduct()
     {
         $productID = $this->request->id;
-        $data = $this->request->except(['decor', 'pic', 'file']);
+        $data = $this->request->except(['decor', 'pic', 'file', 'colors']);
         unset($data['id']);
         Product::where('id', $productID)->update($data);
         $product = Product::find($productID);
+        $colorsData = $this->request->colors ?? null;
+        if (!empty($colorsData)) {
+            $product->colors()->delete();
+            $colors = explode(',', $this->request->colors);
+            $colorsToAdd = collect($colors)->map(function ($color) {
+                return [
+                    'color_id' => $color
+                ];
+            })->all();
+            $product->colors()->createMany($colorsToAdd);
+        }
 
         $this->uploadProductFiles($product);
     }
@@ -65,8 +76,21 @@ class ProductController extends Controller
             'reed' => $this->request->reed,
             'color_count' => $this->request->color_count,
             'density' => $this->request->density,
-            'about' => $this->request->about ?? null
+            'about' => $this->request->about ?? null,
+            'price' => $this->request->price ?? null,
+            'wrap' => $this->request->wrap ?? null,
+            'weft' => $this->request->weft ?? null,
+            'pile' => $this->request->pile ?? null,
         ]);
+        if ($this->request->has('colors')) {
+            $colors = explode(',', $this->request->colors);
+            $colorsToAdd = collect($colors)->map(function ($color) {
+                return [
+                    'color_id' => $color
+                ];
+            })->all();
+            $product->colors()->createMany($colorsToAdd);
+        }
 
         $this->uploadProductFiles($product);
     }
@@ -100,6 +124,16 @@ class ProductController extends Controller
         }
     }
 
+    public function getProduct($product)
+    {
+        return Product::with('colors')->where('id', $product)->first();
+    }
+
+    public function getProductSuggestions(Product $product)
+    {
+        return Product::where('id','<>',$product->id)->where(['reed' => $product->reed, 'density' => $product->density, 'color_count' => $product->color_count])->take(4)->get();
+    }
+
     //GET /products From ProductionGallery.vue
     public function getProducts()
     {
@@ -107,6 +141,6 @@ class ProductController extends Controller
         $reed = $this->request->reed ?? null;
         $color = $this->request->color ?? null;
         $colorCount = $this->request->color_count ?? null;
-        return Product::with('colors')->ofSearch($search)->ofReed($reed)->ofColor($color)->ofColorCount($colorCount)->paginate(16);
+        return Product::with('colors')->ofSearch($search)->ofReed($reed)->ofColor($color)->ofColorCount($colorCount)->orderByDesc('created_at')->paginate(16);
     }
 }

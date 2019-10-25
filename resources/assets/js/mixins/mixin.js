@@ -60,6 +60,9 @@ export default {
         };
     },
     methods: {
+        $separator(number) {
+            return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+        },
         $abilityCheck(skill, module) {
             let isAbility = new ability();
             return isAbility.checkAbility(skill,module);

@@ -16,6 +16,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'products'], function () {
     Route::get('', 'ProductController@getProducts');
+    Route::get('{product}', 'ProductController@getProduct');
+    Route::get('{product}/suggestions', 'ProductController@getProductSuggestions');
     Route::get('portfolio', 'ProductController@getPortfolio');
     Route::get('favorites', 'ProductController@getFavorites');
     Route::patch('{product}/favorite', 'ProductController@addFavorite');

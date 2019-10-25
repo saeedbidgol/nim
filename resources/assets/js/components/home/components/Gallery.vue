@@ -109,7 +109,9 @@
                     <h3 class="product-name">{{product.name}}</h3>
                     <p class="details1">{{product.reed}} شانه تراکم {{product.density}}</p>
                     <p class="details2">{{product.color_count}} رنگ</p>
-                    <p class="price">۱,۷۲۰,۰۰۰ تومان</p>
+                    <p
+                      class="price"
+                    >{{product.price?$ENTPN($separator(product.price)) + 'ریال':'ندارد'}}</p>
                     <router-link :to="`/product/${product.id}`">
                       <a href class="more" @click="addFavorite(product.id)">اطلاعات بیشتر</a>
                     </router-link>
@@ -177,7 +179,7 @@ export default {
       this.getProducts();
     },
     addFavorite(product) {
-      this.$persistClient("patch", `/products/${product.id}/favorite`);
+      this.$persistClient("patch", `/products/${product}/favorite`);
     },
     getProducts() {
       let url = `/products?page=${this.products.current_page}`;
