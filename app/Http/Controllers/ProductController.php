@@ -126,7 +126,12 @@ class ProductController extends Controller
 
     public function getProduct($product)
     {
-        return Product::with('colors')->where('id', $product)->get();
+        return Product::with('colors')->where('id', $product)->first();
+    }
+
+    public function getProductSuggestions(Product $product)
+    {
+        return Product::where('id','<>',$product->id)->where(['reed' => $product->reed, 'density' => $product->density, 'color_count' => $product->color_count])->take(4)->get();
     }
 
     //GET /products From ProductionGallery.vue

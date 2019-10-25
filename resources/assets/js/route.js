@@ -32,11 +32,12 @@ const routes = [
         },
     },
     {
-        path: '/product/:id?',
+        path: '/product/:product?',
         components: {
             main: Product,
             top: Top,
         },
+        props: { main: true },
     },
     {
         path: '/dashboard',
