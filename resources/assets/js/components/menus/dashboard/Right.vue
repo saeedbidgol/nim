@@ -49,6 +49,12 @@
             <span>شبکه های اجتماعی</span>
           </router-link>
         </li>
+        <li>
+          <router-link to="/dashboard/users">
+            <i class="fas fa-users"></i>
+            <span>مدیریت کاربران</span>
+          </router-link>
+        </li>
       </ul>
     </div>
   </div>

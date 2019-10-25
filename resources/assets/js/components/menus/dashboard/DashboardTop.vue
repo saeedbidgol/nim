@@ -35,8 +35,6 @@
               </li>
             </ul>
             <ul class="nav navbar-right navbar-nav">
-                
-              
               <li class="dropdown user-dropdown margin-sides">
                 <a
                   href="#"
@@ -50,14 +48,8 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li>
-                    <router-link to="/users/profile">پروفایل</router-link>
-                  </li>
-                  <li>
                     <a href data-toggle="modal" data-target="#change-password-modal">تغییر رمز عبور</a>
                   </li>
-
-                  <li role="separator" class="divider"></li>
-
                   <li>
                     <a href="#" @click="logout()">
                       <i class="fas fa-power-off mr0"></i> خروج
@@ -72,7 +64,7 @@
         <!-- /.container-fluid -->
       </nav>
     </div>
-    <!-- <modal id="change-password-modal" title="تغییر رمز عبور" :isLoading="isLoading">
+    <modal id="change-password-modal" title="تغییر رمز عبور" :isLoading="isLoading">
       <div slot="body">
         <v-validate-observer tag="form" ref="changePassword" v-slot="{ invalid }">
           <div class="form-group row">
@@ -126,7 +118,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">لغو</button>
         <button type="button" class="btn btn-primary" @click="changePassword">ارسال</button>
       </div>
-    </modal> -->
+    </modal>
   </div>
 </template>
 
@@ -134,41 +126,11 @@
 export default {
   data() {
     return {
-      fileData: "",
-      request: {},
-      requestCreated: [],
       password: {},
-      groupWorks: [],
-      groups: [],
-      subGroups: [],
       isLoading: false
     };
   },
-  filters: {
-    excpert(value, maxLength) {
-      if (value.length < maxLength) return value;
-      return value.substring(0, maxLength) + " ...";
-    }
-  },
-  computed: {
-    hasNotification() {
-      return this.requestCreated.length > 0;
-    }
-  },
   methods: {
-    getSubGroups(group) {
-      if (!group) return;
-      this.subGroups = this.groupWorks.filter(i => i.group_id == group);
-    },
-    getGroupWorks() {
-      this.isLoading = true;
-      this.$persistClient("get", "/group-works/tree")
-        .then(res => {
-          this.groupWorks = res.data;
-          this.groups = this.groupWorks.filter(i => i.group_id == 0);
-        })
-        .finally(() => (this.isLoading = false));
-    },
     changePassword() {
       this.$refs.changePassword.validate().then(result => {
         if (result) {
@@ -190,61 +152,6 @@ export default {
     },
     logout() {
       document.getElementById("logout-form").submit();
-    },
-    getRequests() {
-      this.$persistClient("get", "/requests").then(res => {
-        this.requestCreated = res.data;
-      });
-    },
-    playNotification() {
-      try {
-        var audio = new Audio("/sounds/alert.mp3");
-        audio.play();
-      } catch (error) {
-        console.log("error:", error);
-      }
-    },
-    createRequest(request) {
-      this.requestCreated.unshift(request);
-      this.playNotification();
-    },
-    setRequestFile(e) {
-      let files = event.target.files;
-      this.fileData = files[0].name;
-      if (
-        files[0].size &&
-        files[0].size / process.env.MIX_REQUEST_FILE_SIZE > 1
-      ) {
-        this.$alert("error", "خطا", "سایز فایل نباید از 3 مگابایت بیشتر باشد");
-        $("#" + event.target.id).val("");
-        return;
-      }
-      this.request.file = files[0];
-    },
-    sendRequest() {
-      this.$refs.request.validate().then(result => {
-        if (result) {
-          let formData = new FormData();
-          for (var key in this.request) {
-            if (this.request[key] != null)
-              formData.append(key, this.request[key]);
-          }
-          this.isLoading = true;
-          this.$persistClient(
-            "post",
-            `/requests/users/${this.$user.id}`,
-            formData
-          )
-            .then(() => {
-              this.$alert("success");
-              $("#send-request-modal").modal("hide");
-              this.request = {};
-              this.fileData = "";
-              this.$refs.request.reset();
-            })
-            .finally(() => (this.isLoading = false));
-        }
-      });
     }
   }
 };

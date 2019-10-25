@@ -157,7 +157,8 @@ return [
         'new_password' => 'رمزعبور جدید',
         'password_confirmation' => 'تکرار رمزعبور',
         'address' => 'آدرس',
-        'description' => 'توضیحات'
+        'description' => 'توضیحات',
+        'username'=>'نام کاربری'
     ],
 
 ];

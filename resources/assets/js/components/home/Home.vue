@@ -10,12 +10,12 @@
     ============================-->
     <portfolio />
 
-      <!--==========================
+    <!--==========================
       catalogue Section
     ============================-->
     <catalogue />
 
-     <!--==========================
+    <!--==========================
       News Section
     ============================-->
     <news />
@@ -26,9 +26,9 @@
     <about />
 
     <!--==========================
-      Contact Section
+      Map Section
     ============================-->
-    <contact />
+    <map-nim />
     <a href="#" class="back-to-top">
       <i class="fa fa-chevron-up"></i>
     </a>
@@ -43,9 +43,18 @@ import About from "./components/About";
 import Catalogue from "./components/Catalogue";
 import Portfolio from "./components/Portfolio";
 import News from "./components/News";
-import Contact from "./components/Contact";
+import MapNim from "./components/MapNim";
 export default {
-  components: { Favorites, Facts, Services, About, Portfolio, News, Contact, Catalogue },
+  components: {
+    Favorites,
+    Facts,
+    Services,
+    About,
+    Portfolio,
+    News,
+    MapNim,
+    Catalogue
+  },
   data() {
     return {};
   }

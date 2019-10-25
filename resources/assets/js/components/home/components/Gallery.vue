@@ -6,7 +6,9 @@
         <div class="row">
           <div class="col-lg-3">
             <div class="right-side-bar">
-              <p class="filter">فرش ماشینی ۱۰۰۰ شانه</p>
+              <div class="row">
+                <div class="col-lg-5 filter" v-for="filter in filters">{{getFilterName(filter)}}</div>
+              </div>
               <div class="row search">
                 <div class="col-12">
                   <form action>
@@ -42,42 +44,42 @@
                     <ul class="color-list">
                       <div class="row">
                         <li class="col-lg-2" @click="colorFilter(1)">
-                          <span id="color1"></span>
+                          <span id="color1" class="hide-text">سورمه ای</span>
                         </li>
                         <li class="col-lg-2" @click="colorFilter(2)">
-                          <span id="color2"></span>
+                          <span id="color2" class="hide-text">نارنجی</span>
                         </li>
                         <li class="col-lg-2" @click="colorFilter(3)">
-                          <span id="color3"></span>
+                          <span id="color3" class="hide-text">بژ</span>
                         </li>
                         <li class="col-lg-2" @click="colorFilter(4)">
-                          <span id="color4" class="active"></span>
+                          <span id="color4" class="hide-text">قهوه ای</span>
                         </li>
                         <li class="col-lg-2" @click="colorFilter(5)">
-                          <span id="color5"></span>
+                          <span id="color5" class="hide-text">سفید</span>
                         </li>
                         <li class="col-lg-2" @click="colorFilter(6)">
-                          <span id="color6"></span>
+                          <span id="color6" class="hide-text">مشکی</span>
                         </li>
                       </div>
                       <div class="row">
                         <li class="col-lg-2" @click="colorFilter(7)">
-                          <span id="color7"></span>
+                          <span id="color7" class="hide-text">قرمز</span>
                         </li>
                         <li class="col-lg-2" @click="colorFilter(8)">
-                          <span id="color8"></span>
+                          <span id="color8" class="hide-text">سبز</span>
                         </li>
                         <li class="col-lg-2" @click="colorFilter(9)">
-                          <span id="color9"></span>
+                          <span id="color9" class="hide-text">زرد</span>
                         </li>
                         <li class="col-lg-2" @click="colorFilter(10)">
-                          <span id="color10"></span>
+                          <span id="color10" class="hide-text">صورتی</span>
                         </li>
                         <li class="col-lg-2" @click="colorFilter(11)">
-                          <span id="color11"></span>
+                          <span id="color11" class="hide-text">طوسی</span>
                         </li>
                         <li class="col-lg-2" @click="colorFilter(12)">
-                          <span id="color12"></span>
+                          <span id="color12" class="hide-text">آبی</span>
                         </li>
                       </div>
                     </ul>
@@ -108,7 +110,9 @@
                     <img :src="`/uploads/${product.pic_url}`" :alt="product.name" />
                     <div class="text">
                       <h3 class="product-name">{{product.name}}</h3>
-                      <p class="details1">{{$ENTPN(product.reed)}} شانه تراکم {{$ENTPN(product.density)}}</p>
+                      <p
+                        class="details1"
+                      >{{$ENTPN(product.reed)}} شانه تراکم {{$ENTPN(product.density)}}</p>
                       <p class="details2">{{$ENTPN(product.color_count)}} رنگ</p>
                       <p
                         class="price"
@@ -120,11 +124,7 @@
                   </div>
                 </div>
               </div>
-              <pagination
-                :pagination="products"
-                @paginate="getProducts()"
-                :offset="16"
-              ></pagination>
+              <pagination :pagination="products" @paginate="getProducts()" :offset="16"></pagination>
             </div>
           </div>
         </div>
@@ -154,7 +154,8 @@ export default {
         to: 0,
         current_page: 1
       },
-      filter: {}
+      filter: {},
+      filters: []
     };
   },
   computed: {
@@ -168,22 +169,47 @@ export default {
     this.getProducts();
   },
   methods: {
+    getFilterName(filter) {
+      return $(filter).text();
+    },
     colorCountFilter(color) {
-      if (this.filter.color_count)
+      if (this.filter.color_count) {
         $(`#color_count_${this.filter.color_count}`).removeClass("active");
+        let index = this.filters.indexOf(
+          `#color_count_${this.filter.color_count}`
+        );
+        if (index > -1) {
+          this.filters.splice(index, 1);
+        }
+      }
       $(`#color_count_${color}`).addClass("active");
+      this.filters.push(`#color_count_${color}`);
       this.filter.color_count = color;
       this.getProducts();
     },
     colorFilter(color) {
-      if (this.filter.color) $(`#${this.filter.color}`).removeClass("active");
-      $(`#${color}`).addClass("active");
+      if (this.filter.color) {
+        $(`#color${this.filter.color}`).removeClass("active");
+        let index = this.filters.indexOf(`#color${this.filter.color}`);
+        if (index > -1) {
+          this.filters.splice(index, 1);
+        }
+      }
+      $(`#color${color}`).addClass("active");
+      this.filters.push(`#color${color}`);
       this.filter.color = color;
       this.getProducts();
     },
     reedFilter(reed) {
-      if (this.filter.reed) $(`#${this.filter.reed}`).removeClass("active");
+      if (this.filter.reed) {
+        $(`#${this.filter.reed}`).removeClass("active");
+        let index = this.filters.indexOf(`#${this.filter.reed}`);
+        if (index > -1) {
+          this.filters.splice(index, 1);
+        }
+      }
       $(`#${reed}`).addClass("active");
+      this.filters.push(`#${reed}`);
       this.filter.reed = reed;
       this.getProducts();
     },
@@ -208,5 +234,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.hide-text {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
 </style>
