@@ -16,8 +16,9 @@ class CreateColorsTable extends Migration
         Schema::create('colors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('product_id');
+            $table->tinyInteger('color_id');
             $table->string('name')->nullable();
-            $table->string('file_url');
+            $table->string('file_url')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

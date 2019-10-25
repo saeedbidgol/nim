@@ -27,6 +27,7 @@ Route::group(['prefix' => 'site-features'], function () {
     Route::get('catalogues/last', 'SiteFeaturesController@getLastCatalogue');
     Route::get('contact-us', 'SiteFeaturesController@getContactUs');
 });
+Route::get('/gallery', 'HomeController@spa');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'products'], function () {
