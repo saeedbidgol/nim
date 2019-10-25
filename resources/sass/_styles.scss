@@ -2375,7 +2375,7 @@ th {
       -webkit-transition: all 300ms ease;
       -o-transition: all 300ms ease;
       -ms-transition: all 300ms ease;
-      margin-top: 40px !important;
+      margin-top: 40px ;
       &.dropdown-list {
         li {
           &:first-child {
@@ -2893,10 +2893,10 @@ th {
       }
       .active > a {
         color: #555;
-        background-color: #e7e7e7;
+        
         &:hover, &:focus {
           color: #555;
-          background-color: #e7e7e7;
+         
         }
       }
       .disabled > a {
@@ -2924,10 +2924,10 @@ th {
     }
     .navbar-nav > .open > a {
       color: #555;
-      background-color: #e7e7e7;
+      
       &:hover, &:focus {
         color: #555;
-        background-color: #e7e7e7;
+        
       }
     }
   }
@@ -3037,10 +3037,10 @@ th {
         }
         .active > a {
           color: #555;
-          background-color: #e7e7e7;
+          
           &:hover, &:focus {
             color: #555;
-            background-color: #e7e7e7;
+           
           }
         }
         .disabled > a {
