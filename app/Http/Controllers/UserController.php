@@ -16,6 +16,20 @@ class UserController extends Controller
         $this->request = $request;
     }
 
+    public function updatePassword(User $user)
+    {
+        $this->request->validate([
+            'current_password' => 'required',
+            'password' => 'required|min:8|confirmed',
+            'password_confirmation' => 'required|min:8'
+        ]);
+        if (!Hash::check($this->request->current_password, $user->password))
+            return response()->json(['message' => 'رمزعبور فعلی صحیح نیست'], 422);
+        $password = Hash::make($this->request->password);
+        $user->password = $password;
+        $user->save();
+    }
+
     public function getUsers()
     {
         return User::all();
@@ -34,7 +48,7 @@ class UserController extends Controller
     public function deleteUser(User $user)
     {
         if ($user->type == 1)
-            return response()->json(['message' => 'شما این دسترسی را ندارید'],422);
+            return response()->json(['message' => 'شما این دسترسی را ندارید'], 422);
         $user->delete();
     }
 

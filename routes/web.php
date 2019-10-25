@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'users'], function () {
         Route::get('', 'UserController@getUsers');
         Route::post('', 'UserController@addUser');
+        Route::patch('{user}/password', 'UserController@updatePassword');
         Route::patch('{user}', 'UserController@updateUser');
         Route::delete('{user}', 'UserController@deleteUser');
     });
