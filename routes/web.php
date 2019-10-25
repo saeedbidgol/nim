@@ -14,30 +14,37 @@ Auth::routes();
 Route::get('/', "HomeController@index");
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::group(['prefix' => 'products'], function () {
+    Route::get('', 'ProductController@getProducts');
+    Route::get('portfolio', 'ProductController@getPortfolio');
+    Route::get('favorites', 'ProductController@getFavorites');
+    Route::patch('{product}/favorite', 'ProductController@addFavorite');
+});
+Route::group(['prefix' => 'site-features'], function () {
+    Route::get('about-us', 'SiteFeaturesController@getAboutUs');
+    Route::get('slides', 'SiteFeaturesController@getSlides');
+    Route::get('news', 'SiteFeaturesController@getNews');
+    Route::get('catalogues/last', 'SiteFeaturesController@getLastCatalogue');
+    Route::get('contact-us', 'SiteFeaturesController@getContactUs');
+});
+
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'products'], function () {
-        Route::get('', 'ProductController@getProducts');
-        Route::get('portfolio', 'ProductController@getPortfolio');
-        Route::get('favorites', 'ProductController@getFavorites');
         Route::post('', 'ProductController@addProduct');
-        Route::patch('{product}/favorite', 'ProductController@addFavorite');
         Route::delete('{product}/colors/{color}', 'ProductController@deleteColorOfProduct');
         Route::delete('{product}', 'ProductController@deleteProduct');
     });
 
     Route::group(['prefix' => 'site-features'], function () {
-        Route::get('about-us', 'SiteFeaturesController@getAboutUs');
         Route::patch('about-us', 'SiteFeaturesController@updateAboutUs');
 
         Route::group(['prefix' => 'slides'], function () {
-            Route::get('', 'SiteFeaturesController@getSlides');
             Route::delete('{slide}', 'SiteFeaturesController@deleteSlide');
             Route::post('', 'SiteFeaturesController@addSlide');
             Route::post('{slide}/update', 'SiteFeaturesController@updateSlide');
         });
 
         Route::group(['prefix' => 'news'], function () {
-            Route::get('', 'SiteFeaturesController@getNews');
             Route::post('', 'SiteFeaturesController@addNews');
             Route::post('{news}/update', 'SiteFeaturesController@updateNews');
             Route::delete('{news}', 'SiteFeaturesController@deleteNews');
@@ -45,14 +52,12 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::group(['prefix' => 'catalogues'], function () {
             Route::get('', 'SiteFeaturesController@getCatalogues');
-            Route::get('last', 'SiteFeaturesController@getLastCatalogue');
             Route::delete('{catalogue}', 'SiteFeaturesController@deleteCatalogue');
             Route::post('', 'SiteFeaturesController@addCatalogue');
             Route::post('{catalogue}/update', 'SiteFeaturesController@updateCatalogue');
         });
 
         Route::group(['prefix' => 'contact-us'], function () {
-            Route::get('', 'SiteFeaturesController@getContactUs');
             Route::patch('', 'SiteFeaturesController@updateContactUs');
         });
     });
