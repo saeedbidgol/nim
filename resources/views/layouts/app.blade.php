@@ -22,7 +22,7 @@
             <div id="header-container">
                 <div class="navbar-logo">
                     <div id="header-navbar-logo">
-                        <a href="#hero"><img src="uploads/logo.svg" alt="نیم رخ بافت" title="" /></a>
+                        <a href="#hero"><img src="/uploads/logo.svg" alt="نیم رخ بافت" title="" /></a>
                         <!-- Uncomment below if you prefer to use a text logo -->
                         <!--<h1><a href="#hero">Regna</a></h1>-->
 

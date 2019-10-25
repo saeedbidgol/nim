@@ -2,7 +2,7 @@
   <div style="width:100%">
     <ul class="nav-menu">
       <li class="menu-active">
-        <a href="#hero">
+        <a href="/#hero">
           <img src="uploads/nav-item-logo/main-page.svg" alt /> صفحه اصلی
         </a>
       </li>
@@ -12,22 +12,22 @@
         </router-link>
       </li>
       <li>
-        <a href="#services">
+        <a href="/#news">
           <img src="uploads/nav-item-logo/news.svg" alt /> اخبار و مقالات
         </a>
       </li>
       <li>
-        <a href="#portfolio">
+        <a :href="`/uploads/${catalogue.file_url}`" target="_blank">
           <img src="uploads/nav-item-logo/catalogue.svg" alt /> دانلود کاتالوگ
         </a>
       </li>
       <li>
-        <a href="#team">
+        <a href="/#team">
           <img src="uploads/nav-item-logo/about-us.svg" alt /> درباره ما
         </a>
       </li>
       <li>
-        <a href="#contact">
+        <a href="/#contact">
           <img src="uploads/nav-item-logo/contact-us.svg" alt /> تماس با ما
         </a>
       </li>
@@ -54,7 +54,8 @@
 export default {
   data() {
     return {
-      info: []
+      info: [],
+      catalogue:""
     };
   },
   mounted() {
@@ -64,6 +65,11 @@ export default {
     getTopInfo() {
       this.$persistClient("get", "/site-features/contact-us").then(res => {
         this.info = res.data;
+      });
+    },
+    getCatalogue() {
+      this.$persistClient("get", "/site-features/catalogues/last").then(res => {
+        this.catalogue = res.data;
       });
     }
   }
