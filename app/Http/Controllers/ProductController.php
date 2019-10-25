@@ -22,7 +22,7 @@ class ProductController extends Controller
 
     public function getFavorites()
     {
-        return Product::orderByDesc('favorite')->take(10)->get();
+        return Product::orderBy('favorite','desc')->take(10)->get();
     }
 
     public function getPortfolio()
