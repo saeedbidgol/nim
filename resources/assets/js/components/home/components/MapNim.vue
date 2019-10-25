@@ -7,8 +7,6 @@ import L from "leaflet";
 export default {
   name: "MapNim",
   mounted() {
-    console.log("inja mape");
-
     var mymap = L.map("map").setView([34.0248922, 51.4901517], 16);
     var icon = new L.Icon.Default();
     icon.options.shadowSize = [0, 0];
