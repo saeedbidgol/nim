@@ -92,56 +92,40 @@
           </div>
         </div>
         <div class="row form-group">
-          <div class="col-6">
-            <div class="row form-group">
-              <div class="col-6">
-                <label for="file" class="col-form-label">تصویر:</label>
-                <div class="custom-file">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    class="custom-file-input"
-                    name="pic"
-                    ref="fileUpload"
-                    autocomplete="pic"
-                    @change="setFile($event,'pic')"
-                  />
-                  <label
-                    class="custom-file-label"
-                    data-browse="بارگذاری"
-                  >{{pic?getFileName(pic):'انتخاب تصویر'}}</label>
-                </div>
-              </div>
-              <div class="col-6">
-                <label for="file" class="col-form-label">نمای دکوراسیون:</label>
-                <div class="custom-file">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    class="custom-file-input"
-                    name="decor"
-                    ref="fileUpload"
-                    autocomplete="decor"
-                    @change="setFile($event,'decor')"
-                  />
-                  <label
-                    class="custom-file-label"
-                    data-browse="بارگذاری"
-                  >{{decor?getFileName(decor):'انتخاب تصویر'}}</label>
-                </div>
-              </div>
+          <div class="col-3">
+            <label for="file" class="col-form-label">تصویر:</label>
+            <div class="custom-file">
+              <input
+                type="file"
+                accept="image/*"
+                class="custom-file-input"
+                name="pic"
+                ref="fileUpload"
+                autocomplete="pic"
+                @change="setFile($event,'pic')"
+              />
+              <label
+                class="custom-file-label"
+                data-browse="بارگذاری"
+              >{{pic?getFileName(pic):'انتخاب تصویر'}}</label>
             </div>
-            <div class="row form-group">
-              <div class="col-12">
-                <label for="name" class="control-label">درباره طرح:</label>
-                <textarea
-                  class="form-control"
-                  name="about"
-                  cols="30"
-                  rows="5"
-                  v-model.trim="product.about"
-                ></textarea>
-              </div>
+          </div>
+          <div class="col-3">
+            <label for="file" class="col-form-label">نمای دکوراسیون:</label>
+            <div class="custom-file">
+              <input
+                type="file"
+                accept="image/*"
+                class="custom-file-input"
+                name="decor"
+                ref="fileUpload"
+                autocomplete="decor"
+                @change="setFile($event,'decor')"
+              />
+              <label
+                class="custom-file-label"
+                data-browse="بارگذاری"
+              >{{decor?getFileName(decor):'انتخاب تصویر'}}</label>
             </div>
           </div>
           <div class="col-6">
@@ -167,6 +151,28 @@
               @vdropzone-removed-file="removedFile"
               :duplicateCheck="true"
             ></vue-dropzone>-->
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-3">
+            <label for="file" class="col-form-label">قیمت:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="قیمت به ریال"
+              name="price"
+              v-model="price"
+            />
+          </div>
+          <div class="col-9">
+            <label for="name" class="control-label">درباره طرح:</label>
+            <textarea
+              class="form-control"
+              name="about"
+              cols="30"
+              rows="5"
+              v-model.trim="product.about"
+            ></textarea>
           </div>
         </div>
         <div class="row">
@@ -282,8 +288,16 @@ export default {
         from: 1,
         to: 0,
         current_page: 1
-      }
+      },
+      price: ""
     };
+  },
+  watch: {
+    price(newValue) {
+      let result = String(newValue).replace(/,/g, "");
+      this.price = result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      this.product.price = Number(result);
+    }
   },
   mounted() {
     this.getProducts();
@@ -337,6 +351,7 @@ export default {
       };
       this.decor = product.decor_url;
       this.pic = product.pic_url;
+      if (product.price) this.price = product.price;
       if (product.colors) {
         let colors = collect(product.colors)
           .pluck("color_id")
@@ -395,8 +410,8 @@ export default {
             this.$refs.production.reset();
             this.decor = "";
             this.pic = "";
+            this.price = "";
             this.getProducts();
-            this.$refs.myVueDropzone.removeAllFiles(true);
           })
           .finally(() => {
             this.isLoading = false;

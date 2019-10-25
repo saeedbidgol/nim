@@ -48,15 +48,17 @@ class ProductController extends Controller
         unset($data['id']);
         Product::where('id', $productID)->update($data);
         $product = Product::find($productID);
-
-        $product->colors()->delete();
-        $colors = explode(',', $this->request->colors);
-        $colorsToAdd = collect($colors)->map(function ($color) {
-            return [
-                'color_id' => $color
-            ];
-        })->all();
-        $product->colors()->createMany($colorsToAdd);
+        $colorsData = $this->request->colors ?? null;
+        if (!empty($colorsData)) {
+            $product->colors()->delete();
+            $colors = explode(',', $this->request->colors);
+            $colorsToAdd = collect($colors)->map(function ($color) {
+                return [
+                    'color_id' => $color
+                ];
+            })->all();
+            $product->colors()->createMany($colorsToAdd);
+        }
 
         $this->uploadProductFiles($product);
     }
@@ -74,7 +76,8 @@ class ProductController extends Controller
             'reed' => $this->request->reed,
             'color_count' => $this->request->color_count,
             'density' => $this->request->density,
-            'about' => $this->request->about ?? null
+            'about' => $this->request->about ?? null,
+            'price' => $this->request->price ?? null
         ]);
         if ($this->request->has('colors')) {
             $colors = explode(',', $this->request->colors);
@@ -125,6 +128,6 @@ class ProductController extends Controller
         $reed = $this->request->reed ?? null;
         $color = $this->request->color ?? null;
         $colorCount = $this->request->color_count ?? null;
-        return Product::with('colors')->ofSearch($search)->ofReed($reed)->ofColor($color)->ofColorCount($colorCount)->paginate(16);
+        return Product::with('colors')->ofSearch($search)->ofReed($reed)->ofColor($color)->ofColorCount($colorCount)->orderByDesc('created_at')->paginate(16);
     }
 }
