@@ -1940,7 +1940,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   height: 400px;
   text-align: justify;
   border: 1px solid #e8e7e7;
-  margin: 5px 5px !important;
+  margin: 40px 5px 5px !important;
   border-radius: 35px 35px 35px 155px;
 }
 #decoration-content .col-lg-5,
@@ -1950,19 +1950,19 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #decoration-text .title{
   position: absolute;
-    background-color: #092859;
-    margin-left: 7px;
-    font-weight: bold;
-    color: #edbd3b;
-    font-size: 18px;
-    right: 0;
-    top: 37px;
-    width: 140px;
-    font-size: 18px;
-    height: 35px;
-    border: 1px solid #34415c;
-    padding: 3px 10px;
-    border-radius: 20px 0 0 19px;
+  background-color: #092859;
+  margin-left: 7px;
+  font-weight: bold;
+  color: #edbd3b;
+  font-size: 18px;
+  right: 0;
+  top: 37px;
+  width: 150px;
+  font-size: 18px;
+  height: 35px;
+  border: 1px solid #34415c;
+  padding: 3px 10px;
+  border-radius: 20px 0 0 19px;
 }
 #decoration-text p{
   line-height: 25px;
@@ -1974,9 +1974,12 @@ body.mobile-nav-active #mobile-nav-toggle {
 #decoration-image{
   padding: 0;
 }
-
+#decoration-image img{
+  width: 100%;
+  height: 100%;
+}
 #product-suggestion{
-  height: 400px;
+  height: 415px;
   margin: 30px 0 50px 0 !important;
   padding: 50px 0 0 0;
   position: relative;
@@ -1986,7 +1989,46 @@ body.mobile-nav-active #mobile-nav-toggle {
   top: 4px;
   right: 0;
   font-size: 20px;
+  
 }
+#gallery{
+  padding: 0 0 50px;
+}
+#gallery .pagination{
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+  bottom: -50px;
 
-
-
+}
+#gallery .pagination li{
+  width: 35px;
+  height: 35px;
+  background-color: #052a6a;
+  border-radius: 6px;
+  margin: 0 3px;
+  text-align: center;
+  padding: 3px 0;
+  transition: 0.3s;
+  position: relative;
+  cursor: pointer;
+}
+#gallery .pagination li a{
+  width: 100%;
+  height: 100%;
+  color: #edbd3b;
+  font-size: 20px;
+}
+#gallery .pagination li:hover{
+  background-color: #10377a;
+}
+#gallery .pagination .active{
+  background-color: #edbd3b !important;
+}
+#gallery .pagination .active a{
+  color: #052a6a !important;
+}

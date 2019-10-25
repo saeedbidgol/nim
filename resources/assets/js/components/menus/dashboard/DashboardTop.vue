@@ -35,26 +35,8 @@
               </li>
             </ul>
             <ul class="nav navbar-right navbar-nav">
-                <ul class="dropdown-menu dropdown-lg dropdown-content">
-                  <li class="slimscroll dropdown-notifications hover">
-                    <ul class="list-unstyled dropdown-oc">
-                      <li class="hover" v-for="request in requestCreated" :key="request.id">
-                        <router-link to="/repair-requests">
-                          <span class="notification-info">
-                            <b style="display:block;font-size: 16px;">{{request.user.full_name}}</b>
-                            <p>{{request.customer_description | excpert(40)}}</p>
-                            <small
-                              class="notification-date"
-                              style="display:block"
-                            >{{$getJalaliDateTime(request.created_at)}}</small>
-                          </span>
-                          <div class="request-image"></div>
-                        </router-link>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
+                
+              
               <li class="dropdown user-dropdown margin-sides">
                 <a
                   href="#"
@@ -64,7 +46,7 @@
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <img src="/images/svg/user.svg" alt class />
+                  <img src="/uploads/svg/user.svg" alt class />
                 </a>
                 <ul class="dropdown-menu">
                   <li>

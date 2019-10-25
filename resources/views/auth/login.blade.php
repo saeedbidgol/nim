@@ -82,7 +82,8 @@
 </script>
 <style>
 .login-page{
-    background: url("images/login-back.jpg") no-repeat fixed ;
+  background: url("/uploads/background/login.jpg") no-repeat fixed;
+  background-size: cover;
 }
 :root .page-inner {
     padding-bottom: 0 !important;

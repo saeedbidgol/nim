@@ -1,22 +1,22 @@
 <template>
   <ul class="pagination">
-    <li v-if="pagination.current_page > 1">
+    <li v-if="pagination.current_page > 1" v-on:click.prevent="changePage(pagination.current_page - 1)">
       <a
         href="javascript:void(0)"
         aria-label="Previous"
-        v-on:click.prevent="changePage(pagination.current_page - 1)"
+        
       >
         <span aria-hidden="true">«</span>
       </a>
     </li>
-    <li v-for="page in pagesNumber" :class="{'active': page == pagination.current_page}">
-      <a href="javascript:void(0)" v-on:click.prevent="changePage(page)">{{ page }}</a>
+    <li v-for="page in pagesNumber" v-on:click.prevent="changePage(page)" :class="{'active': page == pagination.current_page}">
+      <a href="javascript:void(0)" >{{ page }}</a>
     </li>
-    <li v-if="pagination.current_page < pagination.last_page">
+    <li v-if="pagination.current_page < pagination.last_page" v-on:click.prevent="changePage(pagination.current_page + 1)">
       <a
         href="javascript:void(0)"
         aria-label="Next"
-        v-on:click.prevent="changePage(pagination.current_page + 1)"
+        
       >
         <span aria-hidden="true">»</span>
       </a>
