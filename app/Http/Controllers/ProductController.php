@@ -44,10 +44,19 @@ class ProductController extends Controller
     public function updateProduct()
     {
         $productID = $this->request->id;
-        $data = $this->request->except(['decor', 'pic', 'file']);
+        $data = $this->request->except(['decor', 'pic', 'file', 'colors']);
         unset($data['id']);
         Product::where('id', $productID)->update($data);
         $product = Product::find($productID);
+
+        $product->colors()->delete();
+        $colors = explode(',', $this->request->colors);
+        $colorsToAdd = collect($colors)->map(function ($color) {
+            return [
+                'color_id' => $color
+            ];
+        })->all();
+        $product->colors()->createMany($colorsToAdd);
 
         $this->uploadProductFiles($product);
     }
@@ -67,6 +76,15 @@ class ProductController extends Controller
             'density' => $this->request->density,
             'about' => $this->request->about ?? null
         ]);
+        if ($this->request->has('colors')) {
+            $colors = explode(',', $this->request->colors);
+            $colorsToAdd = collect($colors)->map(function ($color) {
+                return [
+                    'color_id' => $color
+                ];
+            })->all();
+            $product->colors()->createMany($colorsToAdd);
+        }
 
         $this->uploadProductFiles($product);
     }

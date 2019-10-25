@@ -145,7 +145,18 @@
             </div>
           </div>
           <div class="col-6">
-            <vue-dropzone
+            <label class="col-form-label">رنگبندی:</label>
+            <v-select
+              dir="rtl"
+              label="name"
+              :reduce="color => color.id"
+              :options="colors"
+              v-model="product.colors"
+              multiple
+            >
+              <div slot="no-options">موردی‌یافت‌نشد!</div>
+            </v-select>
+            <!-- <vue-dropzone
               ref="myVueDropzone"
               id="dropzone"
               :options="dropzoneOptions"
@@ -155,7 +166,7 @@
               @vdropzone-file-added="fileAdded = true"
               @vdropzone-removed-file="removedFile"
               :duplicateCheck="true"
-            ></vue-dropzone>
+            ></vue-dropzone>-->
           </div>
         </div>
         <div class="row">
@@ -196,15 +207,7 @@
               <td>{{product.dimension}}</td>
               <td>{{product.density}}</td>
               <td>{{product.color_count}}</td>
-              <td>
-                <img
-                  v-if="product.colors"
-                  v-for="color in product.colors"
-                  :key="color.id"
-                  :src="'/uploads/'+color.file_url"
-                />
-                <span v-else>ندارد</span>
-              </td>
+              <td>{{getColors(product)}}</td>
               <td>
                 <img v-if="product.decor_url" :src="'/uploads/'+product.decor_url" />
                 <span v-else>ندارد</span>
@@ -235,6 +238,20 @@ export default {
     return {
       isLoading: false,
       fileAdded: false,
+      colors: [
+        { id: 1, name: "سورمه ای" },
+        { id: 2, name: "نارنجی" },
+        { id: 3, name: "بژ" },
+        { id: 4, name: "قهوه ای" },
+        { id: 5, name: "سفید" },
+        { id: 6, name: "مشکی" },
+        { id: 7, name: "قرمز" },
+        { id: 8, name: "سبز" },
+        { id: 9, name: "زرد" },
+        { id: 10, name: "صورتی" },
+        { id: 11, name: "طوسی" },
+        { id: 12, name: "آبی" }
+      ],
       decor: "",
       pic: "",
       dropzoneOptions: {
@@ -272,6 +289,16 @@ export default {
     this.getProducts();
   },
   methods: {
+    getColors(product) {
+      if (!product.colors) return "ندارد";
+      let colors = collect(product.colors)
+        .pluck("color_id")
+        .toArray();
+      return collect(this.colors)
+        .whereIn("id", colors)
+        .pluck("name")
+        .join(",");
+    },
     removedFile(file) {
       if (!this.product.id) return;
       this.isLoading = true;
@@ -310,21 +337,12 @@ export default {
       };
       this.decor = product.decor_url;
       this.pic = product.pic_url;
-      this.$refs.myVueDropzone.removeAllFiles(true);
       if (product.colors) {
-        product.colors.forEach(element => {
-          let file = {
-            color_id: element.id,
-            name: this.getFileName(element.file_url),
-            product_id: product.id,
-            size: 123,
-            type: "image/png"
-          };
-          let url = `/uploads/${element.file_url}`;
-          this.$refs.myVueDropzone.manuallyAddFile(file, url);
-        });
+        let colors = collect(product.colors)
+          .pluck("color_id")
+          .toArray();
+        this.product.colors = colors;
       }
-      this.fileAdded = false;
     },
     getFileName(value) {
       let regexValue = value.match(/[\w-]+.(jpg|png|jpeg)/gm);
