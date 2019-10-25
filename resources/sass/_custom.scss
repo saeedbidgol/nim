@@ -582,6 +582,8 @@ input[type=checkbox], input[type=radio] {
 .dis-in{
     display: inline !important;
 }
+
+/**loading**/
 .loading-container{
     top: 0;
     left: 0;
@@ -606,6 +608,7 @@ input[type=checkbox], input[type=radio] {
     top: 50% !important;
     left: 50% !important;
 }
+/**end loading**/
 .record{
     background-color: rgb(19, 135, 245) !important;
     &:hover{

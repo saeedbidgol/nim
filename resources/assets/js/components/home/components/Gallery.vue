@@ -1,5 +1,6 @@
 <template>
-  <div id="gallery">
+  <div id="gallery" >
+    <loading :is-loading="isLoading">
     <div class="spacer"></div>
     <div class="gallery-container">
       <div class="row">
@@ -124,17 +125,21 @@
         </div>
       </div>
     </div>
+    </loading>
   </div>
 </template>
 
 <script>
 import pagination from "../../module/Pagination";
+import loading from "../../module/HomeLoading";
 export default {
   components: {
+    loading,
     pagination
   },
   data() {
     return {
+      isLoading:true,
       isCollapseGroup: false,
       isCollapseColor: false,
       isCollapseColorCount: false,
