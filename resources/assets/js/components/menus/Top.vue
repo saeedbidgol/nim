@@ -17,7 +17,7 @@
         </a>
       </li>
       <li>
-        <a href="/#portfolio">
+        <a :href="`/uploads/${catalogue.file_url}`" target="_blank">
           <img src="uploads/nav-item-logo/catalogue.svg" alt /> دانلود کاتالوگ
         </a>
       </li>
@@ -54,7 +54,8 @@
 export default {
   data() {
     return {
-      info: []
+      info: [],
+      catalogue:""
     };
   },
   mounted() {
@@ -64,6 +65,11 @@ export default {
     getTopInfo() {
       this.$persistClient("get", "/site-features/contact-us").then(res => {
         this.info = res.data;
+      });
+    },
+    getCatalogue() {
+      this.$persistClient("get", "/site-features/catalogues/last").then(res => {
+        this.catalogue = res.data;
       });
     }
   }
