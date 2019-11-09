@@ -8,7 +8,10 @@
             <div class="right-side-bar">
               <div class="row">
                 <div class="filter-container">
-                  <div class="col-lg-5 filter" v-for="filter in filters">{{getFilterName(filter)}} <span class="close-btn"></span> </div>
+                  <div class="col-lg-5 filter" v-for="filter in filters">
+                    {{getFilterName(filter)}}
+                    <span class="close-btn" @click="removeFilter(filter)"></span>
+                  </div>
                 </div>
               </div>
               <div class="row search">
@@ -171,6 +174,18 @@ export default {
     this.getProducts();
   },
   methods: {
+    removeFilter(filter) {
+      let index = this.filters.indexOf(filter);
+      if (index > -1) {
+        this.filters.splice(index, 1);
+      }
+      $(filter).removeClass("active");
+      let filterName = filter.slice(1, 12);
+      if (filterName == "color_count") Vue.delete(this.filter, "color_count");
+      else if (filterName.includes("color")) Vue.delete(this.filter, "color");
+      else Vue.delete(this.filter, "reed");
+      this.getProducts();
+    },
     getFilterName(filter) {
       return $(filter).text();
     },
