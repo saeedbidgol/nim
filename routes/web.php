@@ -11,6 +11,10 @@
 |
 */
 Auth::routes();
+Route::get('/503',function(){
+    return view("home.503");
+});
+
 Route::get('/', "HomeController@index");
 Route::get('/home', 'HomeController@index')->name('home');
 
