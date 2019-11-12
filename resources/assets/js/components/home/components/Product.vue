@@ -8,7 +8,7 @@
             <div class="right-side-bar">
               <div class="row">
                 <div class="filter-container">
-                  <div class="col-lg-5 filter" v-for="filter in filters">{{getFilterName(filter)}} <span class="close-btn"></span> </div>
+                  <!--<div class="col-lg-5 filter" v-for="filter in filters">{{getFilterName(filter)}} <span class="close-btn"></span> </div> -->
                 </div>
               </div>
               <div class="row search">
@@ -142,7 +142,7 @@
                     </div>
                     <div class="col-lg-6">
                       <p id="order-title">تماس برای ثبت سفارش فوری</p>
-                      <button id="order-btn">تماس با واحد فروش</button>
+                      <button id="order-btn" data-toggle="modal" data-target="#price">تماس با واحد فروش</button>
                     </div>
                   </div>
                 </div>
@@ -183,6 +183,15 @@
         </div>
       </div>
     </loading>
+    <modal id="price" title="لیست قیمت" :is-loading="isLoading" :modal-sm="true">
+      <slot name="body">
+        <div>سیبیسلنیستلمنیستلیسلیسبیسبسیبسبسیب</div>
+      </slot>
+      <slot name="footer">
+        
+      </slot>
+    </modal>
+
   </div>
 </template>
 

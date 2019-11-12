@@ -18,11 +18,11 @@
         <div id="text2">
             <span>تماس با واحد فروش</span>
             <ul>
-                <li><span class="maintenance-logo" id="phone"></span>۰۹۱۳۳۶۳۸۸۲۶</li>
+                <li><span class="maintenance-logo" id="phone"></span>۰۹۱۳۴۴۵۶۴۳۳</li>
                 <li><a href="https://t.me/nimrokhbaft_carpet"><span class="maintenance-logo" id="telegram"></span>کانال تلگرام محصولات</a></li>
                 <li><span class="maintenance-logo" id="whatsapp"></span>۰۹۱۳۴۴۵۶۴۳۳</li>
                 <li><a href="https://www.instagram.com/nimrokhbaft_carpet/"><span class="maintenance-logo" id="instagram"></span>صفحه رسمی ما در اینستاگرام</a></li>
-                <li><span class="maintenance-logo" id="telephone"></span>۰۳۱۵۴۷۵۲۵۲۴</li>
+                <li><span class="maintenance-logo" id="telephone"></span>۰۳۱۵۴۷۰۲۵۲۴</li>
             </ul>
         </div>
     </div>

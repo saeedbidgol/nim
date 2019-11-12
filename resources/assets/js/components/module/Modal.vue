@@ -19,7 +19,7 @@
           </button>
         </div>
         <loading :is-loading="isLoading">
-          <div class="modal-body">
+          <div class="modal-body"> 
             <slot name="body"></slot>
           </div>
           <div class="modal-footer" :class="{'no-modal-footer':!this.$slots['footer']}">

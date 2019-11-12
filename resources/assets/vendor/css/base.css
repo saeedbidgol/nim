@@ -2088,7 +2088,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 /**end loading**/
 #under-maintenance-body{
-
+  min-height: 603px;
   width: 100% !important;
   height: 100% !important;
 }
@@ -2110,7 +2110,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 #text1{
   width: 425px;
-  background-color: #ffe81ad6;
+  background-color: rgba(255, 232, 26, 0.855);
   height: 60px;
   font-size: 26px;
   text-align: center;
@@ -2162,3 +2162,48 @@ body.mobile-nav-active #mobile-nav-toggle {
 #whatsapp{background-image: url("/uploads/svg/whatsapp.svg");}
 #instagram{background-image: url("/uploads/svg/instagram.svg");}
 #telephone{background-image: url("/uploads/svg/telephone.svg");}
+
+@media screen and (max-width:500px){
+  #text2{
+    background-color: #fff;
+    width: 380px;
+    height: 215px;
+    margin: 52px auto 0;
+    text-align: center;
+    padding: 15px 0;
+    border-radius: 25px 25px 110px 25px;
+  }
+  #text1{
+    width: 375px;
+    margin: 48px auto 0;
+    font-size: 25px;
+  }
+}
+@media screen and (max-width:375px){
+  #under-maintenance-logo{
+    height: 120px;
+    background-position: center 35px;
+  }
+  #text1{
+    width: 365px;
+    font-size: 24px;
+    padding: 10px;
+  }
+  #text2{
+    width: 360px;
+    height: 215px;
+    margin: 52px auto 0;
+  }
+  .maintenance-logo{
+    width: 35px;
+    height: 35px;
+  }
+}
+@media screen and (max-width:768px){
+ #text1{
+  margin: 50px auto 0;
+ }
+ #text2{
+  margin: 40px auto 0;
+ }
+}
