@@ -55,6 +55,12 @@
             <span>مدیریت کاربران</span>
           </router-link>
         </li>
+        <li>
+          <router-link to="/dashboard/categories">
+            <i class="fas fa-sitemap"></i>
+            <span>دسته بندی ها</span>
+          </router-link>
+        </li>
       </ul>
     </div>
   </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Catalogue;
+use App\Category;
 use App\News;
 use App\SiteFeature;
 use App\Slide;
@@ -15,6 +16,50 @@ class SiteFeaturesController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
+    }
+
+    //POST site-features/categories From Category.vue
+    public function addCategory()
+    {
+        $this->validate($this->request, [
+            'name' => 'required|max:191',
+            'file' => ['required', 'mimes:jpeg,jpg,bmp,png']
+        ]);
+
+        $slide = Category::create(['name' => $this->request->name]);
+        if ($this->request->hasFile('file')) {
+            $file = $this->request->file('file');
+            $fileStored = $file->store("categories", 'uploads');
+            $slide->update(['file_url' => $fileStored]);
+        }
+        return $slide;
+    }
+
+    //DELETE site-features/categories/{Category} From categories.vue
+    public function deleteCategory($category)
+    {
+        Category::where('id', $category)->delete();
+    }
+
+    //POST site-features/categories/{Category}/update From Category.vue
+    public function updateCategory($category)
+    {
+        $this->validate($this->request, [
+            'name' => 'required|max:191'
+        ]);
+
+        category::where('id', $category)->update(['name' => $this->request->name]);
+        if ($this->request->hasFile('file')) {
+            $file = $this->request->file('file');
+            $fileStored = $file->store("categories", 'uploads');
+            category::where('id', $category)->update(['file_url' => $fileStored]);
+        }
+    }
+
+    //GET site-features/categories From Category.vue
+    public function getCategories()
+    {
+        return Category::all();
     }
 
     public function updateNews(News $news)

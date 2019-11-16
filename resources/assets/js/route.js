@@ -13,6 +13,7 @@ import Slides from "./components/site_features/Slides.vue"
 import AboutUs from "./components/site_features/AboutUs.vue"
 import Catalogue from "./components/site_features/Catalogue.vue"
 import ContactUs from "./components/site_features/ContactUs.vue"
+import Category from "./components/site_features/Category.vue"
 import News from "./components/site_features/News.vue"
 import Users from "./components/Dashboard/Users.vue"
 
@@ -76,6 +77,14 @@ const routes = [
         path: '/dashboard/catalogues',
         components: {
             main: Catalogue,
+            top: DashboardTop,
+            right: Right
+        },
+    },
+    {
+        path: '/dashboard/categories',
+        components: {
+            main: Category,
             top: DashboardTop,
             right: Right
         },

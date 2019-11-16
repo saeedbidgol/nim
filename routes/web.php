@@ -71,6 +71,13 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('{catalogue}/update', 'SiteFeaturesController@updateCatalogue');
         });
 
+        Route::group(['prefix' => 'categories'], function () {
+            Route::get('', 'SiteFeaturesController@getCategories');
+            Route::delete('{category}', 'SiteFeaturesController@deleteCategory');
+            Route::post('', 'SiteFeaturesController@addCategory');
+            Route::post('{Category}/update', 'SiteFeaturesController@updateCategory');
+        });
+
         Route::group(['prefix' => 'contact-us'], function () {
             Route::patch('', 'SiteFeaturesController@updateContactUs');
         });
