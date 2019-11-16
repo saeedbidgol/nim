@@ -12,6 +12,7 @@
       role="document"
     >
       <div class="modal-content">
+        <div class="shadow"></div>
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">{{ title }}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">

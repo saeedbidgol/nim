@@ -45,7 +45,7 @@
 
             <!-- Main view  -->
             {{--@yield('content')--}}
-            <div class="wrapper wrapper-content animated fadeInRight" style="height: 70%;">
+            <div  style="height: 70%;">
                 <router-view name="main"></router-view>
             </div>
 
