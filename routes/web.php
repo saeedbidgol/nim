@@ -32,6 +32,7 @@ Route::group(['prefix' => 'site-features'], function () {
     Route::get('contact-us', 'SiteFeaturesController@getContactUs');
 });
 Route::get('/gallery', 'HomeController@spa');
+Route::get('/product/{any}', 'HomeController@spa');
 
 Route::group(['middleware' => 'auth'], function () {
 
