@@ -140,9 +140,12 @@
                     </p>
                     <div class="row" style="margin: 48px 0 0 0 !important;">
                       <div class="col-lg-6">
-                        <p
-                          class="price"
-                        >{{productDetail.price?$ENTPN($separator(productDetail.price)) + 'ریال':'ندارد'}}</p>
+                        <button
+                          id="price-btn"
+                          data-toggle="modal"
+                          data-target="#price-modal"
+                        >مشاهده قیمت</button>
+                        
                       </div>
                       <div class="col-lg-6">
                         <p id="order-title">تماس برای ثبت سفارش فوری</p>
@@ -206,12 +209,38 @@
         <div class="left-content">
           <ul>
                 <li><span class="maintenance-logo" id="phone"></span>۰۹۱۳۴۴۵۶۴۳۳</li>
-                <li><a href="https://t.me/nimrokhbaft_carpet"><span class="maintenance-logo" id="telegram"></span>کانال تلگرام محصولات</a></li>
-                <li><span class="maintenance-logo" id="whatsapp"></span>۰۹۱۳۴۴۵۶۴۳۳</li>
-                <li><a href="https://www.instagram.com/nimrokhbaft_carpet/"><span class="maintenance-logo" id="instagram"></span>صفحه رسمی ما در اینستاگرام</a></li>
                 <li><span class="maintenance-logo" id="telephone"></span>۰۳۱۵۴۷۰۲۵۲۴</li>
+                <li><span class="maintenance-logo" id="whatsapp"></span>۰۹۱۳۴۴۵۶۴۳۳</li>
+                <li><a href="https://t.me/nimrokhbaft_carpet"><span class="maintenance-logo" id="telegram"></span>تلگرام واحد فروش</a></li>
+                <li><a href="https://www.instagram.com/nimrokhbaft_carpet/"><span class="maintenance-logo" id="instagram"></span>ارتباط از طریق دایرکت اینستاگرام</a></li>
             </ul>
         </div>
+      </div>
+      
+    </modal>
+    <modal id="price-modal" title="بستن" :isLoading="isLoading">
+      <div slot="body">
+        <p>لیست قیمت</p>
+        <p class="title">نام دسته بندی</p>
+        <div class="right-content">
+          <span>ابعاد</span>
+          <p class="dimention">۳۵ در ۵۰</p>
+          <p class="dimention">۳۵ در ۵۰</p>
+          <p class="dimention">۳۵ در ۵۰</p>
+          <p class="dimention">۳۵ در ۵۰</p>
+          <p class="dimention">۳۵ در ۵۰</p>
+          <p class="dimention">۳۵ در ۵۰</p>
+        </div>
+        <div class="left-content">
+          <span>قیمت</span>
+          <p class="price">۱۲۳,۱۲۳,۰۰۰ تومان</p>
+          <p class="price">۱۲۳,۱۲۳,۰۰۰ تومان</p>
+          <p class="price">۱۲۳,۱۲۳,۰۰۰ تومان</p>
+          <p class="price">۱۲۳,۱۲۳,۰۰۰ تومان</p>
+          <p class="price">۱۲۳,۱۲۳,۰۰۰ تومان</p>
+          <p class="price">۱۲۳,۱۲۳,۰۰۰ تومان</p>
+        </div>
+        
       </div>
       
     </modal>

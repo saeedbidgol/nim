@@ -1936,7 +1936,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: center;
   color: #627586;
 }
-#order-btn{
+#order-btn,
+#price-btn{
   width: 160px;
   height: 45px;
   border-radius: 25px;
@@ -1946,12 +1947,17 @@ body.mobile-nav-active #mobile-nav-toggle {
   cursor: pointer;
   transition: 0.3s;
 }
-#order-btn:focus{
+#order-btn:focus,
+#price-btn:focus{
   outline: none;
 }
-#order-btn:hover{
+#order-btn:hover,
+#price-btn:hover{
   background-color:  #f5d669;
   border-color: #fcd137;
+}
+#price-btn{
+  margin-top: 32px !important;
 }
 #product-image{
   padding: 20px;
@@ -2213,7 +2219,10 @@ body.mobile-nav-active #mobile-nav-toggle {
   background-image: url("/uploads/background/contact-us-modal.png");
   background-size: cover;
   min-height: 360px;
+  min-width: 600px;
   text-align: right;
+  border-radius: 30px;
+  overflow: hidden;
 }
 .shadow{
   position: absolute;
@@ -2223,13 +2232,13 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 }
 #contact-us-modal .right-content{
-  width: 50%;
+  width: 45%;
   display: inline-block;
 }
 #contact-us-modal .left-content{
   float: left;
   text-align: left;
-  width: 50%;
+  width: 55%;
 }
 #contact-us-modal .card{
   background-color: none !important;
@@ -2248,11 +2257,110 @@ body.mobile-nav-active #mobile-nav-toggle {
   list-style: none;
 }
 #contact-us-modal li{
+  color: #fff !important;
   position: relative;
-  padding-left: 40px;
+  padding: 10px 0 0 55px;
   height: 41px;
   margin-top: 8px;
 }
+#contact-us-modal li a{
+  color: #fff !important;
+}
 #contact-us-modal .modal-footer{
   padding: 0 !important;
+}
+@media screen and (min-width: 576px){
+  #contact-us-modal .modal-dialog {
+      max-width: 600px !important;
+  }
+}
+#contact-us-modal .modal-header{
+  border: none !important;
+  padding: 20px 40px 0 40px !important;
+}
+
+#contact-us-modal .modal-title{
+  margin: 0 10px 0 auto !important;
+}
+#contact-us-modal .close{
+  z-index: 0;
+  color: #fff !important;
+  text-shadow: none !important;
+  font-size: 17px !important;
+}
+
+/*price modal*/
+#price-modal .modal-content{
+  color: #fff;
+  background-image: url("/uploads/background/price-modal.png");
+  background-size: cover;
+  min-height: 360px;
+  min-width: 480px;
+  text-align: right;
+  border-radius: 30px;
+  overflow: hidden;
+}
+#price-modal .modal-body{
+  padding: 0px 65px 15px !important;
+}
+#price-modal .right-content{
+  padding: 0 0 0 60px;
+  text-align: center;
+  width: 50%;
+  display: inline-block;
+}
+#price-modal .left-content{
+  float: left;
+  text-align: center;
+  width: 50%;
+}
+#price-modal .card{
+  background-color: none !important;
+}
+#price-modal .title{
+  color: #fdff5d;
+  font-size: 24px;
+  margin: 5px 0 20px;
+}
+#price-modal p{
+  margin: 0;
+  font-size: 16px;
+  text-align: justify;
+  line-height: 28px;
+}
+#price-modal .right-content span,
+#price-modal .left-content span{
+  color: #fbdd8c;
+  padding: 7px 0 7px 0 !important;
+  position: relative;
+  display: block;
+}
+#price-modal .dimention,
+#price-modal .price{
+  font-size: 17px;
+  text-align: center !important;
+  margin: 8px 0 !important;
+}
+
+#price-modal .modal-footer{
+  padding: 0 !important;
+}
+@media screen and (min-width: 576px){
+  #price-modal .modal-dialog {
+      max-width: 480px !important;
+  }
+}
+#price-modal .modal-header{
+  border: none !important;
+  padding: 20px 40px 0 40px !important;
+}
+
+#price-modal .modal-title{
+  margin: 0 10px 0 auto !important;
+}
+#price-modal .close{
+  z-index: 0;
+  color: #fff !important;
+  text-shadow: none !important;
+  font-size: 17px !important;
 }
