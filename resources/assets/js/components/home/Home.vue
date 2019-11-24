@@ -3,6 +3,7 @@
     <!--==========================
       Favorites Section
     ============================-->
+    <img id="first-background-svg" src="uploads/background-svg/1.svg" alt="نیمرخ" />
     <Favorites />
 
     <!--==========================

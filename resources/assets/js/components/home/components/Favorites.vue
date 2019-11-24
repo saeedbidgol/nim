@@ -1,6 +1,6 @@
 <template>
   <div class="favorites">
-    <img id="first-background-svg" src="uploads/background-svg/1.svg" alt="نیمرخ" />
+    
     <h3 class="favorites-h3">
       <p>
         <img src="uploads/background-svg/title-1.svg" id="favorites-title-svg" />

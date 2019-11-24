@@ -17,7 +17,7 @@
   text-align: right;
 }
 #slider-container{
-  height: 37vw !important;
+  height: 85vh !important;
   z-index: 5 !important;
  
   position: relative;
@@ -42,7 +42,6 @@
 .favorites{
   position: relative;
   display: block;
-  top: -4vw;
   min-height: 45vw;
   width: 100%;
   position: relative;
@@ -50,7 +49,6 @@
   z-index: 5;
   overflow-x: hidden !important;
   overflow-y: hidden !important;
-  padding-top: 5vw !important;
 }
 #first-background-svg{
   width: 32vw;
@@ -2363,4 +2361,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #fff !important;
   text-shadow: none !important;
   font-size: 17px !important;
+}
+#slider-container .social{
+  background: none;
+  position: absolute;
+  bottom: 0;
+  z-index: 20;
+  width: 200px;
+  height: 100px;
 }
