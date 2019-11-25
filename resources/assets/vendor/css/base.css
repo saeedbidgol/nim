@@ -17,7 +17,7 @@
   text-align: right;
 }
 #slider-container{
-  height: 37vw !important;
+  height: 85vh !important;
   z-index: 5 !important;
  
   position: relative;
@@ -42,7 +42,6 @@
 .favorites{
   position: relative;
   display: block;
-  top: -4vw;
   min-height: 45vw;
   width: 100%;
   position: relative;
@@ -50,7 +49,6 @@
   z-index: 5;
   overflow-x: hidden !important;
   overflow-y: hidden !important;
-  padding-top: 5vw !important;
 }
 #first-background-svg{
   width: 32vw;
@@ -1936,7 +1934,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   text-align: center;
   color: #627586;
 }
-#order-btn{
+#order-btn,
+#price-btn{
   width: 160px;
   height: 45px;
   border-radius: 25px;
@@ -1946,12 +1945,17 @@ body.mobile-nav-active #mobile-nav-toggle {
   cursor: pointer;
   transition: 0.3s;
 }
-#order-btn:focus{
+#order-btn:focus,
+#price-btn:focus{
   outline: none;
 }
-#order-btn:hover{
+#order-btn:hover,
+#price-btn:hover{
   background-color:  #f5d669;
   border-color: #fcd137;
+}
+#price-btn{
+  margin-top: 32px !important;
 }
 #product-image{
   padding: 20px;
@@ -2206,4 +2210,163 @@ body.mobile-nav-active #mobile-nav-toggle {
  #text2{
   margin: 40px auto 0;
  }
+}
+
+#contact-us-modal .modal-content{
+  color: #fff;
+  background-image: url("/uploads/background/contact-us-modal.png");
+  background-size: cover;
+  min-height: 360px;
+  min-width: 600px;
+  text-align: right;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.shadow{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.55);
+
+}
+#contact-us-modal .right-content{
+  width: 45%;
+  display: inline-block;
+}
+#contact-us-modal .left-content{
+  float: left;
+  text-align: left;
+  width: 55%;
+}
+#contact-us-modal .card{
+  background-color: none !important;
+}
+#contact-us-modal .title{
+  color: #fdff5d;
+  font-size: 22px;
+}
+#contact-us-modal p{
+  margin-top: 12px;
+  font-size: 16px;
+  text-align: justify;
+  line-height: 28px;
+}
+#contact-us-modal ul{
+  list-style: none;
+}
+#contact-us-modal li{
+  color: #fff !important;
+  position: relative;
+  padding: 10px 0 0 55px;
+  height: 41px;
+  margin-top: 8px;
+}
+#contact-us-modal li a{
+  color: #fff !important;
+}
+#contact-us-modal .modal-footer{
+  padding: 0 !important;
+}
+@media screen and (min-width: 576px){
+  #contact-us-modal .modal-dialog {
+      max-width: 600px !important;
+  }
+}
+#contact-us-modal .modal-header{
+  border: none !important;
+  padding: 20px 40px 0 40px !important;
+}
+
+#contact-us-modal .modal-title{
+  margin: 0 10px 0 auto !important;
+}
+#contact-us-modal .close{
+  z-index: 0;
+  color: #fff !important;
+  text-shadow: none !important;
+  font-size: 17px !important;
+}
+
+/*price modal*/
+#price-modal .modal-content{
+  color: #fff;
+  background-image: url("/uploads/background/price-modal.png");
+  background-size: cover;
+  min-height: 360px;
+  min-width: 480px;
+  text-align: right;
+  border-radius: 30px;
+  overflow: hidden;
+}
+#price-modal .modal-body{
+  padding: 0px 65px 15px !important;
+}
+#price-modal .right-content{
+  padding: 0 0 0 60px;
+  text-align: center;
+  width: 50%;
+  display: inline-block;
+}
+#price-modal .left-content{
+  float: left;
+  text-align: center;
+  width: 50%;
+}
+#price-modal .card{
+  background-color: none !important;
+}
+#price-modal .title{
+  color: #fdff5d;
+  font-size: 24px;
+  margin: 5px 0 20px;
+}
+#price-modal p{
+  margin: 0;
+  font-size: 16px;
+  text-align: justify;
+  line-height: 28px;
+}
+#price-modal .right-content span,
+#price-modal .left-content span{
+  color: #fbdd8c;
+  padding: 7px 0 7px 0 !important;
+  position: relative;
+  display: block;
+}
+#price-modal .dimention,
+#price-modal .price{
+  font-size: 17px;
+  text-align: center !important;
+  margin: 8px 0 !important;
+}
+
+#price-modal .modal-footer{
+  padding: 0 !important;
+}
+@media screen and (min-width: 576px){
+  #price-modal .modal-dialog {
+      max-width: 480px !important;
+  }
+}
+#price-modal .modal-header{
+  border: none !important;
+  padding: 20px 40px 0 40px !important;
+}
+
+#price-modal .modal-title{
+  margin: 0 10px 0 auto !important;
+}
+#price-modal .close{
+  z-index: 0;
+  color: #fff !important;
+  text-shadow: none !important;
+  font-size: 17px !important;
+}
+#slider-container .social{
+  background: none;
+  position: absolute;
+  bottom: 0;
+  z-index: 20;
+  width: 200px;
+  height: 100px;
 }

@@ -11,7 +11,7 @@
 
     <slot></slot>
   </div>
-</template>
+</template> 
 
 <script>
 export default {
