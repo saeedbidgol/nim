@@ -257,7 +257,7 @@
 
 <script>
 export default {
-  props: ["product"],
+  props: ["product","category"],
   data() {
     return {
       isCollapseGroup: false,

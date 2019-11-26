@@ -34,7 +34,7 @@ const routes = [
         },
     },
     {
-        path: '/product/:product?',
+        path: '/product/:product?/:category?',
         components: {
             main: Product,
             top: Top,
