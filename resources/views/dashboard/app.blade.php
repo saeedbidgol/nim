@@ -21,7 +21,7 @@
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 </head>
 
-<body class="page-sidebar-fixed page-header-fixed" style="margin: 0 !important;">
+<body id="dashboard" class="page-sidebar-fixed page-header-fixed" style="margin: 0 !important;">
     <div id="wrapper" class="page-container">
 
         <!-- Right -->

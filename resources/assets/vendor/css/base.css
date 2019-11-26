@@ -2370,3 +2370,8 @@ body.mobile-nav-active #mobile-nav-toggle {
   width: 200px;
   height: 100px;
 }
+#wrapper .page-content .page-inner .card{
+  background: #fff !important;
+  padding: 25px !important;
+  margin-bottom: 20px !important;
+}
