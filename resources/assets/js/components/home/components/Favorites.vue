@@ -6,7 +6,7 @@
         <img src="uploads/background-svg/title-1.svg" id="favorites-title-svg" />
       </p>محبوب ترین ها
     </h3>
-    <slider :autoplay="false" width="80%" style="right:10%">
+    <slider :autoplay="true" width="80%" style="right:10%">
       <slider-item v-for="(favorite,index) in favorites" :key="index">
         <div class="row padding-side">
           <div class="col-lg-3 col-sm-8">

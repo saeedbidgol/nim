@@ -2,7 +2,7 @@
   <div style="width:100%">
     <ul class="nav-menu">
       <li class="menu-active">
-        <a href="/#hero">
+        <a href="/">
           <img src="uploads/nav-item-logo/main-page.svg" alt /> صفحه اصلی
         </a>
       </li>
