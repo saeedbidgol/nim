@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             CataloguesTableSeeder::class,
             ProductSeeder::class,
             NewsTableSeeder::class,
-            SiteFeaturesSeeder::class
+            SiteFeaturesSeeder::class,
+            CategoryTableSeeder::class
         ]);
     }
 }
