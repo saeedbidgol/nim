@@ -7,7 +7,7 @@
         <img src="uploads/background-svg/title-1.svg" id="favorites-title-svg" />
       </p>محبوب ترین ها
     </h3>
-    <slider :autoplay="true" width="80%" style="right:10%">
+    <slider :autoplay="true" :stop-on-hover="true" :interval="10000" width="80%" style="right:10%">
       <slider-item v-for="(favorite,index) in favorites" :key="index">
         <div class="row padding-side">
           <div class="col-lg-3 col-sm-8">
@@ -30,7 +30,7 @@
               <div class="slider-details col-lg-12">رنگ: {{favorite.back_color}}</div>
             </div>
             <div class="row k-rtl">
-              <div class="slider-details col-lg-12">ابعاد: {{favorite.dimension}}</div>
+              <div class="slider-details col-lg-12">ابعاد: {{getDimension(favorite.dimension)}}</div>
             </div>
             <div id="btn-more" class="row k-rtl">
               <div class="col-lg-12">
@@ -61,6 +61,12 @@ export default {
     this.getFavorites();
   },
   methods: {
+    getDimension(dimensions) {
+      if (!dimensions) return "";
+      return collect(dimensions)
+        .pluck("dimension")
+        .join(",");
+    },
     getFavorites() {
       this.$persistClient("get", "/products/favorites").then(
         res => (this.favorites = res.data)
