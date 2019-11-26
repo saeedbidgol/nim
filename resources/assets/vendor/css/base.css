@@ -1958,6 +1958,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-top: 32px !important;
 }
 #product-image{
+  position: relative;
   padding: 20px;
     background-color: #fff;
 }
@@ -2399,4 +2400,17 @@ body.mobile-nav-active #mobile-nav-toggle {
   background-position: -91px -110px;
   background-repeat: no-repeat;
   background-image: url("/uploads/background-svg/1.svg");
+}
+.img-magnifier-container {
+  position: relative;
+}
+
+.img-magnifier-glass {
+  position: absolute;
+  border: 3px solid #000;
+  border-radius: 50%;
+  cursor: none;
+  /*Set the size of the magnifier glass:*/
+  width: 100px;
+  height: 100px;
 }

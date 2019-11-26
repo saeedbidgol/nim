@@ -113,8 +113,12 @@
             <div class="content">
               <div class="row" v-for="(chunk,index) in galleries" :key="index">
                 <div class="col-lg-3" v-for="product in chunk.items" :key="product.id">
+                  
+
                   <div class="product">
-                    <img :src="`/uploads/${product.pic_url}`" :alt="product.name" />
+                    
+                      <img id="product-img" :src="`/uploads/${product.pic_url}`" :alt="product.name" />
+                    
                     <div class="text">
                       <h3 class="product-name">{{product.name}}</h3>
                       <p
