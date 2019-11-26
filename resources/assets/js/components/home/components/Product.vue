@@ -136,7 +136,7 @@
                     </p>
                     <p>
                       <span class="title">اندازه:</span>
-                      {{productDetail.dimension?productDetail.dimension:'ندارد'}}
+                      {{getDimension}}
                     </p>
                     <div class="row" style="margin: 48px 0 0 0 !important;">
                       <div class="col-lg-6">
@@ -145,7 +145,6 @@
                           data-toggle="modal"
                           data-target="#price-modal"
                         >مشاهده قیمت</button>
-                        
                       </div>
                       <div class="col-lg-6">
                         <p id="order-title">تماس برای ثبت سفارش فوری</p>
@@ -208,41 +207,50 @@
         </div>
         <div class="left-content">
           <ul>
-                <li><span class="maintenance-logo" id="phone"></span>۰۹۱۳۴۴۵۶۴۳۳</li>
-                <li><span class="maintenance-logo" id="telephone"></span>۰۳۱۵۴۷۰۲۵۲۴</li>
-                <li><span class="maintenance-logo" id="whatsapp"></span>۰۹۱۳۴۴۵۶۴۳۳</li>
-                <li><a href="https://t.me/nimrokhbaft_carpet"><span class="maintenance-logo" id="telegram"></span>تلگرام واحد فروش</a></li>
-                <li><a href="https://www.instagram.com/nimrokhbaft_carpet/"><span class="maintenance-logo" id="instagram"></span>ارتباط از طریق دایرکت اینستاگرام</a></li>
-            </ul>
+            <li>
+              <span class="maintenance-logo" id="phone"></span>۰۹۱۳۴۴۵۶۴۳۳
+            </li>
+            <li>
+              <span class="maintenance-logo" id="telephone"></span>۰۳۱۵۴۷۰۲۵۲۴
+            </li>
+            <li>
+              <span class="maintenance-logo" id="whatsapp"></span>۰۹۱۳۴۴۵۶۴۳۳
+            </li>
+            <li>
+              <a href="https://t.me/nimrokhbaft_carpet">
+                <span class="maintenance-logo" id="telegram"></span>تلگرام واحد فروش
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/nimrokhbaft_carpet/">
+                <span class="maintenance-logo" id="instagram"></span>ارتباط از طریق دایرکت اینستاگرام
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-      
     </modal>
     <modal id="price-modal" title="بستن" :isLoading="isLoading">
       <div slot="body">
         <p>لیست قیمت</p>
-        <p class="title">نام دسته بندی</p>
+        <p class="title">{{productDetail.category?productDetail.category.name:'ندارد'}}</p>
         <div class="right-content">
           <span>ابعاد</span>
-          <p class="dimention">۳۵ در ۵۰</p>
-          <p class="dimention">۳۵ در ۵۰</p>
-          <p class="dimention">۳۵ در ۵۰</p>
-          <p class="dimention">۳۵ در ۵۰</p>
-          <p class="dimention">۳۵ در ۵۰</p>
-          <p class="dimention">۳۵ در ۵۰</p>
+          <p
+            class="dimention"
+            v-for="(dimension,index) in dimensions"
+            :key="index"
+          >{{$ENTPN(dimension.dimension)}}</p>
         </div>
         <div class="left-content">
           <span>قیمت</span>
-          <p class="price">۱۲۳,۱۲۳,۰۰۰ تومان</p>
-          <p class="price">۱۲۳,۱۲۳,۰۰۰ تومان</p>
-          <p class="price">۱۲۳,۱۲۳,۰۰۰ تومان</p>
-          <p class="price">۱۲۳,۱۲۳,۰۰۰ تومان</p>
-          <p class="price">۱۲۳,۱۲۳,۰۰۰ تومان</p>
-          <p class="price">۱۲۳,۱۲۳,۰۰۰ تومان</p>
+          <p
+            class="price"
+            v-for="(dimension,index) in dimensions"
+            :key="index"
+          >{{$ENTPN($separator(dimension.price))}}تومان</p>
         </div>
-        
       </div>
-      
     </modal>
   </div>
 </template>
@@ -257,8 +265,17 @@ export default {
       isCollapseColor: false,
       isCollapseColorCount: false,
       productDetail: [],
-      suggestions: []
+      suggestions: [],
+      dimensions: []
     };
+  },
+  computed: {
+    getDimension() {
+      if (!this.dimensions) return "";
+      return collect(this.dimensions)
+        .pluck("dimension")
+        .join(",");
+    }
   },
   mounted() {
     if (this.product) {
@@ -275,7 +292,10 @@ export default {
     getProduct() {
       this.isLoading = true;
       this.$persistClient("get", `/products/${this.product}`)
-        .then(res => (this.productDetail = res.data))
+        .then(res => {
+          this.productDetail = res.data;
+          this.dimensions = JSON.parse(res.data.dimension);
+        })
         .finally(() => (this.isLoading = false));
     },
     getSuggestions() {
