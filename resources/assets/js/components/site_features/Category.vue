@@ -28,6 +28,7 @@
                 ref="fileUpload"
                 autocomplete="file"
                 @change="setFile"
+                id="fileUpload"
               />
               <label class="custom-file-label" data-browse="بارگذاری">انتخاب تصویر</label>
             </div>
@@ -118,6 +119,7 @@ export default {
           this.getSlides();
           this.slide = {};
           this.fileData = "";
+          $("#fileUpload").val("");
           this.$refs.addSlide.reset();
         })
         .finally(() => (this.isLoading = false));
@@ -156,6 +158,7 @@ export default {
           $("#edit-modal").modal("hide");
           this.slide = {};
           this.fileData = ""
+          $("#fileUpload").val("");
           this.$refs.addSlide.reset();
           this.getSlides();
         })
