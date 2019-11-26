@@ -95,17 +95,6 @@
               <span class="invalid-feedback">{{ errors[0] }}</span>
             </v-validate>
           </div>
-          <div class="col-3">
-            <label for="name" class="control-label">ابعاد:</label>
-            <v-validate rules="required" name="dimension" v-slot="{ errors,classes }">
-              <input
-                type="text"
-                :class="{'form-control':true,'is-invalid':classes.invalid}"
-                v-model.trim="product.dimension"
-              />
-              <span class="invalid-feedback">{{ errors[0] }}</span>
-            </v-validate>
-          </div>
         </div>
         <div class="row form-group">
           <div class="col-3">
@@ -234,7 +223,6 @@
               <th>تصویر طرح</th>
               <th>نام طرح</th>
               <th>رنگ زمینه</th>
-              <th>ابعاد</th>
               <th>تراکم</th>
               <th>تعداد رنگ</th>
               <th>دسته‌بندی</th>
@@ -253,7 +241,6 @@
               </td>
               <td>{{product.name}}</td>
               <td>{{product.back_color}}</td>
-              <td>{{product.dimension}}</td>
               <td>{{product.density}}</td>
               <td>{{product.color_count}}</td>
               <td>{{product.category?product.category.name:''}}</td>
@@ -406,6 +393,7 @@ export default {
         pile: product.pile ? product.pile : "",
         category_id: product.category_id ? product.category_id : ""
       };
+      this.dimensions = JSON.parse(product.dimension);
       this.decor = product.decor_url;
       this.pic = product.pic_url;
       if (product.price) this.price = product.price;
@@ -452,27 +440,24 @@ export default {
     },
     add() {
       this.isLoading = true;
-      if (this.fileAdded) {
-        this.$refs.myVueDropzone.processQueue();
-      } else {
-        let formData = new FormData();
-        for (var key in this.product) {
-          if (this.product[key] != null)
-            formData.append(key, this.product[key]);
-        }
-        this.$persistClient("post", "/products", formData)
-          .then(() => {
-            this.$alert("success");
-            this.product = {};
-            this.$refs.production.reset();
-            this.decor = "";
-            this.pic = "";
-            this.getProducts();
-          })
-          .finally(() => {
-            this.isLoading = false;
-          });
+      let formData = new FormData();
+      for (var key in this.product) {
+        if (this.product[key] != null) formData.append(key, this.product[key]);
       }
+      formData.append("dimension", JSON.stringify(this.dimensions));
+      this.$persistClient("post", "/products", formData)
+        .then(() => {
+          this.$alert("success");
+          this.product = {};
+          this.$refs.production.reset();
+          this.decor = "";
+          this.pic = "";
+          this.dimensions = [{ dimension: "", price: "" }];
+          this.getProducts();
+        })
+        .finally(() => {
+          this.isLoading = false;
+        });
     },
     getProducts() {
       this.isLoading = true;

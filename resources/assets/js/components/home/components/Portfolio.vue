@@ -15,10 +15,9 @@
           >
             <div class="item-container">
               <a href>
-                <img :src="`/uploads/${item.pic_url}`" alt />
+                <img :src="`/uploads/${item.file_url}`" alt />
                 <div class="details">
                   <h4>{{item.name}}</h4>
-                  <span>{{item.about | excpert(100)}}</span>
                 </div>
               </a>
             </div>
@@ -51,7 +50,7 @@ export default {
   },
   methods: {
     getPortfolio() {
-      this.$persistClient("get", "/products/portfolio").then(
+      this.$persistClient("get", "/site-features/categories").then(
         res => (this.portfolio = res.data)
       );
     }
