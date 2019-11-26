@@ -24,11 +24,11 @@ class Product extends BaseModel
         return $query->where('name', 'like', "%$search%")->orWhere('code', 'like', "%$search%");
     }
 
-    public function scopeOfReed($query, $reed)
+    public function scopeofCategory($query, $category)
     {
-        if (empty($reed))
+        if (empty($category))
             return $query;
-        return $query->where('reed', $reed);
+        return $query->where('category_id', $category);
     }
 
     public function scopeOfColor($query, $color)
