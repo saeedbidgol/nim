@@ -48,8 +48,7 @@ mix.scripts(
         "resources/assets/vendor/waypoints/waypoints.min.js",
         "resources/assets/vendor/wow/wow.min.js",
         "resources/assets/js/base.js",
-        "resources/assets/js/contactform.js",
-        "resources/assets/js/magnifier.js"
+        "resources/assets/js/contactform.js"
     ],
     "public/js/base.js",
     "./"

@@ -156,8 +156,9 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-6 img-magnifier-container" id="product-image">
-                    <img id="img" :src="`/uploads/${productDetail.pic_url}`" width="100%" height="100%" />
+                  <div class="col-lg-6" id="product-image">
+                    <magnifier :src="`/uploads/${productDetail.pic_url}`" v-if="productDetail" />
+                    <!-- <img id="img" :src="`/uploads/${productDetail.pic_url}`" width="100%" height="100%" /> -->
                   </div>
                 </div>
                 <div class="row" id="decoration-content">
@@ -256,15 +257,17 @@
 </template>
 
 <script>
+import Magnifier from "../../module/Magnifier";
 export default {
   props: ["product"],
+  components: { Magnifier },
   data() {
     return {
       isCollapseGroup: false,
       isLoading: false,
       isCollapseColor: false,
       isCollapseColorCount: false,
-      productDetail: [],
+      productDetail: "",
       suggestions: [],
       dimensions: []
     };
