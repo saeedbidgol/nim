@@ -113,12 +113,9 @@
             <div class="content">
               <div class="row" v-for="(chunk,index) in galleries" :key="index">
                 <div class="col-lg-3" v-for="product in chunk.items" :key="product.id">
-                  
-
                   <div class="product">
-                    
-                      <img id="product-img" :src="`/uploads/${product.pic_url}`" :alt="product.name" />
-                    
+                    <img id="product-img" :src="`/uploads/${product.pic_url}`" :alt="product.name" />
+
                     <div class="text">
                       <h3 class="product-name">{{product.name}}</h3>
                       <p
@@ -152,6 +149,7 @@ export default {
     loading,
     pagination
   },
+  props: ["category"],
   data() {
     return {
       isLoading: false,
@@ -178,6 +176,7 @@ export default {
     }
   },
   mounted() {
+    if (this.category) this.filter.category = this.category;
     this.getProducts();
     this.getCategories();
   },
@@ -185,7 +184,15 @@ export default {
     getCategories() {
       this.isLoading = true;
       this.$persistClient("get", "/site-features/categories")
-        .then(res => (this.categories = res.data))
+        .then(res => {
+          this.categories = res.data;
+          if (this.category) {
+            setTimeout(() => {
+              this.filters.push(`#${this.category}`);
+              $(`#${this.category}`).addClass("active");
+            }, 700);
+          }
+        })
         .finally(() => (this.isLoading = false));
     },
     removeFilter(filter) {

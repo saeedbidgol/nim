@@ -27,14 +27,15 @@ const routes = [
         },
     },
     {
-        path: '/gallery',
+        path: '/gallery/:category?',
         components: {
             main: Gallery,
             top: Top,
         },
+        props: { main: true }
     },
     {
-        path: '/product/:product?/:category?',
+        path: '/product/:product?',
         components: {
             main: Product,
             top: Top,
