@@ -1,9 +1,9 @@
 <template>
   <div id="slider-container">
     <div class="social">
-      <span>نیم رخ بافت در شبکه های اجتماعی</span>
-      <a href="https://t.me/nimrokhbaft_carpet"><span class="maintenance-logo" id="telegram"></span>تلگرام واحد فروش</a>
-      <a href="https://www.instagram.com/nimrokhbaft_carpet/"><span class="maintenance-logo" id="instagram"></span>ارتباط از طریق دایرکت اینستاگرام</a>
+      <span class="title">نیم رخ بافت در شبکه های اجتماعی</span>
+      <a href="https://t.me/nimrokhbaft_carpet"><span class="maintenance-logo" id="telegram"></span>کانال ما در تلگرام</a>
+      <a href="https://www.instagram.com/nimrokhbaft_carpet/"><span class="maintenance-logo" id="instagram"></span>صفحه ما در اینستاگرام</a>
             
     </div>
     <slider :autoplay="false">

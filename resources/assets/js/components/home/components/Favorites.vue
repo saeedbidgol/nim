@@ -1,7 +1,7 @@
 <template>
 
   <div class="favorites">
-    
+    <div id="first-bg"></div>
     <h3 class="favorites-h3">
       <p>
         <img src="uploads/background-svg/title-1.svg" id="favorites-title-svg" />
