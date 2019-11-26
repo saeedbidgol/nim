@@ -11,6 +11,10 @@ class Product extends BaseModel
         return $this->hasMany(Color::class, 'product_id');
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
     #Region scopes
     public function scopeOfSearch($query, $search)
@@ -31,7 +35,7 @@ class Product extends BaseModel
     {
         if (empty($color))
             return $query;
-        return $query->whereHas('colors', function ($q) use($color){
+        return $query->whereHas('colors', function ($q) use ($color) {
             $q->where('color_id', $color);
         });
     }

@@ -79,7 +79,23 @@
               <span class="invalid-feedback">{{ errors[0] }}</span>
             </v-validate>
           </div>
-          <div class="col-6">
+          <div class="col-3">
+            <label for="name" class="control-label">دسته بندی:</label>
+            <v-validate rules="required" name="category" v-slot="{ errors,classes }">
+              <select
+                :class="{'form-control':true,'is-invalid':classes.invalid}"
+                v-model.trim="product.category_id"
+              >
+                <option
+                  v-for="category in categories"
+                  :key="category.id"
+                  :value="category.id"
+                >{{category.name}}</option>
+              </select>
+              <span class="invalid-feedback">{{ errors[0] }}</span>
+            </v-validate>
+          </div>
+          <div class="col-3">
             <label for="name" class="control-label">ابعاد:</label>
             <v-validate rules="required" name="dimension" v-slot="{ errors,classes }">
               <input
@@ -155,16 +171,6 @@
         </div>
         <div class="row form-group">
           <div class="col-3">
-            <label for="file" class="col-form-label">قیمت:</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="قیمت به ریال"
-              name="price"
-              v-model="price"
-            />
-          </div>
-          <div class="col-3">
             <label for="file" class="col-form-label">جنس نخ تار:</label>
             <input type="text" class="form-control" name="wrap" v-model="product.wrap" />
           </div>
@@ -175,6 +181,28 @@
           <div class="col-3">
             <label for="file" class="col-form-label">جنس نخ خواب:</label>
             <input type="text" class="form-control" name="weft" v-model="product.pile" />
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-2 dimensions" v-for="(dim,index) in dimensions" :key="index">
+            <div class="form-group">
+              <label>ابعاد:</label>
+              <input type="text" class="form-control" v-model="dim.dimension" />
+            </div>
+            <div class="form-group">
+              <label>قیمت:</label>
+              <input type="number" class="form-control" v-model="dim.price" />
+            </div>
+            <div class="form-group delete-button">
+              <button class="btn btn-danger m-r-40" type="button" @click="deleteDimension(index)">
+                <i class="fas fa-minus-square"></i>
+              </button>
+            </div>
+          </div>
+          <div class="col-2">
+            <button type="button" class="btn btn-success btn-rounded m-t-65" @click="addDimension">
+              <i class="fas fa-plus-circle fa-2x m-t-5"></i>
+            </button>
           </div>
         </div>
         <div class="row form-group">
@@ -209,6 +237,7 @@
               <th>ابعاد</th>
               <th>تراکم</th>
               <th>تعداد رنگ</th>
+              <th>دسته‌بندی</th>
               <th>رنگبندی</th>
               <th>نمای دکوراسیون</th>
               <th>عملیات</th>
@@ -227,6 +256,7 @@
               <td>{{product.dimension}}</td>
               <td>{{product.density}}</td>
               <td>{{product.color_count}}</td>
+              <td>{{product.category?product.category.name:''}}</td>
               <td>{{getColors(product)}}</td>
               <td>
                 <img v-if="product.decor_url" :src="'/uploads/'+product.decor_url" />
@@ -258,6 +288,8 @@ export default {
     return {
       isLoading: false,
       fileAdded: false,
+      dimensions: [{ dimension: "", price: "" }],
+      categories: [],
       colors: [
         { id: 1, name: "سورمه ای" },
         { id: 2, name: "نارنجی" },
@@ -302,21 +334,28 @@ export default {
         from: 1,
         to: 0,
         current_page: 1
-      },
-      price: ""
+      }
     };
-  },
-  watch: {
-    price(newValue) {
-      let result = String(newValue).replace(/,/g, "");
-      this.price = result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      this.product.price = Number(result);
-    }
   },
   mounted() {
     this.getProducts();
+    this.getCategories();
   },
   methods: {
+    deleteDimension(index) {
+      this.dimensions.splice(index, 1);
+    },
+    addDimension() {
+      this.dimensions.push({ dimension: "", price: "" });
+    },
+    getCategories() {
+      this.isLoading = true;
+      this.$persistClient("get", "/site-features/categories")
+        .then(res => {
+          this.categories = res.data;
+        })
+        .finally(() => (this.isLoading = false));
+    },
     getColors(product) {
       if (!product.colors) return "ندارد";
       let colors = collect(product.colors)
@@ -364,7 +403,8 @@ export default {
         dimension: product.dimension,
         weft: product.weft ? product.weft : "",
         wrap: product.wrap ? product.wrap : "",
-        pile: product.pile ? product.pile : ""
+        pile: product.pile ? product.pile : "",
+        category_id: product.category_id ? product.category_id : ""
       };
       this.decor = product.decor_url;
       this.pic = product.pic_url;
@@ -427,7 +467,6 @@ export default {
             this.$refs.production.reset();
             this.decor = "";
             this.pic = "";
-            this.price = "";
             this.getProducts();
           })
           .finally(() => {
@@ -446,7 +485,25 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
+.m-r-40 {
+  margin-right: 40px;
+  line-height: 1px;
+}
+.dimensions:hover {
+  .delete-button {
+    display: block;
+  }
+}
+.delete-button {
+  display: none;
+}
+.m-t-5 {
+  margin-top: 5px;
+}
+.m-t-65 {
+  margin-top: 65px;
+}
 .table thead th {
   text-align: right;
 }

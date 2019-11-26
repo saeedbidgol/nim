@@ -30,6 +30,7 @@ class CreateProductsTable extends Migration
             $table->integer('favorite')->default(0);
             $table->string('pic_url')->nullable();
             $table->string('decor_url')->nullable();
+            $table->integer('category_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -22,7 +22,7 @@ class ProductController extends Controller
 
     public function getFavorites()
     {
-        return Product::orderBy('favorite','desc')->take(10)->get();
+        return Product::orderBy('favorite', 'desc')->take(10)->get();
     }
 
     public function getPortfolio()
@@ -81,6 +81,7 @@ class ProductController extends Controller
             'wrap' => $this->request->wrap ?? null,
             'weft' => $this->request->weft ?? null,
             'pile' => $this->request->pile ?? null,
+            'category_id' => $this->request->category_id ?? null
         ]);
         if ($this->request->has('colors')) {
             $colors = explode(',', $this->request->colors);
@@ -126,12 +127,12 @@ class ProductController extends Controller
 
     public function getProduct($product)
     {
-        return Product::with('colors')->where('id', $product)->first();
+        return Product::with(['colors','category'])->where('id', $product)->first();
     }
 
     public function getProductSuggestions(Product $product)
     {
-        return Product::where('id','<>',$product->id)->where(['reed' => $product->reed, 'density' => $product->density, 'color_count' => $product->color_count])->take(4)->get();
+        return Product::where('id', '<>', $product->id)->where(['reed' => $product->reed, 'density' => $product->density, 'color_count' => $product->color_count])->take(4)->get();
     }
 
     //GET /products From ProductionGallery.vue

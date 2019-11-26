@@ -42,7 +42,8 @@ localize({
       color_count:'تعداد رنگ',
       dimension:'ابعاد',
       about:'درباره طرح',
-      body:'متن اصلی'
+      body:'متن اصلی',
+      category:'دسته بندی'
     }
   }
 });
