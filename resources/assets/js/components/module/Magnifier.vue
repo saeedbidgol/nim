@@ -32,7 +32,7 @@ export default {
       glassWidth: "",
       glassHeight: "",
       glass: "",
-      bw: 3,
+      bw: 1,
       isHover: false
     };
   },

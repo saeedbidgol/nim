@@ -3,49 +3,49 @@
     <ul class="nav-menu">
       <li class="menu-active">
         <a href="/">
-          <img src="uploads/nav-item-logo/main-page.svg" alt /> صفحه اصلی
+          <img src="/uploads/nav-item-logo/main-page.svg" alt /> صفحه اصلی
         </a>
       </li>
       <li>
         <router-link to="/gallery">
-          <img src="uploads/nav-item-logo/product-gallery.svg" alt /> گالری محصولات
+          <img src="/uploads/nav-item-logo/product-gallery.svg" alt /> گالری محصولات
         </router-link>
       </li>
       <li>
         <a href="/#news">
-          <img src="uploads/nav-item-logo/news.svg" alt /> اخبار و مقالات
+          <img src="/uploads/nav-item-logo/news.svg" alt /> اخبار و مقالات
         </a>
       </li>
       <li>
         <a :href="`/uploads/${catalogue.file_url}`" target="_blank">
-          <img src="uploads/nav-item-logo/catalogue.svg" alt /> دانلود کاتالوگ
+          <img src="/uploads/nav-item-logo/catalogue.svg" alt /> دانلود کاتالوگ
         </a>
       </li>
       <li>
         <a href="/#team">
-          <img src="uploads/nav-item-logo/about-us.svg" alt /> درباره ما
+          <img src="/uploads/nav-item-logo/about-us.svg" alt /> درباره ما
         </a>
       </li>
       <li>
         <a href="/#contact">
-          <img src="uploads/nav-item-logo/contact-us.svg" alt /> تماس با ما
+          <img src="/uploads/nav-item-logo/contact-us.svg" alt /> تماس با ما
         </a>
       </li>
       <li class="left-content">
         <a :href="info.telegram">
-          <img src="uploads/nav-item-logo/telegram.svg" alt />
+          <img src="/uploads/nav-item-logo/telegram.svg" alt />
         </a>
       </li>
       <li class="left-content">
         <a :href="info.instagram">
-          <img src="uploads/nav-item-logo/instagram.svg" alt />
+          <img src="/uploads/nav-item-logo/instagram.svg" alt />
         </a>
       </li>
-      <li class="left-content">
+      <!-- <li class="left-content">
         <a href="#contact">
-          <img src="uploads/nav-item-logo/search-logo.svg" alt />
+          <img src="/uploads/nav-item-logo/search-logo.svg" alt />
         </a>
-      </li>
+      </li> -->
     </ul>
   </div>
 </template>
