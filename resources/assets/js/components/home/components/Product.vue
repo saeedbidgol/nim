@@ -8,9 +8,7 @@
             <div class="col-lg-3">
               <div class="right-side-bar">
                 <div class="row">
-                  <div class="filter-container">
-                    <!--<div class="col-lg-5 filter" v-for="filter in filters">{{getFilterName(filter)}} <span class="close-btn"></span> </div> -->
-                  </div>
+                  <div class="filter-container"></div>
                 </div>
                 <div class="row search">
                   <div class="col-12">
@@ -26,13 +24,11 @@
                       <span class="collapse-btn" @click="isCollapseGroup=!isCollapseGroup"></span>
                       <span class="header-text">دسته‌بندی محصولات</span>
                       <ul class="group-list">
-                        <li>فرش ۱۵۰۰ شانه</li>
-                        <li>فرش ۱۲۰۰ شانه</li>
-                        <li class="active">فرش ۱۰۰۰ شانه</li>
-                        <li>فرش ۷۰۰ شانه</li>
-                        <li>فرش ۷۰۰ شانه</li>
-                        <li>فرش ۷۰۰ شانه</li>
-                        <li>فرش ۷۰۰ شانه</li>
+                        <li v-for="category in categories" :key="category.id" :id="category.id">
+                          <router-link
+                            :to="{ path: '/gallery',query : { category: category.id } }"
+                          >{{category.name}}</router-link>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -45,42 +41,66 @@
                       <ul class="color-list">
                         <div class="row">
                           <li class="col-lg-2">
-                            <span id="color1"></span>
+                            <router-link :to="{ path: '/gallery',query : { color:1 } }">
+                              <span id="color1"></span>
+                            </router-link>
                           </li>
                           <li class="col-lg-2">
-                            <span id="color2"></span>
+                            <router-link :to="{ path: '/gallery',query : { color:2 } }">
+                              <span id="color2"></span>
+                            </router-link>
                           </li>
                           <li class="col-lg-2">
-                            <span id="color3"></span>
+                            <router-link :to="{ path: '/gallery',query : { color:3 } }">
+                              <span id="color3"></span>
+                            </router-link>
                           </li>
                           <li class="col-lg-2">
-                            <span id="color4" class="active"></span>
+                            <router-link :to="{ path: '/gallery',query : { color:4 } }">
+                              <span id="color4" class="active"></span>
+                            </router-link>
                           </li>
                           <li class="col-lg-2">
-                            <span id="color5"></span>
+                            <router-link :to="{ path: '/gallery',query : { color:5 } }">
+                              <span id="color5"></span>
+                            </router-link>
                           </li>
                           <li class="col-lg-2">
-                            <span id="color6"></span>
+                            <router-link :to="{ path: '/gallery',query : { color:6 } }">
+                              <span id="color6"></span>
+                            </router-link>
                           </li>
                         </div>
                         <div class="row">
                           <li class="col-lg-2">
-                            <span id="color7"></span>
+                            <router-link :to="{ path: '/gallery',query : { color:7 } }">
+                              <span id="color7"></span>
+                            </router-link>
                           </li>
                           <li class="col-lg-2">
-                            <span id="color8"></span>
+                            <router-link :to="{ path: '/gallery',query : { color:8 } }">
+                              <span id="color8"></span>
+                            </router-link>
                           </li>
                           <li class="col-lg-2">
-                            <span id="color9"></span>
+                            <router-link :to="{ path: '/gallery',query : { color:9 } }">
+                              <span id="color9"></span>
+                            </router-link>
                           </li>
                           <li class="col-lg-2">
-                            <span id="color10"></span>
+                            <router-link :to="{ path: '/gallery',query : { color:10 } }">
+                              <span id="color10"></span>
+                            </router-link>
                           </li>
                           <li class="col-lg-2">
-                            <span id="color11"></span>
+                            <router-link :to="{ path: '/gallery',query : { color:11 } }">
+                              <span id="color11"></span>
+                            </router-link>
                           </li>
                           <li class="col-lg-2">
-                            <span id="color12"></span>
+                            <router-link :to="{ path: '/gallery',query : { color:12 } }">
+                              <span id="color12"></span>
+                            </router-link>
                           </li>
                         </div>
                       </ul>
@@ -96,10 +116,18 @@
                       ></span>
                       <span class="header-text">تعداد رنگ محصولات</span>
                       <ul class="group-list">
-                        <li>۸ رنگ</li>
-                        <li>۱۰ رنگ</li>
-                        <li class="active">۱۲ رنگ</li>
-                        <li>۱۴ رنگ</li>
+                        <li>
+                          <router-link :to="{ path: '/gallery',query : { colorCount:8 } }">۸ رنگ</router-link>
+                        </li>
+                        <li>
+                          <router-link :to="{ path: '/gallery',query : { colorCount:10 } }">۱۰ رنگ</router-link>
+                        </li>
+                        <li>
+                          <router-link :to="{ path: '/gallery',query : { colorCount:12 } }">۱۲ رنگ</router-link>
+                        </li>
+                        <li>
+                          <router-link :to="{ path: '/gallery',query : { colorCount:14 } }">۱۴ رنگ</router-link>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -158,7 +186,6 @@
                   </div>
                   <div class="col-lg-6" id="product-image">
                     <magnifier :src="`/uploads/${productDetail.pic_url}`" v-if="productDetail" />
-                    <!-- <img id="img" :src="`/uploads/${productDetail.pic_url}`" width="100%" height="100%" /> -->
                   </div>
                   
                 </div>
@@ -270,7 +297,8 @@ export default {
       isCollapseColorCount: false,
       productDetail: "",
       suggestions: [],
-      dimensions: []
+      dimensions: [],
+      categories: []
     };
   },
   computed: {
@@ -286,8 +314,17 @@ export default {
       this.getProduct();
       this.getSuggestions();
     }
+    this.getCategories();
   },
   methods: {
+    getCategories() {
+      this.isLoading = true;
+      this.$persistClient("get", "/site-features/categories")
+        .then(res => {
+          this.categories = res.data;
+        })
+        .finally(() => (this.isLoading = false));
+    },
     addFavorite(product) {
       this.$persistClient("patch", `/products/${product}/favorite`);
       var body = $("html, body");

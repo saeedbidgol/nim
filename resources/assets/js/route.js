@@ -27,12 +27,11 @@ const routes = [
         },
     },
     {
-        path: '/gallery/:category?',
+        path: '/gallery',
         components: {
             main: Gallery,
             top: Top,
-        },
-        props: { main: true }
+        }
     },
     {
         path: '/product/:product?',

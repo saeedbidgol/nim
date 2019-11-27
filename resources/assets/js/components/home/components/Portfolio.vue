@@ -14,7 +14,7 @@
             :class="{'col-lg-4':[0,1,2,5,6,7].includes(index),'col-lg-6':[3,4].includes(index), 'col-md-6':true, 'portfolio-item':true,'filter-card':[3,4,6].includes(index), 'filter-app':[0,2,7].includes(index),'filter-web':[1,5].includes(index)}"
           >
             <div class="item-container">
-              <router-link :to="`/gallery/${item.id}`">
+              <router-link :to="{ path: '/gallery',query : { category: item.id } }">
                 <img :src="`/uploads/${item.file_url}`" alt />
                 <div class="details">
                   <h4>{{item.name}}</h4>

@@ -26,6 +26,7 @@ Route::group(['prefix' => 'products'], function () {
 });
 Route::group(['prefix' => 'site-features'], function () {
     Route::get('about-us', 'SiteFeaturesController@getAboutUs');
+    Route::get('categories', 'SiteFeaturesController@getCategories');
     Route::get('slides', 'SiteFeaturesController@getSlides');
     Route::get('news', 'SiteFeaturesController@getNews');
     Route::get('catalogues/last', 'SiteFeaturesController@getLastCatalogue');
@@ -72,7 +73,6 @@ Route::group(['middleware' => 'auth'], function () {
         });
 
         Route::group(['prefix' => 'categories'], function () {
-            Route::get('', 'SiteFeaturesController@getCategories');
             Route::delete('{category}', 'SiteFeaturesController@deleteCategory');
             Route::post('', 'SiteFeaturesController@addCategory');
             Route::post('{Category}/update', 'SiteFeaturesController@updateCategory');
