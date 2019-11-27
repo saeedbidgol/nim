@@ -149,7 +149,6 @@ export default {
     loading,
     pagination
   },
-  props: ["category"],
   data() {
     return {
       isLoading: false,
@@ -165,7 +164,10 @@ export default {
       },
       filter: {},
       filters: [],
-      categories: []
+      categories: [],
+      category: "",
+      color: "",
+      colorCount: ""
     };
   },
   computed: {
@@ -176,7 +178,21 @@ export default {
     }
   },
   mounted() {
-    if (this.category) this.filter.category = this.category;
+    if (this.$route.query) {
+      this.filter.category = this.category = this.$route.query.category
+        ? this.$route.query.category
+        : "";
+      if (this.$route.query.color) {
+        this.filter.color = this.$route.query.color;
+        $(`#color${this.filter.color}`).addClass("active");
+        this.filters.push(`#color${this.filter.color}`);
+      }
+      if (this.$route.query.colorCount) {
+        this.filter.color_count = this.$route.query.colorCount;
+        $(`#color_count_${this.filter.color_count}`).addClass("active");
+        this.filters.push(`#color_count_${this.filter.color_count}`);
+      }
+    }
     this.getProducts();
     this.getCategories();
   },
