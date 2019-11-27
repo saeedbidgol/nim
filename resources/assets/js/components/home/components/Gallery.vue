@@ -33,10 +33,12 @@
                     <span class="collapse-btn" @click="isCollapseGroup=!isCollapseGroup"></span>
                     <span class="header-text">دسته‌بندی محصولات</span>
                     <ul class="group-list">
-                      <li @click="reedFilter(1500)" id="1500">فرش ۱۵۰۰ شانه</li>
-                      <li @click="reedFilter(1200)" id="1200">فرش ۱۲۰۰ شانه</li>
-                      <li @click="reedFilter(1000)" id="1000">فرش ۱۰۰۰ شانه</li>
-                      <li @click="reedFilter(700)" id="700">فرش ۷۰۰ شانه</li>
+                      <li
+                        v-for="category in categories"
+                        :key="category.id"
+                        @click="categoryFilter(category.id)"
+                        :id="category.id"
+                      >{{category.name}}</li>
                     </ul>
                   </div>
                 </div>
@@ -111,12 +113,9 @@
             <div class="content">
               <div class="row" v-for="(chunk,index) in galleries" :key="index">
                 <div class="col-lg-3" v-for="product in chunk.items" :key="product.id">
-                  
-
                   <div class="product">
-                    
-                      <img id="product-img" :src="`/uploads/${product.pic_url}`" :alt="product.name" />
-                    
+                    <img id="product-img" :src="`/uploads/${product.pic_url}`" :alt="product.name" />
+
                     <div class="text">
                       <h3 class="product-name">{{product.name}}</h3>
                       <p
@@ -150,6 +149,7 @@ export default {
     loading,
     pagination
   },
+  props: ["category"],
   data() {
     return {
       isLoading: false,
@@ -164,7 +164,8 @@ export default {
         current_page: 1
       },
       filter: {},
-      filters: []
+      filters: [],
+      categories: []
     };
   },
   computed: {
@@ -175,9 +176,25 @@ export default {
     }
   },
   mounted() {
+    if (this.category) this.filter.category = this.category;
     this.getProducts();
+    this.getCategories();
   },
   methods: {
+    getCategories() {
+      this.isLoading = true;
+      this.$persistClient("get", "/site-features/categories")
+        .then(res => {
+          this.categories = res.data;
+          if (this.category) {
+            setTimeout(() => {
+              this.filters.push(`#${this.category}`);
+              $(`#${this.category}`).addClass("active");
+            }, 700);
+          }
+        })
+        .finally(() => (this.isLoading = false));
+    },
     removeFilter(filter) {
       let index = this.filters.indexOf(filter);
       if (index > -1) {
@@ -187,7 +204,7 @@ export default {
       let filterName = filter.slice(1, 12);
       if (filterName == "color_count") Vue.delete(this.filter, "color_count");
       else if (filterName.includes("color")) Vue.delete(this.filter, "color");
-      else Vue.delete(this.filter, "reed");
+      else Vue.delete(this.filter, "category");
       this.getProducts();
     },
     getFilterName(filter) {
@@ -221,17 +238,17 @@ export default {
       this.filter.color = color;
       this.getProducts();
     },
-    reedFilter(reed) {
-      if (this.filter.reed) {
-        $(`#${this.filter.reed}`).removeClass("active");
-        let index = this.filters.indexOf(`#${this.filter.reed}`);
+    categoryFilter(category) {
+      if (this.filter.category) {
+        $(`#${this.filter.category}`).removeClass("active");
+        let index = this.filters.indexOf(`#${this.filter.category}`);
         if (index > -1) {
           this.filters.splice(index, 1);
         }
       }
-      $(`#${reed}`).addClass("active");
-      this.filters.push(`#${reed}`);
-      this.filter.reed = reed;
+      $(`#${category}`).addClass("active");
+      this.filters.push(`#${category}`);
+      this.filter.category = category;
       this.getProducts();
     },
     addFavorite(product) {
@@ -241,7 +258,7 @@ export default {
       this.isLoading = true;
       let url = `/products?page=${this.products.current_page}`;
       if (this.filter.search) url += `&search=${this.filter.search}`;
-      if (this.filter.reed) url += `&reed=${this.filter.reed}`;
+      if (this.filter.category) url += `&category=${this.filter.category}`;
       if (this.filter.color) url += `&color=${this.filter.color}`;
       if (this.filter.color_count)
         url += `&color_count=${this.filter.color_count}`;
