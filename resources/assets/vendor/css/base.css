@@ -2402,7 +2402,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   background-image: url("/uploads/background-svg/1.svg");
 }
 .img-magnifier-container {
-  position: relative;
+  position: relative !important;
 }
 
 .img-magnifier-glass {

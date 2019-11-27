@@ -159,6 +159,7 @@
                   <div class="col-lg-6 img-magnifier-container" id="product-image">
                     <img id="img" :src="`/uploads/${productDetail.pic_url}`" width="100%" height="100%" />
                   </div>
+                  
                 </div>
                 <div class="row" id="decoration-content">
                   <div class="col-lg-5" id="decoration-text">
