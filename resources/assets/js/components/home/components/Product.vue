@@ -158,7 +158,6 @@
                   </div>
                   <div class="col-lg-6" id="product-image">
                     <magnifier :src="`/uploads/${productDetail.pic_url}`" v-if="productDetail" />
-                    <!-- <img id="img" :src="`/uploads/${productDetail.pic_url}`" width="100%" height="100%" /> -->
                   </div>
                 </div>
                 <div class="row" id="decoration-content">

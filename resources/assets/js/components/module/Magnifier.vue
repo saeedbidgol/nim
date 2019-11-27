@@ -1,7 +1,8 @@
 <template>
-  <div class="img-magnifier-container">
+  <div class="img-magnifier-container" @mouseleave="isHover = false" @mouseenter="isHover = true">
     <div
       ref="glass"
+      v-show="isHover"
       class="img-magnifier-glass"
       :style="`background-image:url(${this.src});background-size:${width*zoomLevel}px ${height*zoomLevel}px`"
       @mousemove="moveMagnifier"
@@ -15,10 +16,10 @@ export default {
   name: "Magnifier",
   props: {
     src: String,
-    width: { type: String, default: "100%" },
+    width: { type: Number, default: 400 },
     height: {
-      type: String,
-      default: "100%"
+      type: Number,
+      default: 550
     },
     zoomLevel: {
       type: Number,
@@ -31,7 +32,8 @@ export default {
       glassWidth: "",
       glassHeight: "",
       glass: "",
-      bw: 3
+      bw: 3,
+      isHover: false
     };
   },
   mounted() {
@@ -87,26 +89,9 @@ export default {
       return { x: x, y: y };
     },
     magnify() {
-      //   /*create magnifier glass:*/
-      //   this.glass = document.createElement("DIV");
-      //   this.glass.setAttribute("class", "img-magnifier-glass");
-      //   /*insert magnifier glass:*/
-      //   this.image.parentElement.insertBefore(this.glass, this.image);
-      /*set background properties for the magnifier glass:*/
-      //   this.glass.style.backgroundSize =
-      //     this.image.width * this.zoomLevel +
-      //     "px " +
-      //     this.image.height * this.zoomLevel +
-      //     "px";
       this.glass = this.$refs.glass;
       this.glassWidth = this.glass.offsetWidth / 2;
       this.glassHeight = this.glass.offsetHeight / 2;
-      /*execute a function when someone moves the magnifier glass over the image:*/
-      //   this.glass.addEventListener("mousemove", this.moveMagnifier);
-      //   this.image.addEventListener("mousemove", this.moveMagnifier);
-      //   /*and also for touch screens:*/
-      //   this.glass.addEventListener("touchmove", this.moveMagnifier);
-      //   this.image.addEventListener("touchmove", this.moveMagnifier);
     }
   }
 };
@@ -123,7 +108,6 @@ export default {
 
 .img-magnifier-glass {
   position: absolute;
-  border: 3px solid #000;
   border-radius: 50%;
   background-repeat: no-repeat;
   cursor: none;
