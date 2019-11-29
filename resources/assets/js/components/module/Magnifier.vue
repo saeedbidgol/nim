@@ -4,7 +4,7 @@
       ref="glass"
       v-show="isHover"
       class="img-magnifier-glass"
-      :style="`background-image:url(${this.src});background-size:${width*zoomLevel}px ${height*zoomLevel}px`"
+      :style="`background-image:url(${this.src});width:${glassWidth}px;height:${glassHeight}px;background-size:${width*zoomLevel}px ${height*zoomLevel}px`"
       @mousemove="moveMagnifier"
     ></div>
     <img @mousemove="moveMagnifier" ref="myImg" :src="src" :width="width" :height="height" />
@@ -24,13 +24,21 @@ export default {
     zoomLevel: {
       type: Number,
       default: 3
+    },
+    glassWidth: {
+      type: Number,
+      default: 100
+    },
+    glassHeight: {
+      type: Number,
+      default: 100
     }
   },
   data() {
     return {
       image: "",
-      glassWidth: "",
-      glassHeight: "",
+      semiGlassWidth: "",
+      semiGlassHeight: "",
       glass: "",
       bw: 1,
       isHover: false
@@ -50,27 +58,27 @@ export default {
       x = pos.x;
       y = pos.y;
       /*prevent the magnifier glass from being positioned outside the image:*/
-      if (x > this.image.width - this.glassWidth / this.zoomLevel) {
-        x = this.image.width - this.glassWidth / this.zoomLevel;
+      if (x > this.image.width - this.semiGlassWidth / this.zoomLevel) {
+        x = this.image.width - this.semiGlassWidth / this.zoomLevel;
       }
-      if (x < this.glassWidth / this.zoomLevel) {
-        x = this.glassWidth / this.zoomLevel;
+      if (x < this.semiGlassWidth / this.zoomLevel) {
+        x = this.semiGlassWidth / this.zoomLevel;
       }
-      if (y > this.image.height - this.glassHeight / this.zoomLevel) {
-        y = this.image.height - this.glassHeight / this.zoomLevel;
+      if (y > this.image.height - this.semiGlassHeight / this.zoomLevel) {
+        y = this.image.height - this.semiGlassHeight / this.zoomLevel;
       }
-      if (y < this.glassHeight / this.zoomLevel) {
-        y = this.glassHeight / this.zoomLevel;
+      if (y < this.semiGlassHeight / this.zoomLevel) {
+        y = this.semiGlassHeight / this.zoomLevel;
       }
       /*set the position of the magnifier this.glass:*/
-      this.glass.style.left = x - this.glassWidth + "px";
-      this.glass.style.top = y - this.glassHeight + "px";
+      this.glass.style.left = x - this.semiGlassWidth + "px";
+      this.glass.style.top = y - this.semiGlassHeight + "px";
       /*display what the magnifier this.glass "sees":*/
       this.glass.style.backgroundPosition =
         "-" +
-        (x * this.zoomLevel - this.glassWidth + this.bw) +
+        (x * this.zoomLevel - this.semiGlassWidth + this.bw) +
         "px -" +
-        (y * this.zoomLevel - this.glassHeight + this.bw) +
+        (y * this.zoomLevel - this.semiGlassHeight + this.bw) +
         "px";
     },
     getCursorPos(e) {
@@ -90,8 +98,8 @@ export default {
     },
     magnify() {
       this.glass = this.$refs.glass;
-      this.glassWidth = this.glass.offsetWidth / 2;
-      this.glassHeight = this.glass.offsetHeight / 2;
+      this.semiGlassWidth = this.glass.offsetWidth / 2;
+      this.semiGlassHeight = this.glass.offsetHeight / 2;
     }
   }
 };
@@ -111,8 +119,5 @@ export default {
   border-radius: 50%;
   background-repeat: no-repeat;
   cursor: none;
-  /*Set the size of the magnifier glass:*/
-  width: 100px;
-  height: 100px;
 }
 </style>
