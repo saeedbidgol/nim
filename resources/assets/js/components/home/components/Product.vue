@@ -185,7 +185,7 @@
                     </div>
                   </div>
                   <div class="col-lg-6" id="product-image">
-                    <magnifier :src="`/uploads/${productDetail.pic_url}`" v-if="productDetail" />
+                    <magnifier :src="`/uploads/${productDetail.pic_url}`" :glass-width="50" :glass-height="50" v-if="productDetail" />
                   </div>
                   
                 </div>
@@ -285,7 +285,7 @@
 </template>
 
 <script>
-import Magnifier from "../../module/Magnifier";
+import Magnifier from 'vuejs-magnifier'
 export default {
   props: ["product"],
   components: { Magnifier },

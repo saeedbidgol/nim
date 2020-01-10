@@ -142,6 +142,6 @@ class ProductController extends Controller
         $category = $this->request->category ?? null;
         $color = $this->request->color ?? null;
         $colorCount = $this->request->color_count ?? null;
-        return Product::with('colors')->ofSearch($search)->ofCategory($category)->ofColor($color)->ofColorCount($colorCount)->orderByDesc('created_at')->paginate(16);
+        return Product::with('colors')->ofSearch($search)->ofCategory($category)->ofColor($color)->ofColorCount($colorCount)->orderByDesc('code')->paginate(16);
     }
 }
