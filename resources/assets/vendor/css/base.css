@@ -1962,6 +1962,10 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding: 20px;
     background-color: #fff;
 }
+#product-image img{
+  height: 100%;
+  width: 100%;
+}
 #product-items p{
   margin: 0 14px 22px 0;
 }
