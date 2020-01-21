@@ -40,6 +40,8 @@
                 <option value="1000">۱۰۰۰</option>
                 <option value="700">۷۰۰</option>
                 <option value="500">۵۰۰</option>
+                <option value="400">۴۰۰</option>
+                <option value="340">۳۴۰</option>
               </select>
               <span class="invalid-feedback">{{ errors[0] }}</span>
             </v-validate>
