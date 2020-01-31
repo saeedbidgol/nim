@@ -13,6 +13,7 @@ class CheckForMaintenanceMode extends Middleware
      */
     protected $except = [
         '/login',
+        '/site-toggle',
         '/dashboard',
         '/dashboard/*',
         '/site-features/*',

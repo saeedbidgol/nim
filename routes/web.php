@@ -37,6 +37,8 @@ Route::get('/product/{any}', 'HomeController@spa');
 
 Route::group(['middleware' => 'auth'], function () {
 
+    Route::post('/site-toggle', 'HomeController@toggleSite');
+
     Route::group(['prefix' => 'users'], function () {
         Route::get('', 'UserController@getUsers');
         Route::post('', 'UserController@addUser');

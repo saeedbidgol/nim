@@ -61,14 +61,40 @@
             <span>دسته بندی ها</span>
           </router-link>
         </li>
+        <div class="hr-line-dashed-bold"></div>
+        <li>
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            @click="changeSiteStatus"
+          >تغییر وضعیت سایت</button>
+        </li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    changeSiteStatus() {
+      this.$alert("question", null, null, { confirmButtonText: "بله" }).then(
+        result => {
+          if (result.value) {
+            this.$persistClient("post", "/site-toggle").then(() =>
+              this.$alert("success")
+            );
+          }
+        }
+      );
+    }
+  }
+};
 </script>
 
 <style>
+.hr-line-dashed-bold {
+  border: dashed 1px;
+  margin-bottom: 14px;
+}
 </style>

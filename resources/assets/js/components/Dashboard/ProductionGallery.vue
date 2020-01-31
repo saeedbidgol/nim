@@ -216,6 +216,21 @@
       </v-validate-observer>
     </loading>
     <loading :is-loading="isLoading">
+      <div class="row form-group">
+        <div class="col-4">
+          <label>دسته بندی</label>
+          <select class="form-control" v-model="search.category_id">
+            <option
+              v-for="category in categories"
+              :key="category.id"
+              :value="category.id"
+            >{{category.name}}</option>
+          </select>
+        </div>
+        <div class="col-4" style="margin-top:30px;">
+          <button class="btn btn-info" @click="getProducts">جستجو</button>
+        </div>
+      </div>
       <div class="table-responsive">
         <table class="display table field" style="width: 100%;">
           <thead>
@@ -317,6 +332,7 @@ export default {
         dictMaxFilesExceeded: "شما نمیتواند بیش از 4 فایل آپلود کنید!"
       },
       product: {},
+      search: {},
       products: {
         total: 0,
         per_page: 2,
@@ -405,6 +421,7 @@ export default {
           .toArray();
         this.product.colors = colors;
       }
+      $("html, body").animate({ scrollTop: 0 }, "slow");
     },
     getFileName(value) {
       let regexValue = value.match(/[\w-]+.(jpg|png|jpeg)/gm);
@@ -463,7 +480,10 @@ export default {
     },
     getProducts() {
       this.isLoading = true;
-      this.$persistClient("get", `/products?page=${this.products.current_page}`)
+      let url = `/products?page=${this.products.current_page}`;
+      if (this.search.category_id)
+        url += `&category=${this.search.category_id}`;
+      this.$persistClient("get", url)
         .then(res => {
           this.products = res.data;
         })
