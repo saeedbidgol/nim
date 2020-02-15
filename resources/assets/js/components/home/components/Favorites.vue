@@ -1,5 +1,4 @@
 <template>
-
   <div class="favorites">
     <div id="first-bg"></div>
     <h3 class="favorites-h3">
@@ -34,7 +33,9 @@
             </div>
             <div id="btn-more" class="row k-rtl">
               <div class="col-lg-12">
-                <button class="btn btn-info btn-rounded">مشاهده بیشتر</button>
+                <a :href="`/product/${favorite.id}`" target="blank">
+                  <button class="btn btn-info btn-rounded">مشاهده بیشتر</button>
+                </a>
               </div>
             </div>
           </div>

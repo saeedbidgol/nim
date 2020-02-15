@@ -47,15 +47,15 @@ export default {
                         refresh: "رفرش"
                     },
                     refresh: true
-                }                
+                }
             },
             requestStatus: {
-                record: 0 ,
+                record: 0,
                 refferdToExpert: 1,
                 ignored: 2,
                 returned: 3,
                 done: 4,
-                archive:5
+                archive: 5
             }
         };
     },
@@ -65,7 +65,7 @@ export default {
         },
         $abilityCheck(skill, module) {
             let isAbility = new ability();
-            return isAbility.checkAbility(skill,module);
+            return isAbility.checkAbility(skill, module);
         },
         $getJalaliDateTime(dateTime = null) {
             try {
@@ -86,7 +86,7 @@ export default {
             if (errors.errors) {
                 let error = errors.errors;
                 for (const key in error) {
-                    this.$izitoast("error", error[key][0],"عملیات ناموفق!" , {
+                    this.$izitoast("error", error[key][0], "عملیات ناموفق!", {
                         position: "topRight",
                         displayMode: 2,
                         rtl: true
@@ -184,13 +184,13 @@ export default {
                     notification[
                         "confirmButtonColor"
                     ] = options.confirmButtonColor
-                        ? options.confirmButtonColor
-                        : "#d33";
+                            ? options.confirmButtonColor
+                            : "#d33";
                     notification[
                         "confirmButtonText"
                     ] = options.confirmButtonText
-                        ? options.confirmButtonText
-                        : "حذف";
+                            ? options.confirmButtonText
+                            : "حذف";
                     notification["cancelButtonColor"] = "#3085d6";
                     break;
                 case "warning":
@@ -204,6 +204,7 @@ export default {
         },
         $ENTPN(number) {
             // return number
+            number = number ? number : 0;
             let converted = persianJs(String(number)).englishNumber();
             if (converted == "undefined") return "۰";
             else return converted;
